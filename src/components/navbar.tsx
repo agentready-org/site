@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLink =
   "font-mono text-xs text-muted-foreground hover:text-foreground transition-colors";
@@ -81,10 +82,12 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <ThemeToggle className="-mr-1" />
         </div>
 
         {/* Mobile */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
           <button
             ref={buttonRef}
             type="button"

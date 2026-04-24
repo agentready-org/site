@@ -35,6 +35,19 @@
   --ring: #1A1A1A;
 }
 
+html.dark {
+  --background: #0F0F0E;
+  --foreground: #E8E4D8;
+  --card: #161513;
+  --card-foreground: #E8E4D8;
+  --muted: #1F1D1A;
+  --muted-foreground: #9A948A;
+  --accent: #1F1D1A;
+  --accent-foreground: #E8E4D8;
+  --border: #2A2824;
+  --ring: #E8E4D8;
+}
+
 @layer base {
   * {
     border-color: var(--border);
@@ -48,6 +61,10 @@
   html {
     font-family: var(--font-serif);
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
