@@ -166,7 +166,7 @@ export default function HomePage() {
                     id={entry.id}
                     className="py-5 border-b border-border/50 scroll-mt-20"
                   >
-                    <div className="flex items-center gap-3 mb-1.5 font-mono text-[11px] tracking-wider text-muted-foreground/70">
+                    <div className="flex items-center gap-3 mb-1.5 font-mono text-[12px] tracking-wider text-muted-foreground/70">
                       <a
                         href={`#${entry.id}`}
                         className="text-muted-foreground/90 hover:text-foreground transition-colors"
@@ -192,12 +192,12 @@ export default function HomePage() {
                             href={entry.referenceUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="ml-2 inline-flex items-center px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-muted-foreground/70 bg-muted/60 rounded align-middle hover:text-foreground transition-colors"
+                            className="ml-2 inline-flex items-center px-1.5 py-0.5 font-mono text-[11px] tracking-wider text-muted-foreground/70 bg-muted/60 rounded align-middle hover:text-foreground transition-colors"
                           >
                             {entry.reference}
                           </a>
                         ) : (
-                          <span className="ml-2 inline-flex items-center px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-muted-foreground/60 bg-muted/60 rounded align-middle">
+                          <span className="ml-2 inline-flex items-center px-1.5 py-0.5 font-mono text-[11px] tracking-wider text-muted-foreground/60 bg-muted/60 rounded align-middle">
                             {entry.reference}
                           </span>
                         ))}
@@ -206,7 +206,7 @@ export default function HomePage() {
                       {entry.summary}
                     </p>
                     {entry.applies !== "baseline" && (
-                      <p className="font-mono text-[12px] text-muted-foreground/80 mt-2 tracking-wide">
+                      <p className="font-mono text-[13px] text-muted-foreground/80 mt-2 tracking-wide">
                         applies to:{" "}
                         <span className="text-foreground/70">
                           {entry.applies}
