@@ -42,11 +42,22 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § the spec
         </p>
-        <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-6">
+        <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-4">
           Each entry below is a published protocol, standard, or convention a
           product implements directly. Entries tagged{" "}
           <InlineTag>emerging</InlineTag> are still evolving or pre-RFC. The
           spec is provisional and will grow with the ecosystem.
+        </p>
+        <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-6">
+          Entries are either{" "}
+          <span className="font-mono text-[13px] text-foreground">
+            baseline
+          </span>
+          , meaning every agent-addressable product should implement them, or{" "}
+          <em>conditional</em>, meaning they apply only when the product
+          exposes a given surface. Each conditional entry states the condition
+          under which it applies, so a docs site is never asked to implement
+          commerce and a payments API is never asked to publish voice markup.
         </p>
 
         <nav
@@ -114,6 +125,14 @@ export default function HomePage() {
                     <p className="font-serif text-[15px] text-foreground/70 mt-1 leading-relaxed max-w-2xl">
                       {entry.summary}
                     </p>
+                    {entry.applies !== "baseline" && (
+                      <p className="font-mono text-[12px] text-muted-foreground/80 mt-2 tracking-wide">
+                        applies to:{" "}
+                        <span className="text-foreground/70">
+                          {entry.applies}
+                        </span>
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
