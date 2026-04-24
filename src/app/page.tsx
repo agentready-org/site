@@ -29,13 +29,10 @@ export default function HomePage() {
           should score compliance.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
-          The agentic web moves faster than any traditional standards process.
-          AgentReady is designed to keep up: new protocols join the spec as
-          they emerge, tagged <InlineTag>emerging</InlineTag> while the
-          ecosystem adopts them. For products, it is a checklist of what
-          every business building for agents should consider; for
-          builders, it is a shared vocabulary so scanners and badges can
-          compare like with like.
+          The agentic web moves faster than any traditional standards
+          process. AgentReady is designed to keep up: new protocols join
+          the spec as they emerge, tagged <InlineTag>emerging</InlineTag>{" "}
+          while the ecosystem adopts them.
         </p>
       </section>
 
