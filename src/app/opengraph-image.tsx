@@ -44,7 +44,7 @@ export default async function OpengraphImage() {
         >
           <div
             style={{
-              width: 40,
+              width: 52,
               height: 40,
               borderRadius: 8,
               background: "#1A1A1A",
@@ -53,10 +53,12 @@ export default async function OpengraphImage() {
               alignItems: "center",
               justifyContent: "center",
               fontWeight: 700,
-              fontSize: 24,
+              fontSize: 22,
+              fontFamily: "ui-monospace, 'SFMono-Regular', monospace",
+              letterSpacing: -0.5,
             }}
           >
-            a
+            ar
           </div>
           <div style={{ fontWeight: 700 }}>agentready.org</div>
         </div>
