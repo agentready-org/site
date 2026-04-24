@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Space_Mono } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { SPEC_VERSION, SPEC_DATE } from "@/lib/spec-data";
 import "./globals.css";
 
 const lora = Lora({
@@ -56,6 +57,7 @@ export const metadata: Metadata = {
     canonical: "/",
     types: {
       "text/plain": "/llms.txt",
+      "application/json": "/spec.json",
     },
   },
   robots: {
@@ -111,6 +113,21 @@ export default function RootLayout({
                 "AgentReady is the open, vendor-neutral specification of the protocols, standards, and conventions a product should implement to be usable by AI agents.",
               url: "https://agentready.org",
               inLanguage: "en",
+              version: SPEC_VERSION,
+              datePublished: SPEC_DATE,
+              license: "https://opensource.org/licenses/MIT",
+              encoding: [
+                {
+                  "@type": "MediaObject",
+                  encodingFormat: "application/json",
+                  contentUrl: "https://agentready.org/spec.json",
+                },
+                {
+                  "@type": "MediaObject",
+                  encodingFormat: "text/plain",
+                  contentUrl: "https://agentready.org/llms.txt",
+                },
+              ],
               keywords: [
                 "agent readiness",
                 "open standard",

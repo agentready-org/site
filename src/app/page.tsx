@@ -1,4 +1,4 @@
-import { SECTIONS } from "@/lib/spec-data";
+import { SECTIONS, SPEC_VERSION, type SpecStrength } from "@/lib/spec-data";
 
 export default function HomePage() {
   return (
@@ -34,6 +34,73 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* Conformance */}
+      <section
+        id="conformance"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § conformance
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          What it means to be AgentReady
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          A product conforms to AgentReady{" "}
+          <span className="font-mono text-[13px] text-foreground">
+            v{SPEC_VERSION}
+          </span>{" "}
+          when it implements every{" "}
+          <StrengthInline value="MUST" /> entry that applies to its
+          surfaces. It should implement every{" "}
+          <StrengthInline value="SHOULD" /> entry unless it documents
+          a reason not to, and may implement{" "}
+          <StrengthInline value="MAY" /> entries as appropriate.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          Each entry carries two qualifiers. Applicability determines
+          whether the entry binds the product at all:{" "}
+          <span className="font-mono text-[13px] text-foreground">baseline</span>{" "}
+          entries apply to every agent-addressable product, while
+          conditional entries apply only when the product exposes their
+          stated surface. Strength then says how firmly the entry binds
+          within that scope. A conditional{" "}
+          <StrengthInline value="MUST" /> entry has no force for products
+          outside its condition; a docs site is never asked to implement
+          commerce, and a payments API is never asked to publish voice
+          markup.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          Commerce is the one section where multiple entries address the
+          same underlying need through competing protocols. A product that
+          accepts agent payment conforms by implementing at least one
+          applicable Commerce entry; it is not required to implement them
+          all.
+        </p>
+        <p className="font-serif text-sm text-muted-foreground/75 leading-relaxed max-w-2xl">
+          The keywords MUST, SHOULD, and MAY in this document are to be
+          interpreted as described in BCP 14 (
+          <a
+            href="https://www.rfc-editor.org/rfc/rfc2119.html"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            RFC 2119
+          </a>
+          ,{" "}
+          <a
+            href="https://www.rfc-editor.org/rfc/rfc8174.html"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            RFC 8174
+          </a>
+          ) when, and only when, they appear in all capitals.
+        </p>
+      </section>
+
       {/* Spec */}
       <section
         id="spec"
@@ -43,26 +110,27 @@ export default function HomePage() {
           § the spec
         </p>
         <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-4">
-          Each entry below is a published protocol, standard, or convention a
-          product implements directly. Entries tagged{" "}
-          <InlineTag>emerging</InlineTag> are still evolving or pre-RFC. The
-          spec is provisional and will grow with the ecosystem.
-        </p>
-        <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-6">
-          Entries are either{" "}
+          Each entry below is a published protocol, standard, or convention
+          a product implements directly. Every entry carries a stable
+          identifier (for example{" "}
           <span className="font-mono text-[13px] text-foreground">
-            baseline
+            AR-DISC-01
           </span>
-          , meaning every agent-addressable product should implement them, or{" "}
-          <em>conditional</em>, meaning they apply only when the product
-          exposes a given surface. Each conditional entry states the condition
-          under which it applies, so a docs site is never asked to implement
-          commerce and a payments API is never asked to publish voice markup.
+          ) preserved across revisions, an applicability scope, and a
+          normative strength. A machine-readable version of the spec is
+          available at{" "}
+          <a
+            href="/spec.json"
+            className="font-mono text-[13px] underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            /spec.json
+          </a>
+          .
         </p>
 
         <nav
           aria-label="Spec sections"
-          className="flex flex-wrap gap-x-5 gap-y-2 mb-14"
+          className="flex flex-wrap gap-x-5 gap-y-2 mb-14 mt-6"
         >
           {SECTIONS.map((section) => (
             <a
@@ -94,8 +162,18 @@ export default function HomePage() {
                   <div
                     key={entry.id}
                     id={entry.id}
-                    className="py-4 border-b border-border/50 scroll-mt-20"
+                    className="py-5 border-b border-border/50 scroll-mt-20"
                   >
+                    <div className="flex items-center gap-3 mb-1.5 font-mono text-[11px] tracking-wider text-muted-foreground/70">
+                      <a
+                        href={`#${entry.id}`}
+                        className="text-muted-foreground/90 hover:text-foreground transition-colors"
+                      >
+                        {entry.stableId}
+                      </a>
+                      <span className="text-muted-foreground/30">·</span>
+                      <StrengthBadge value={entry.strength} />
+                    </div>
                     <p className="font-serif text-base text-foreground">
                       <a
                         href={`#${entry.id}`}
@@ -139,6 +217,50 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Versioning */}
+      <section
+        id="versioning"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § versioning
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          How the spec changes
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          AgentReady follows semantic versioning applied to normative
+          commitments, not to editorial text. A{" "}
+          <span className="font-mono text-[13px] text-foreground">MAJOR</span>{" "}
+          bump happens when an existing entry changes its strength to a
+          stricter level, when an entry is removed, or when a stable ID is
+          reassigned. A{" "}
+          <span className="font-mono text-[13px] text-foreground">MINOR</span>{" "}
+          bump happens when an entry is added, when a strength becomes
+          looser, or when a reference is updated. A{" "}
+          <span className="font-mono text-[13px] text-foreground">PATCH</span>{" "}
+          bump covers clarifications and link fixes.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          Stable identifiers (
+          <span className="font-mono text-[13px] text-foreground">
+            AR-SECT-NN
+          </span>
+          ) are preserved across versions and are the canonical way to cite
+          an entry. The current version, the full change history, and the
+          machine-readable spec artifact are all linked from the{" "}
+          <a
+            href="https://github.com/assafelovic/agentready"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            repository
+          </a>
+          .
+        </p>
       </section>
 
       {/* Contribute */}
@@ -201,6 +323,24 @@ function InlineTag({
       className={`inline-flex items-center px-1.5 py-0.5 font-mono text-[10px] tracking-wider border rounded align-middle text-muted-foreground/70 border-border/60 ${className}`}
     >
       {children}
+    </span>
+  );
+}
+
+function StrengthBadge({ value }: { value: SpecStrength }) {
+  const toneClass =
+    value === "MUST"
+      ? "text-foreground font-semibold"
+      : value === "SHOULD"
+        ? "text-foreground/85 font-medium"
+        : "text-muted-foreground/70";
+  return <span className={`font-mono tracking-wider ${toneClass}`}>{value}</span>;
+}
+
+function StrengthInline({ value }: { value: SpecStrength }) {
+  return (
+    <span className="font-mono text-[13px] tracking-wider text-foreground">
+      {value}
     </span>
   );
 }
