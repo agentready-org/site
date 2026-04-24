@@ -5,14 +5,15 @@ All notable changes to the AgentReady specification are recorded here.
 AgentReady follows semantic versioning applied to normative commitments, not
 to editorial text:
 
-- **MAJOR** — an existing entry's strength is raised (for example `SHOULD`
-  to `MUST`), an entry is removed, or a stable identifier is reassigned.
-- **MINOR** — an entry is added, an existing strength is lowered, or a
+- **MAJOR** — an existing requirement's strength is raised (for example
+  `SHOULD` to `MUST`), a requirement is removed, or a stable identifier is
+  reassigned.
+- **MINOR** — a requirement is added, an existing strength is lowered, or a
   reference is updated to a newer specification.
 - **PATCH** — clarifications, editorial fixes, and link updates.
 
 Stable identifiers (`AR-SECT-NN`) are preserved across versions and are the
-canonical way to cite an entry.
+canonical way to cite a requirement.
 
 ---
 
@@ -28,16 +29,17 @@ First published version of AgentReady.
   - **Capabilities** (`AR-CAPA-01` … `AR-CAPA-09`)
   - **Identity & Access** (`AR-IDEN-01` … `AR-IDEN-06`)
   - **Commerce** (`AR-COMM-01` … `AR-COMM-05`)
-- Normative strength (`MUST` / `SHOULD` / `MAY` per BCP 14) on every entry.
-- Applicability model (`baseline` vs. conditional) on every entry.
-- Stable identifiers for every entry, preserved across revisions.
+- Normative strength (`MUST` / `SHOULD` / `MAY` per BCP 14) on every
+  requirement.
+- Applicability model (`baseline` vs. conditional) on every requirement.
+- Stable identifiers for every requirement, preserved across revisions.
 - Conformance definition, including the treatment of Commerce as a set of
   alternative, interoperating protocols where at least one applies.
 - Machine-readable artifact at [`/spec.json`](https://agentready.org/spec.json).
 - Agent-readable summary at [`/llms.txt`](https://agentready.org/llms.txt).
 - Versioning policy (`/#versioning`).
 
-### Entries
+### Requirements
 
 Discoverability
 
@@ -87,12 +89,12 @@ Commerce
 ### Notes
 
 - This is the first version that assigns normative strength. Earlier drafts
-  of the page exposed the same entries without applicability or strength;
-  those drafts are not semver-tracked.
-- Commerce entries are intentionally all **MAY**; conformance in that
-  section is defined as "at least one applicable entry implemented,"
+  of the page exposed the same requirements without applicability or
+  strength; those drafts are not semver-tracked.
+- Commerce requirements are intentionally all **MAY**; conformance in that
+  section is defined as "at least one applicable requirement implemented,"
   reflecting the current state of the ecosystem where ACP, UCP, x402, and
   MPP each address the same underlying need through different designs.
-- Entries tagged `emerging` are expected to graduate to stable as their
-  underlying specifications stabilize; a graduation is a PATCH-level
+- Requirements tagged `emerging` are expected to graduate to stable as
+  their underlying specifications stabilize; a graduation is a PATCH-level
   change unless it also moves the strength.

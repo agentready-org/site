@@ -1,7 +1,7 @@
 import {
   SECTIONS,
   SPEC_VERSION,
-  sortedEntries,
+  sortedRequirements,
   type SpecStrength,
 } from "@/lib/spec-data";
 
@@ -56,31 +56,31 @@ export default function HomePage() {
             v{SPEC_VERSION}
           </span>{" "}
           when it implements every{" "}
-          <StrengthInline value="MUST" /> entry that applies to its
-          surfaces. It should implement every{" "}
-          <StrengthInline value="SHOULD" /> entry unless it documents
-          a reason not to, and may implement{" "}
-          <StrengthInline value="MAY" /> entries as appropriate.
+          <StrengthInline value="MUST" /> requirement that applies to
+          its surfaces. It should implement every{" "}
+          <StrengthInline value="SHOULD" /> requirement unless it
+          documents a reason not to, and may implement{" "}
+          <StrengthInline value="MAY" /> requirements as appropriate.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          Each entry carries two qualifiers. Applicability determines
-          whether the entry binds the product at all:{" "}
+          Each requirement carries two qualifiers. Applicability
+          determines whether the requirement binds the product at all:{" "}
           <span className="font-mono text-[13px] text-foreground">baseline</span>{" "}
-          entries apply to every agent-addressable product, while
-          conditional entries apply only when the product exposes their
-          stated surface. Strength then says how firmly the entry binds
-          within that scope. A conditional{" "}
-          <StrengthInline value="MUST" /> entry has no force for products
-          outside its condition; a docs site is never asked to implement
-          commerce, and a payments API is never asked to publish voice
-          markup.
+          requirements apply to every agent-addressable product, while
+          conditional requirements apply only when the product exposes
+          their stated surface. Strength then says how firmly the
+          requirement binds within that scope. A conditional{" "}
+          <StrengthInline value="MUST" /> requirement has no force for
+          products outside its condition; a docs site is never asked to
+          implement commerce, and a payments API is never asked to
+          publish voice markup.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          Commerce is the one section where multiple entries address the
-          same underlying need through competing protocols. A product that
-          accepts agent payment conforms by implementing at least one
-          applicable Commerce entry; it is not required to implement them
-          all.
+          Commerce is the one section where multiple requirements
+          address the same underlying need through competing protocols.
+          A product that accepts agent payment conforms by implementing
+          at least one applicable Commerce requirement; it is not
+          required to implement them all.
         </p>
         <p className="font-serif text-sm text-muted-foreground/75 leading-relaxed max-w-2xl">
           The keywords MUST, SHOULD, and MAY in this document are to be
@@ -115,9 +115,9 @@ export default function HomePage() {
           § the spec
         </p>
         <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-4">
-          Each entry below is a published protocol, standard, or convention
-          a product implements directly. Every entry carries a stable
-          identifier (for example{" "}
+          Each requirement below points to a published protocol,
+          standard, or convention a product implements directly. Every
+          requirement carries a stable identifier (for example{" "}
           <span className="font-mono text-[13px] text-foreground">
             AR-DISC-01
           </span>
@@ -163,7 +163,7 @@ export default function HomePage() {
               </p>
 
               <div className="space-y-0">
-                {sortedEntries(section).map((entry) => (
+                {sortedRequirements(section).map((entry) => (
                   <div
                     key={entry.id}
                     id={entry.id}
@@ -239,12 +239,12 @@ export default function HomePage() {
           AgentReady follows semantic versioning applied to normative
           commitments, not to editorial text. A{" "}
           <span className="font-mono text-[13px] text-foreground">MAJOR</span>{" "}
-          bump happens when an existing entry changes its strength to a
-          stricter level, when an entry is removed, or when a stable ID is
-          reassigned. A{" "}
+          bump happens when an existing requirement changes its
+          strength to a stricter level, when a requirement is removed,
+          or when a stable ID is reassigned. A{" "}
           <span className="font-mono text-[13px] text-foreground">MINOR</span>{" "}
-          bump happens when an entry is added, when a strength becomes
-          looser, or when a reference is updated. A{" "}
+          bump happens when a requirement is added, when a strength
+          becomes looser, or when a reference is updated. A{" "}
           <span className="font-mono text-[13px] text-foreground">PATCH</span>{" "}
           bump covers clarifications and link fixes.
         </p>
@@ -253,8 +253,8 @@ export default function HomePage() {
           <span className="font-mono text-[13px] text-foreground">
             AR-SECT-NN
           </span>
-          ) are preserved across versions and are the canonical way to cite
-          an entry. The full change history lives in the{" "}
+          ) are preserved across versions and are the canonical way to
+          cite a requirement. The full change history lives in the{" "}
           <a
             href="https://github.com/assafelovic/agentready/blob/main/CHANGELOG.md"
             target="_blank"
@@ -298,8 +298,9 @@ export default function HomePage() {
           >
             Discord
           </a>
-          . New entries join the spec as <InlineTag>emerging</InlineTag> so
-          adoption can be observed before they stabilize.
+          . New requirements join the spec as{" "}
+          <InlineTag>emerging</InlineTag> so adoption can be observed
+          before they stabilize.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
           Check out{" "}

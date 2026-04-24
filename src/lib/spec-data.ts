@@ -2,31 +2,33 @@
  * AgentReady.
  *
  * AgentReady names the published protocols, standards, and conventions a
- * product should implement to be usable by AI agents. Every entry below
- * references a public specification. No entry encodes a score, threshold,
- * or implementation-specific measurement.
+ * product should implement to be usable by AI agents. Every requirement
+ * below references a public specification. No requirement encodes a
+ * score, threshold, or implementation-specific measurement.
  *
- * Each entry carries two qualifiers:
+ * Each requirement carries two qualifiers:
  *
- *  - `applies`: "baseline" means every agent-addressable product implements
- *    the entry. A string value is a condition; the entry applies only when
- *    the product exposes the described surface.
+ *  - `applies`: "baseline" means every agent-addressable product
+ *    implements the requirement. A string value is a condition; the
+ *    requirement applies only when the product exposes the described
+ *    surface.
  *
  *  - `strength`: MUST / SHOULD / MAY, per BCP 14 (RFC 2119, RFC 8174). The
- *    keywords apply within the entry's scope of applicability. A conditional
- *    MUST entry only binds products that fall within its condition.
+ *    keywords apply within the requirement's scope of applicability. A
+ *    conditional MUST requirement only binds products that fall within
+ *    its condition.
  *
- * Every entry also carries a stable identifier (`stableId`, e.g. `AR-DISC-01`)
- * that is preserved across spec revisions. Entries tagged `emerging` are
- * actively evolving or pre-RFC; implementations should treat them as
- * forward-looking.
+ * Every requirement also carries a stable identifier (`stableId`, e.g.
+ * `AR-DISC-01`) that is preserved across spec revisions. Requirements
+ * tagged `emerging` are actively evolving or pre-RFC; implementations
+ * should treat them as forward-looking.
  */
 
 export type SpecApplicability = "baseline" | string;
 
 export type SpecStrength = "MUST" | "SHOULD" | "MAY";
 
-export type SpecEntry = {
+export type SpecRequirement = {
   id: string;
   stableId: string;
   name: string;
@@ -42,7 +44,7 @@ export type SpecSection = {
   id: string;
   name: string;
   summary: string;
-  entries: readonly SpecEntry[];
+  requirements: readonly SpecRequirement[];
 };
 
 export const SECTIONS: readonly SpecSection[] = [
@@ -51,7 +53,7 @@ export const SECTIONS: readonly SpecSection[] = [
     name: "Discoverability",
     summary:
       "Help agents find the product and the files they need to read.",
-    entries: [
+    requirements: [
       {
         id: "robots-txt",
         stableId: "AR-DISC-01",
@@ -126,7 +128,7 @@ export const SECTIONS: readonly SpecSection[] = [
     name: "Content for agents",
     summary:
       "Expose content in a form models can parse without running JavaScript.",
-    entries: [
+    requirements: [
       {
         id: "json-ld",
         stableId: "AR-CONT-01",
@@ -176,7 +178,7 @@ export const SECTIONS: readonly SpecSection[] = [
     name: "Capabilities",
     summary:
       "Declare what the product can do for agents and how to call it.",
-    entries: [
+    requirements: [
       {
         id: "mcp",
         stableId: "AR-CAPA-01",
@@ -287,7 +289,7 @@ export const SECTIONS: readonly SpecSection[] = [
     name: "Identity & Access",
     summary:
       "Prove who the agent is and give it scoped, revocable access.",
-    entries: [
+    requirements: [
       {
         id: "web-bot-auth",
         stableId: "AR-IDEN-01",
@@ -362,8 +364,8 @@ export const SECTIONS: readonly SpecSection[] = [
     id: "commerce",
     name: "Commerce",
     summary:
-      "Let agents pay, initiate checkouts, and complete purchases on behalf of their users. The entries in this section are alternative, interoperating approaches; a conformant commerce product implements at least one.",
-    entries: [
+      "Let agents pay, initiate checkouts, and complete purchases on behalf of their users. The requirements in this section are alternative, interoperating approaches; a conformant commerce product implements at least one.",
+    requirements: [
       {
         id: "x402",
         stableId: "AR-COMM-01",
@@ -439,25 +441,25 @@ const STRENGTH_ORDER: Record<SpecStrength, number> = {
 };
 
 /**
- * Returns a section's entries sorted by normative strength
+ * Returns a section's requirements sorted by normative strength
  * (MUST → SHOULD → MAY), preserving authored order within each group.
  * Use this for any human- or machine-facing rendering.
  */
-export function sortedEntries(
+export function sortedRequirements(
   section: SpecSection,
-): readonly SpecEntry[] {
-  return [...section.entries].sort((a, b) => {
+): readonly SpecRequirement[] {
+  return [...section.requirements].sort((a, b) => {
     const d = STRENGTH_ORDER[a.strength] - STRENGTH_ORDER[b.strength];
     if (d !== 0) return d;
-    return section.entries.indexOf(a) - section.entries.indexOf(b);
+    return section.requirements.indexOf(a) - section.requirements.indexOf(b);
   });
 }
 
 /**
  * Totals derived at build time. These are descriptive, not prescriptive:
- * the count of entries does not imply a score or threshold.
+ * the count of requirements does not imply a score or threshold.
  */
-export const TOTAL_ENTRIES = SECTIONS.reduce(
-  (n, s) => n + s.entries.length,
+export const TOTAL_REQUIREMENTS = SECTIONS.reduce(
+  (n, s) => n + s.requirements.length,
   0
 );

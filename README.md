@@ -7,8 +7,8 @@ The spec is published as a single page. Key anchors:
 - `/#spec` — the specification, grouped by section
 - `/#conformance` — what it means to claim AgentReady conformance
 - `/#versioning` — rules for MAJOR / MINOR / PATCH bumps
-- Individual entries are addressable by slug, e.g. `/#mcp`
-- Entries are also citable by stable identifier, e.g. `AR-CAPA-01`
+- Individual requirements are addressable by slug, e.g. `/#mcp`
+- Requirements are also citable by stable identifier, e.g. `AR-CAPA-01`
 
 Machine-readable artifacts:
 
@@ -61,7 +61,7 @@ src/
     navbar.tsx         # Sticky nav
     footer.tsx         # Compact footer
   lib/
-    spec-data.ts       # Canonical SECTIONS + entries (source of truth)
+    spec-data.ts       # Canonical SECTIONS + requirements (source of truth)
 ```
 
 `src/lib/spec-data.ts` is the single source of truth for the specification.
@@ -78,7 +78,7 @@ editorial text. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history and
 
 AgentReady is developed in the open. File issues and pull requests on this
 repository; working sessions and proposal discussions happen on
-[Discord](https://discord.gg/WKYedjmCu). New entries join the spec as
+[Discord](https://discord.gg/WKYedjmCu). New requirements join the spec as
 `emerging` so adoption can be observed before they stabilize.
 
 ## License

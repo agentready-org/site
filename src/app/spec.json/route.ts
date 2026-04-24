@@ -3,8 +3,8 @@ import {
   SECTIONS,
   SPEC_VERSION,
   SPEC_DATE,
-  TOTAL_ENTRIES,
-  sortedEntries,
+  TOTAL_REQUIREMENTS,
+  sortedRequirements,
 } from "@/lib/spec-data";
 
 export const dynamic = "force-static";
@@ -36,56 +36,56 @@ export function GET() {
     ],
     conformance: {
       summary:
-        "A product conforms when it implements every MUST entry that applies to its surfaces. It should implement every applicable SHOULD entry unless it documents a reason not to. It may implement MAY entries as appropriate.",
+        "A product conforms when it implements every MUST requirement that applies to its surfaces. It should implement every applicable SHOULD requirement unless it documents a reason not to. It may implement MAY requirements as appropriate.",
       applicability: {
         baseline:
           "Applies to every agent-addressable product, regardless of surface.",
         conditional:
-          "Applies only when the product exposes the surface named in the entry's `applies` field.",
+          "Applies only when the product exposes the surface named in the requirement's `applies` field.",
       },
       strengths: {
-        MUST: "Absolute requirement for products within the entry's scope.",
+        MUST: "Mandatory for products within the requirement's scope.",
         SHOULD:
-          "Strong recommendation; deviation permitted only with documented rationale.",
+          "Strongly recommended; deviation permitted only with documented rationale.",
         MAY: "Optional; implementation adds value but is not required for conformance.",
       },
       alternatives: {
         commerce:
-          "Entries in the Commerce section are alternative, interoperating approaches. A product that accepts agent payment conforms by implementing at least one applicable Commerce entry.",
+          "Requirements in the Commerce section are alternative, interoperating approaches. A product that accepts agent payment conforms by implementing at least one applicable Commerce requirement.",
       },
     },
     versioning: {
       scheme: "semver",
       rules: {
         MAJOR:
-          "An existing entry's strength is raised (for example SHOULD to MUST), an entry is removed, or a stable identifier is reassigned.",
+          "An existing requirement's strength is raised (for example SHOULD to MUST), a requirement is removed, or a stable identifier is reassigned.",
         MINOR:
-          "An entry is added, an existing strength is lowered, or a reference is updated to a newer specification.",
+          "A requirement is added, an existing strength is lowered, or a reference is updated to a newer specification.",
         PATCH: "Clarifications, editorial fixes, and link updates.",
       },
       stableIdFormat: "AR-<SECTION>-<NN>",
       stableIdPolicy:
-        "Stable identifiers are preserved across spec versions and are the canonical way to cite an entry.",
+        "Stable identifiers are preserved across spec versions and are the canonical way to cite a requirement.",
     },
     counts: {
       sections: SECTIONS.length,
-      entries: TOTAL_ENTRIES,
+      requirements: TOTAL_REQUIREMENTS,
     },
     sections: SECTIONS.map((section) => ({
       id: section.id,
       name: section.name,
       summary: section.summary,
-      entries: sortedEntries(section).map((entry) => ({
-        stableId: entry.stableId,
-        slug: entry.id,
-        name: entry.name,
-        summary: entry.summary,
-        applies: entry.applies,
-        strength: entry.strength,
-        emerging: Boolean(entry.emerging),
-        reference: entry.reference ?? null,
-        referenceUrl: entry.referenceUrl ?? null,
-        anchor: `https://agentready.org/#${entry.id}`,
+      requirements: sortedRequirements(section).map((req) => ({
+        stableId: req.stableId,
+        slug: req.id,
+        name: req.name,
+        summary: req.summary,
+        applies: req.applies,
+        strength: req.strength,
+        emerging: Boolean(req.emerging),
+        reference: req.reference ?? null,
+        referenceUrl: req.referenceUrl ?? null,
+        anchor: `https://agentready.org/#${req.id}`,
       })),
     })),
   };
