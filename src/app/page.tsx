@@ -176,7 +176,7 @@ export default function HomePage() {
                       <span className="text-muted-foreground/30">·</span>
                       <StrengthBadge value={entry.strength} />
                     </div>
-                    <p className="font-serif text-[17px] text-foreground">
+                    <p className="font-serif text-base text-foreground">
                       <a
                         href={`#${entry.id}`}
                         className="hover:underline decoration-border decoration-2 underline-offset-4"
@@ -202,7 +202,7 @@ export default function HomePage() {
                           </span>
                         ))}
                     </p>
-                    <p className="font-serif text-base text-foreground/70 mt-1 leading-relaxed max-w-2xl">
+                    <p className="font-serif text-[15px] text-foreground/70 mt-1 leading-relaxed max-w-2xl">
                       {entry.summary}
                     </p>
                     {entry.applies !== "baseline" && (

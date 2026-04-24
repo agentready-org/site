@@ -37,15 +37,15 @@
 
 html.dark {
   --background: #0F0F0E;
-  --foreground: #E8E4D8;
+  --foreground: #F2EEE3;
   --card: #161513;
-  --card-foreground: #E8E4D8;
+  --card-foreground: #F2EEE3;
   --muted: #1F1D1A;
-  --muted-foreground: #9A948A;
+  --muted-foreground: #B4ADA0;
   --accent: #1F1D1A;
-  --accent-foreground: #E8E4D8;
+  --accent-foreground: #F2EEE3;
   --border: #2A2824;
-  --ring: #E8E4D8;
+  --ring: #F2EEE3;
 }
 
 @layer base {
