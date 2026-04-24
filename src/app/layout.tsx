@@ -17,24 +17,77 @@ const spaceMono = Space_Mono({
   display: "swap",
 });
 
+const SITE_URL = "https://agentready.org";
+const TITLE = "AgentReady // The open standard for agent readiness";
+const DESCRIPTION =
+  "AgentReady is the open, vendor-neutral specification of the protocols, standards, and conventions a product should implement to be usable by AI agents: MCP, A2A, x402, llms.txt, Web Bot Auth, and more.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://agentready.org"),
-  title: "AgentReady // The open standard for agent readiness",
-  description:
-    "AgentReady is the open, vendor-neutral specification of the protocols, standards, and conventions a product should implement to be usable by AI agents.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s // AgentReady",
+  },
+  description: DESCRIPTION,
+  applicationName: "AgentReady",
+  authors: [{ name: "AgentReady contributors" }],
+  creator: "AgentReady",
+  publisher: "AgentReady",
+  keywords: [
+    "agent readiness",
+    "open standard",
+    "agentic web",
+    "AI agents",
+    "MCP",
+    "Model Context Protocol",
+    "A2A",
+    "x402",
+    "ACP",
+    "UCP",
+    "llms.txt",
+    "Web Bot Auth",
+    "OAuth",
+    "OpenAPI",
+    "schema.org",
+    "robots.txt",
+  ],
+  category: "technology",
+  alternates: {
+    canonical: "/",
+    types: {
+      "text/plain": "/llms.txt",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "AgentReady // The open standard for agent readiness",
-    description:
-      "An open specification of the protocols a product implements to be usable by AI agents: MCP, A2A, x402, llms.txt, Web Bot Auth, and more.",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
-    url: "https://agentready.org",
+    url: SITE_URL,
     siteName: "AgentReady",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AgentReady // The open standard for agent readiness",
-    description:
-      "The open specification of protocols a product implements to be usable by AI agents.",
+    title: TITLE,
+    description: DESCRIPTION,
+    site: "@agentready",
+    creator: "@agentready",
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
