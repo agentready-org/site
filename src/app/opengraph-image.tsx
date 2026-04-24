@@ -16,8 +16,8 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "80px 88px",
-          background: "#F9F7F2",
-          color: "#1A1A1A",
+          background: "#0F0F0E",
+          color: "#F2EEE3",
           fontFamily: "Georgia, 'Times New Roman', serif",
         }}
       >
@@ -28,7 +28,7 @@ export default async function OpengraphImage() {
             gap: 14,
             fontFamily: "ui-monospace, 'SFMono-Regular', monospace",
             fontSize: 22,
-            color: "#1A1A1A",
+            color: "#F2EEE3",
           }}
         >
           <div
@@ -36,8 +36,8 @@ export default async function OpengraphImage() {
               width: 52,
               height: 40,
               borderRadius: 8,
-              background: "#1A1A1A",
-              color: "#F9F7F2",
+              background: "#F2EEE3",
+              color: "#0F0F0E",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -57,7 +57,7 @@ export default async function OpengraphImage() {
             fontSize: 96,
             lineHeight: 1.05,
             letterSpacing: -1.5,
-            color: "#1A1A1A",
+            color: "#F2EEE3",
             maxWidth: 1000,
           }}
         >
@@ -68,7 +68,7 @@ export default async function OpengraphImage() {
           style={{
             fontFamily: "ui-monospace, 'SFMono-Regular', monospace",
             fontSize: 18,
-            color: "#5C5953",
+            color: "#B4ADA0",
             letterSpacing: 1,
           }}
         >
