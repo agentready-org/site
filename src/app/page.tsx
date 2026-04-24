@@ -1,4 +1,9 @@
-import { SECTIONS, SPEC_VERSION, type SpecStrength } from "@/lib/spec-data";
+import {
+  SECTIONS,
+  SPEC_VERSION,
+  sortedEntries,
+  type SpecStrength,
+} from "@/lib/spec-data";
 
 export default function HomePage() {
   return (
@@ -158,7 +163,7 @@ export default function HomePage() {
               </p>
 
               <div className="space-y-0">
-                {section.entries.map((entry) => (
+                {sortedEntries(section).map((entry) => (
                   <div
                     key={entry.id}
                     id={entry.id}
@@ -249,15 +254,21 @@ export default function HomePage() {
             AR-SECT-NN
           </span>
           ) are preserved across versions and are the canonical way to cite
-          an entry. The current version, the full change history, and the
-          machine-readable spec artifact are all linked from the{" "}
+          an entry. The full change history lives in the{" "}
           <a
-            href="https://github.com/assafelovic/agentready"
+            href="https://github.com/assafelovic/agentready/blob/main/CHANGELOG.md"
             target="_blank"
             rel="noreferrer"
             className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
           >
-            repository
+            changelog
+          </a>
+          , and the machine-readable form of the current version is at{" "}
+          <a
+            href="/spec.json"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            /spec.json
           </a>
           .
         </p>

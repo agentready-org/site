@@ -4,6 +4,7 @@ import {
   SPEC_VERSION,
   SPEC_DATE,
   TOTAL_ENTRIES,
+  sortedEntries,
 } from "@/lib/spec-data";
 
 export const dynamic = "force-static";
@@ -74,7 +75,7 @@ export function GET() {
       id: section.id,
       name: section.name,
       summary: section.summary,
-      entries: section.entries.map((entry) => ({
+      entries: sortedEntries(section).map((entry) => ({
         stableId: entry.stableId,
         slug: entry.id,
         name: entry.name,

@@ -27,6 +27,14 @@ export function Footer() {
             Discord
           </a>
           <a
+            href="https://github.com/assafelovic/agentready/blob/main/CHANGELOG.md"
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Changelog
+          </a>
+          <a
             href="https://github.com/assafelovic/agentready"
             target="_blank"
             rel="noreferrer"

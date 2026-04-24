@@ -58,22 +58,22 @@ Content for agents
 Capabilities
 
 - `AR-CAPA-01` Model Context Protocol (MCP) — **MUST** (conditional)
+- `AR-CAPA-04` A2A Agent Card — **MUST** (conditional)
+- `AR-CAPA-08` OpenAPI — **MUST** (conditional)
 - `AR-CAPA-02` MCP Server Card — **SHOULD** (conditional)
 - `AR-CAPA-03` MCP Apps — **MAY** (conditional)
-- `AR-CAPA-04` A2A Agent Card — **MUST** (conditional)
 - `AR-CAPA-05` WebMCP — **MAY** (conditional)
 - `AR-CAPA-06` NLWeb /ask endpoint — **MAY** (conditional)
 - `AR-CAPA-07` Agent Skills — **MAY** (conditional)
-- `AR-CAPA-08` OpenAPI — **MUST** (conditional)
 - `AR-CAPA-09` ai-plugin.json — **MAY** (conditional)
 
 Identity & Access
 
-- `AR-IDEN-01` Web Bot Auth — **SHOULD** (baseline)
 - `AR-IDEN-02` OAuth 2.0 — **MUST** (conditional)
 - `AR-IDEN-03` OAuth Authorization Server Metadata — **MUST** (conditional)
-- `AR-IDEN-04` OAuth Protected Resource — **SHOULD** (conditional)
 - `AR-IDEN-05` PKCE — **MUST** (conditional)
+- `AR-IDEN-01` Web Bot Auth — **SHOULD** (baseline)
+- `AR-IDEN-04` OAuth Protected Resource — **SHOULD** (conditional)
 - `AR-IDEN-06` API Catalog — **MAY** (conditional)
 
 Commerce

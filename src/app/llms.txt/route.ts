@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { SECTIONS, SPEC_VERSION, SPEC_DATE } from "@/lib/spec-data";
+import {
+  SECTIONS,
+  SPEC_VERSION,
+  SPEC_DATE,
+  sortedEntries,
+} from "@/lib/spec-data";
 
 export const dynamic = "force-static";
 
@@ -34,7 +39,7 @@ Commerce entries are alternative approaches to the same underlying need. A produ
 
 ${SECTIONS.map(
   (section) =>
-    `### ${section.name}\n${section.summary}\n\n${section.entries
+    `### ${section.name}\n${section.summary}\n\n${sortedEntries(section)
       .map((e) => {
         const ref = e.reference
           ? ` [${e.reference}${e.referenceUrl ? `: ${e.referenceUrl}` : ""}]`

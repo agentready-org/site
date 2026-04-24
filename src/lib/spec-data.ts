@@ -432,6 +432,27 @@ export const SECTIONS: readonly SpecSection[] = [
 export const SPEC_VERSION = "1.0.0";
 export const SPEC_DATE = "2026-04-24";
 
+const STRENGTH_ORDER: Record<SpecStrength, number> = {
+  MUST: 0,
+  SHOULD: 1,
+  MAY: 2,
+};
+
+/**
+ * Returns a section's entries sorted by normative strength
+ * (MUST → SHOULD → MAY), preserving authored order within each group.
+ * Use this for any human- or machine-facing rendering.
+ */
+export function sortedEntries(
+  section: SpecSection,
+): readonly SpecEntry[] {
+  return [...section.entries].sort((a, b) => {
+    const d = STRENGTH_ORDER[a.strength] - STRENGTH_ORDER[b.strength];
+    if (d !== 0) return d;
+    return section.entries.indexOf(a) - section.entries.indexOf(b);
+  });
+}
+
 /**
  * Totals derived at build time. These are descriptive, not prescriptive:
  * the count of entries does not imply a score or threshold.
