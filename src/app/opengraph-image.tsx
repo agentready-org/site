@@ -61,7 +61,7 @@ export default async function OpengraphImage() {
             maxWidth: 1000,
           }}
         >
-          The open standard for agent readiness.
+          The open standard for agent readiness
         </div>
 
         <div

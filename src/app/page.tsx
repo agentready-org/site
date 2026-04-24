@@ -6,7 +6,7 @@ export default function HomePage() {
       {/* Intro */}
       <section className="pt-12 sm:pt-16 pb-10">
         <h1 className="font-serif text-3xl sm:text-4xl text-foreground leading-tight mb-8">
-          The open standard for agent readiness.
+          The open standard for agent readiness
         </h1>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           Agents are a new class of user. A growing set of protocols has
