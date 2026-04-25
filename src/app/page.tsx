@@ -221,6 +221,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Deep Scan */}
+      <section
+        id="deep-scan"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § official deep scan
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Check your readiness
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          <a
+            href="https://www.orank.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            Deep Scan by Ora
+          </a>{" "}
+          is the official AgentReady scanner. It is a free, public
+          implementation that evaluates any site against the current
+          spec and reports per-requirement results using the stable
+          identifiers above.
+        </p>
+        <p className="font-serif text-sm text-muted-foreground/75 leading-relaxed max-w-2xl">
+          The spec defines what agent readiness means; Deep Scan
+          provides the canonical way to measure it. Other implementations
+          are welcome and encouraged.
+        </p>
+      </section>
+
       {/* Versioning */}
       <section
         id="versioning"
@@ -298,19 +330,6 @@ export default function HomePage() {
           . New requirements join the spec as{" "}
           <InlineTag>emerging</InlineTag> so adoption can be observed
           before they stabilize.
-        </p>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
-          Check out{" "}
-          <a
-            href="https://www.orank.ai"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            Deep Scan by Ora
-          </a>
-          , a free, public implementation that checks any site against the
-          current spec.
         </p>
         <p className="font-mono text-xs text-muted-foreground/55 tracking-wide">
           MIT · revised as protocols emerge

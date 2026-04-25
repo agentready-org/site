@@ -19,6 +19,14 @@ export function Footer() {
             Spec
           </a>
           <a
+            href="https://www.orank.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Deep Scan
+          </a>
+          <a
             href="https://discord.gg/WKYedjmCu"
             target="_blank"
             rel="noreferrer"
