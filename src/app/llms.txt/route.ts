@@ -23,7 +23,7 @@ Spec artifact: https://agentready.org/spec.json
 AgentReady is a standard, not a product. It is organized into five sections:
 ${SECTIONS.map((s) => `- ${s.name}: ${s.summary}`).join("\n")}
 
-Requirements tagged emerging are evolving or pre-RFC. The spec is provisional and will grow with the ecosystem. Implementations such as Deep Scan by Ora (https://www.orank.ai) decide their own scoring and weighting.
+Requirements tagged emerging are evolving or pre-RFC. The spec is provisional and will grow with the ecosystem. Implementations such as Deep Scan by Ora (https://ora.run) decide their own scoring and weighting.
 
 ## Conformance
 

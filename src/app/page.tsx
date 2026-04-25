@@ -234,7 +234,7 @@ export default function HomePage() {
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           <a
-            href="https://www.orank.ai"
+            href="https://ora.run"
             target="_blank"
             rel="noreferrer"
             className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"

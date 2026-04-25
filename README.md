@@ -15,7 +15,7 @@ Machine-readable artifacts:
 - `/spec.json` — the canonical machine-readable spec
 - `/llms.txt` — a summary tuned for AI agents
 
-Deep Scan by Ora at [orank.ai](https://www.orank.ai) is a public implementation
+Deep Scan by Ora at [ora.run](https://ora.run) is a public implementation
 that checks any site against the current spec.
 
 ## Stack

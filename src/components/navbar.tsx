@@ -12,7 +12,7 @@ const ANCHORS: { href: string; label: string }[] = [
 ];
 
 const EXTERNAL_LINKS: { href: string; label: string }[] = [
-  { href: "https://www.orank.ai", label: "Deep Scan" },
+  { href: "https://ora.run", label: "Deep Scan" },
   { href: "https://discord.gg/WKYedjmCu", label: "Discord" },
   { href: "https://github.com/assafelovic/agentready", label: "GitHub" },
 ];

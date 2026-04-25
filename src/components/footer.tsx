@@ -19,7 +19,7 @@ export function Footer() {
             Spec
           </a>
           <a
-            href="https://www.orank.ai"
+            href="https://ora.run"
             target="_blank"
             rel="noreferrer"
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
