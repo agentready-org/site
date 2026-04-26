@@ -5,7 +5,7 @@
   "description": "AgentReady - the open standard for agent readiness",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "command -v portless >/dev/null || npm install -g portless && portless run --name agentready next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
