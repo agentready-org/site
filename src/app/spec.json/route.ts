@@ -25,7 +25,7 @@ export function GET() {
     date: SPEC_DATE,
     license: "MIT",
     homepage: "https://agentready.org",
-    repository: "https://github.com/assafelovic/agentready",
+    repository: "https://github.com/agentready-org/standard",
     normativeReferences: [
       {
         id: "BCP14",

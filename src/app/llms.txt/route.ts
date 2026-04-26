@@ -71,7 +71,7 @@ The standard is published as a single page at https://agentready.org/.
 - Conformance: https://agentready.org/#conformance
 - Versioning: https://agentready.org/#versioning
 - Machine-readable: https://agentready.org/spec.json
-- GitHub: https://github.com/assafelovic/agentready
+- GitHub: https://github.com/agentready-org/standard
 - Discord: https://discord.gg/WKYedjmCu
 
 Each section and each requirement is linkable by id, for example https://agentready.org/#commerce or https://agentready.org/#mcp. Requirements are also linkable by stable identifier when that is more precise, for example https://agentready.org/#mcp for AR-CAPA-01.

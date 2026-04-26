@@ -283,16 +283,8 @@ export default function HomePage() {
             AR-SECT-NN
           </span>
           ) are preserved across versions and are the canonical way to
-          cite a requirement. The full change history lives in the{" "}
-          <a
-            href="https://github.com/assafelovic/agentready/blob/main/CHANGELOG.md"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            changelog
-          </a>
-          , and the machine-readable form of the current version is at{" "}
+          cite a requirement. The machine-readable form of the current
+          version is available at{" "}
           <a
             href="/spec.json"
             className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
@@ -300,6 +292,33 @@ export default function HomePage() {
             /spec.json
           </a>
           .
+        </p>
+      </section>
+
+      {/* Provenance */}
+      <section
+        id="provenance"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § provenance
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Where this comes from
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          AgentReady is currently maintained by a small group of
+          contributors and is not ratified by a standards body. It is
+          an open, MIT-licensed working specification — anyone can
+          read, fork, implement, or propose changes to it.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          The intent is for governance to broaden as the spec matures.
+          As independent implementations and contributors accumulate,
+          the project will move toward a documented multi-maintainer
+          governance model. Until then, treat AgentReady as an
+          opinionated community specification with the structural shape
+          of a standard.
         </p>
       </section>
 
@@ -311,7 +330,7 @@ export default function HomePage() {
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
           AgentReady is developed in the open. The spec and this site live on{" "}
           <a
-            href="https://github.com/assafelovic/agentready"
+            href="https://github.com/agentready-org/standard"
             target="_blank"
             rel="noreferrer"
             className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"

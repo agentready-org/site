@@ -35,7 +35,7 @@ export function Footer() {
             Discord
           </a>
           <a
-            href="https://github.com/assafelovic/agentready"
+            href="https://github.com/agentready-org/standard"
             target="_blank"
             rel="noreferrer"
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
