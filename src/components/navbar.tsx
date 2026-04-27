@@ -12,7 +12,6 @@ const ANCHORS: { href: string; label: string }[] = [
 ];
 
 const EXTERNAL_LINKS: { href: string; label: string }[] = [
-  { href: "https://ora.run", label: "Deep Scan" },
   { href: "https://discord.gg/WKYedjmCu", label: "Discord" },
   { href: "https://github.com/agentready-org/standard", label: "GitHub" },
 ];
