@@ -19,7 +19,7 @@ export function Footer() {
             Guide
           </a>
           <a
-            href="https://ora.run"
+            href="https://ora.ai"
             target="_blank"
             rel="noreferrer"
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
