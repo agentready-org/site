@@ -190,11 +190,11 @@ export default function HomePage() {
           answering a user.
         </p>
 
-        <div className="space-y-0 mb-8">
-          {REACHABLE_PRACTICES.map((practice) => (
-            <PracticeRow key={practice.id} practice={practice} />
-          ))}
-        </div>
+        <PracticeTable
+          practices={REACHABLE_PRACTICES}
+          lastHeader="what the runs show"
+          className="mb-8"
+        />
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           To make information citable, publish it on one canonical, current
@@ -304,11 +304,11 @@ export default function HomePage() {
           Where agents go on your site, and what lets them pull the answer
           once there:
         </p>
-        <div className="space-y-0 mb-10">
-          {READ_PRACTICES.map((practice) => (
-            <PracticeRow key={practice.id} practice={practice} />
-          ))}
-        </div>
+        <PracticeTable
+          practices={READ_PRACTICES}
+          lastHeader="what the runs show"
+          className="mb-10"
+        />
 
         <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
           Link the files that describe your site
@@ -322,11 +322,12 @@ export default function HomePage() {
           <Mono>&lt;link rel=&quot;alternate&quot;&gt;</Mono> in the head,
           or a resources section.
         </p>
-        <div className="space-y-0 mb-8">
-          {DESCRIBING_FILES.map((practice) => (
-            <PracticeRow key={practice.id} practice={practice} />
-          ))}
-        </div>
+        <PracticeTable
+          practices={DESCRIBING_FILES}
+          firstHeader="file"
+          lastHeader="what the runs show"
+          className="mb-8"
+        />
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           When shipping an llms.txt, make it a lean, described index:
@@ -405,11 +406,11 @@ export default function HomePage() {
           documentation.
         </p>
 
-        <div className="space-y-0 mb-6">
-          {ACT_PRACTICES.map((practice) => (
-            <PracticeRow key={practice.id} practice={practice} />
-          ))}
-        </div>
+        <PracticeTable
+          practices={ACT_PRACTICES}
+          lastHeader="best practice"
+          className="mb-6"
+        />
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
           That is the full journey — find, read, act. The last step happens
@@ -534,32 +535,62 @@ export default function HomePage() {
   );
 }
 
-function PracticeRow({ practice }: { practice: Practice }) {
+function PracticeTable({
+  practices,
+  firstHeader = "practice",
+  lastHeader,
+  className = "",
+}: {
+  practices: readonly Practice[];
+  firstHeader?: string;
+  lastHeader: string;
+  className?: string;
+}) {
   return (
-    <div
-      id={practice.id}
-      className="py-5 border-b border-border/50 scroll-mt-20"
-    >
-      <p className="font-serif text-lg text-foreground">{practice.name}</p>
-      <p className="font-serif text-base text-foreground/70 mt-1 leading-relaxed max-w-2xl">
-        {practice.what}
-      </p>
-      {practice.evidence && (
-        <p className="font-serif text-sm text-foreground/75 mt-2.5 leading-relaxed max-w-2xl">
-          {practice.evidence.source && (
-            <SourceTag>{practice.evidence.source}</SourceTag>
-          )}
-          {practice.evidence.text}
-        </p>
-      )}
-      {practice.bestPractice && (
-        <p className="font-serif text-sm text-foreground/75 mt-2.5 leading-relaxed max-w-2xl">
-          <span className="font-mono text-[10px] tracking-wider text-muted-foreground/70 border border-border/60 rounded px-1.5 py-0.5 mr-2 align-middle whitespace-nowrap">
-            BEST PRACTICE
-          </span>
-          {practice.bestPractice}
-        </p>
-      )}
+    <div className={`overflow-x-auto ${className}`}>
+      <table className="w-full min-w-[560px] border-collapse text-left">
+        <thead>
+          <tr className="border-b border-border">
+            <th className="w-[26%] py-2.5 pr-4 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
+              {firstHeader}
+            </th>
+            <th className="w-[30%] py-2.5 pr-4 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
+              what it does
+            </th>
+            <th className="py-2.5 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
+              {lastHeader}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {practices.map((practice) => (
+            <tr
+              key={practice.id}
+              id={practice.id}
+              className="border-b border-border/50 align-top scroll-mt-20"
+            >
+              <td className="py-4 pr-4 font-serif text-base text-foreground leading-snug">
+                {practice.name}
+              </td>
+              <td className="py-4 pr-4 font-serif text-sm text-foreground/75 leading-relaxed">
+                {practice.what}
+              </td>
+              <td className="py-4 font-serif text-sm text-foreground/75 leading-relaxed">
+                {practice.evidence ? (
+                  <>
+                    {practice.evidence.source && (
+                      <SourceTag>{practice.evidence.source}</SourceTag>
+                    )}
+                    {practice.evidence.text}
+                  </>
+                ) : (
+                  practice.bestPractice
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
