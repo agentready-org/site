@@ -1,9 +1,59 @@
 import {
-  SECTIONS,
-  SPEC_VERSION,
-  sortedRequirements,
-  type SpecStrength,
-} from "@/lib/spec-data";
+  ACT_PRACTICES,
+  DESCRIBING_FILES,
+  GUIDE_DATE_LABEL,
+  GUIDE_VERSION,
+  READ_PRACTICES,
+  REACHABLE_PRACTICES,
+  type Practice,
+} from "@/lib/guide-data";
+
+const GUIDE_SECTIONS: { id: string; name: string }[] = [
+  { id: "reachable", name: "Be reachable and citable" },
+  { id: "read", name: "Put the answer where agents read" },
+  { id: "act", name: "Let agents act, not just read" },
+  { id: "beyond", name: "Beyond this guide" },
+];
+
+const ROBOTS_TXT_SNIPPET = `# Apply the default policy to current and future agents.
+User-agent: *
+# Block low-value public paths only. Do not list secret paths.
+Disallow: /search/
+
+Sitemap: https://example.com/sitemap.xml`;
+
+const CURL_SNIPPET = `curl -iL -A 'Claude-User/1.0' https://example.com/your-page`;
+
+const LLMS_TXT_SNIPPET = `# Acme
+> Acme ships a payments API for developers.
+
+## Docs
+- [Quickstart](https://example.com/docs/quickstart): first charge in one request
+- [Authentication](https://example.com/docs/auth): API keys, scopes, rotation
+
+## API
+- [OpenAPI](https://example.com/openapi.json): full request and response contract`;
+
+const MARKDOWN_ALTERNATE_SNIPPET = `<!-- A mirror nothing points to is a file nothing fetches. -->
+<link rel="alternate" type="text/markdown" href="/docs/quickstart.md">`;
+
+const SCAN_CURL_SNIPPET = `curl -X POST https://ora.ai/api/scan \\
+  -H 'Content-Type: application/json' \\
+  -d '{"url": "example.com"}'`;
+
+const SCAN_RESPONSE_SNIPPET = `{
+  "score": 72,
+  "grade": "B",
+  "layers": [
+    { "id": "accessibility", "score": 43, "maxScore": 62, "checks": [
+      { "id": "content-no-js", "status": "pass", "score": 3, "maxScore": 3 },
+      { "id": "markdown-link-alternate", "status": "fail", "score": 0, "maxScore": 1,
+        "recommendation": "Advertise a markdown twin with
+          <link rel=\\"alternate\\" type=\\"text/markdown\\"> …" }
+    ] },
+    …
+  ]
+}`;
 
 export default function HomePage() {
   return (
@@ -28,113 +78,87 @@ export default function HomePage() {
           protocol or vendor, and it does not prescribe how builders
           should score compliance.
         </p>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           The agentic web moves faster than any traditional standards
-          process. AgentReady is designed to keep up: new protocols join
-          the spec as they emerge, tagged <InlineTag>emerging</InlineTag>{" "}
-          while the ecosystem adopts them.
+          process. AgentReady is designed to keep up: the guide below is
+          grounded in measured agent behavior, and its recommendations are
+          revised as new protocols and conventions emerge.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          AgentReady is developed in collaboration with{" "}
+          <a
+            href="https://vercel.com"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            Vercel
+          </a>{" "}
+          and written with the ora.ai research lab.
         </p>
       </section>
 
-      {/* Conformance */}
+      {/* Guide */}
       <section
-        id="conformance"
+        id="guide"
         className="py-10 border-t border-border/50 scroll-mt-20"
       >
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
-          § conformance
+          § the guide
         </p>
-        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
-          What it means to be AgentReady
+        <h2 className="font-serif text-2xl sm:text-3xl text-foreground mb-3 leading-tight">
+          Make your site readable by AI agents
         </h2>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          A product conforms to AgentReady{" "}
-          <span className="font-mono text-[13px] text-foreground">
-            v{SPEC_VERSION}
-          </span>{" "}
-          when it implements every{" "}
-          <StrengthInline value="MUST" /> requirement that applies to
-          its surfaces. It should implement every{" "}
-          <StrengthInline value="SHOULD" /> requirement unless it
-          documents a reason not to, and may implement{" "}
-          <StrengthInline value="MAY" /> requirements as appropriate.
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-3 max-w-2xl">
+          A practical guide to making your website work for the agents that
+          now read it — grounded in real agent runs and a controlled
+          experiment.
         </p>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          Each requirement carries two qualifiers. Applicability
-          determines whether the requirement binds the product at all:{" "}
-          <span className="font-mono text-[13px] text-foreground">baseline</span>{" "}
-          requirements apply to every agent-addressable product, while
-          conditional requirements apply only when the product exposes
-          their stated surface. Strength then says how firmly the
-          requirement binds within that scope. A conditional{" "}
-          <StrengthInline value="MUST" /> requirement has no force for
-          products outside its condition; a docs site is never asked to
-          implement commerce, and a payments API is never asked to
-          publish voice markup.
+        <p className="font-mono text-[12px] text-muted-foreground/70 tracking-wide mb-8">
+          Written with the ora.ai research lab · in collaboration with
+          Vercel · v{GUIDE_VERSION} · last updated {GUIDE_DATE_LABEL}
         </p>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          Commerce is the one section where multiple requirements
-          address the same underlying need through competing protocols.
-          A product that accepts agent payment conforms by implementing
-          at least one applicable Commerce requirement; it is not
-          required to implement them all.
-        </p>
-        <p className="font-serif text-sm text-muted-foreground/75 leading-relaxed max-w-2xl">
-          The keywords MUST, SHOULD, and MAY in this document are to be
-          interpreted as described in BCP 14 (
-          <a
-            href="https://www.rfc-editor.org/rfc/rfc2119.html"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            RFC 2119
-          </a>
-          ,{" "}
-          <a
-            href="https://www.rfc-editor.org/rfc/rfc8174.html"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            RFC 8174
-          </a>
-          ) when, and only when, they appear in all capitals.
-        </p>
-      </section>
 
-      {/* Spec */}
-      <section
-        id="spec"
-        className="py-10 border-t border-border/50 scroll-mt-20"
-      >
-        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
-          § the spec
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          AI agents visit websites on users’ behalf to answer questions,
+          integrate APIs, and complete tasks. Together with the ora.ai
+          research lab, we measured which site features help them succeed.
         </p>
-        <p className="font-serif text-base text-foreground/80 leading-relaxed max-w-2xl mb-4">
-          Each requirement below points to a published protocol,
-          standard, or convention a product implements directly. Every
-          requirement carries a stable identifier (for example{" "}
-          <span className="font-mono text-[13px] text-foreground">
-            AR-DISC-01
-          </span>
-          ) preserved across revisions, an applicability scope, and a
-          normative strength. A machine-readable version of the spec is
-          available at{" "}
-          <a
-            href="/spec.json"
-            className="font-mono text-[13px] underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            /spec.json
-          </a>
-          .
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          In the studies, two changes caused agents to fail: hiding answers
+          behind JavaScript and blocking access. Other practices shaped
+          where agents went and which pages their answers were built from.
+          This guide follows the order in which agents encounter a site:
+          find, read, then act. Each stage depends on the previous one, and
+          unlinked files are unlikely to be discovered.
+        </p>
+
+        <aside className="my-8 max-w-2xl border border-border/50 rounded-lg p-5">
+          <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-3">
+            how we know
+          </p>
+          <p className="font-serif text-sm text-foreground/80 leading-relaxed">
+            Numbers in this guide are tagged by source.{" "}
+            <SourceTag>STUDIES</SourceTag> refers to research from the
+            ora.ai research lab: over 1,000 real agent runs across 25 sites
+            traced turn by turn and a controlled experiment that toggled one
+            feature at a time. <SourceTag>ORA SCANNER</SourceTag> refers to
+            agent-reachability checks across every scored site. Statements
+            without a tag are recommendations rather than measured findings.
+          </p>
+        </aside>
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          All recommendations in this guide share one prerequisite: the
+          agent must be able to reach the page and find the answer in the
+          returned HTML.
         </p>
 
         <nav
-          aria-label="Spec sections"
-          className="flex flex-wrap gap-x-5 gap-y-2 mb-14 mt-6"
+          aria-label="Guide sections"
+          className="flex flex-wrap gap-x-5 gap-y-2 mt-8"
         >
-          {SECTIONS.map((section) => (
+          {GUIDE_SECTIONS.map((section) => (
             <a
               key={section.id}
               href={`#${section.id}`}
@@ -144,181 +168,334 @@ export default function HomePage() {
             </a>
           ))}
         </nav>
-
-        <div className="space-y-14">
-          {SECTIONS.map((section) => (
-            <div
-              key={section.id}
-              id={section.id}
-              className="scroll-mt-20"
-            >
-              <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-2 leading-tight">
-                {section.name}
-              </h2>
-              <p className="font-serif text-base text-foreground/80 leading-relaxed mb-6 max-w-2xl">
-                {section.summary}
-              </p>
-
-              <div className="space-y-0">
-                {sortedRequirements(section).map((entry) => (
-                  <div
-                    key={entry.id}
-                    id={entry.id}
-                    className="py-5 border-b border-border/50 scroll-mt-20"
-                  >
-                    <div className="flex items-center gap-3 mb-1.5 font-mono text-[12px] tracking-wider text-muted-foreground/70">
-                      <a
-                        href={`#${entry.id}`}
-                        className="text-muted-foreground/90 hover:text-foreground transition-colors"
-                      >
-                        {entry.stableId}
-                      </a>
-                      <span className="text-muted-foreground/30">·</span>
-                      <StrengthBadge value={entry.strength} />
-                    </div>
-                    <p className="font-serif text-lg text-foreground">
-                      <a
-                        href={`#${entry.id}`}
-                        className="hover:underline decoration-border decoration-2 underline-offset-4"
-                      >
-                        {entry.name}
-                      </a>
-                      {entry.emerging && (
-                        <InlineTag className="ml-2">emerging</InlineTag>
-                      )}
-                      {entry.reference &&
-                        (entry.referenceUrl ? (
-                          <a
-                            href={entry.referenceUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="ml-2 inline-flex items-center px-1.5 py-0.5 font-mono text-[11px] tracking-wider text-muted-foreground/70 bg-muted/60 rounded align-middle hover:text-foreground transition-colors"
-                          >
-                            {entry.reference}
-                          </a>
-                        ) : (
-                          <span className="ml-2 inline-flex items-center px-1.5 py-0.5 font-mono text-[11px] tracking-wider text-muted-foreground/60 bg-muted/60 rounded align-middle">
-                            {entry.reference}
-                          </span>
-                        ))}
-                    </p>
-                    <p className="font-serif text-base text-foreground/70 mt-1 leading-relaxed max-w-2xl">
-                      {entry.summary}
-                    </p>
-                    {entry.applies !== "baseline" && (
-                      <p className="font-mono text-[13px] text-muted-foreground/80 mt-2 tracking-wide">
-                        applies to:{" "}
-                        <span className="text-foreground/70">
-                          {entry.applies}
-                        </span>
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
-      {/* Deep Scan */}
+      {/* Be reachable and citable */}
       <section
-        id="deep-scan"
+        id="reachable"
         className="py-10 border-t border-border/50 scroll-mt-20"
       >
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
-          § official deep scan
+          § find
         </p>
         <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
-          Check your readiness
+          Be reachable and citable
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
+          Agents can cite only pages they can discover and fetch. They may
+          receive or recall a URL, follow a link, or find a page through a
+          crawl-built search index. Pages blocked from crawlers cannot
+          enter those indexes; they are absent rather than ranked lower.
+          Blocking can also stop an agent from fetching a page while
+          answering a user.
+        </p>
+
+        <div className="space-y-0 mb-8">
+          {REACHABLE_PRACTICES.map((practice) => (
+            <PracticeRow key={practice.id} practice={practice} />
+          ))}
+        </div>
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          To make information citable, publish it on one canonical, current
+          first-party docs page. The number above is why: your docs are the
+          page agents build their answers from.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          That covers what to publish; the crawl policy covers who may read
+          it. Write it as one rule for all agents, not an allowlist of
+          named crawlers:
+        </p>
+
+        <CodeBlock label="robots.txt" code={ROBOTS_TXT_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          The wildcard still leaves you one deliberate choice. The model
+          providers run a separate crawler for each job:
+        </p>
+        <ul className="mb-4 max-w-2xl space-y-1.5">
+          {[
+            ["Training crawlers", "GPTBot, ClaudeBot"],
+            ["Search-index crawlers", "OAI-SearchBot, Claude-SearchBot"],
+            ["User-initiated fetchers", "ChatGPT-User, Claude-User"],
+          ].map(([kind, bots]) => (
+            <li
+              key={kind}
+              className="font-serif text-base text-foreground/85 leading-relaxed pl-5 relative before:content-['·'] before:absolute before:left-1 before:text-muted-foreground/60"
+            >
+              {kind}{" "}
+              <span className="font-mono text-[13px] text-foreground/70">
+                ({bots})
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          Each obeys its own robots.txt rule, so you can block a training
+          crawler — opting out of training — without dropping out of search
+          indexes or agent answers. Two catches: a more specific group such
+          as <Mono>User-agent: GPTBot</Mono> overrides your <Mono>*</Mono>{" "}
+          group, so audit existing rules; and user-initiated fetchers may
+          not consult robots.txt at all.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          Then fetch a page with an agent user-agent string to inspect the
+          response:
+        </p>
+
+        <CodeBlock label="Terminal" code={CURL_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          The request should end with a <Mono>200</Mono> response;
+          intermediate <Mono>301</Mono> or <Mono>308</Mono> redirects are
+          acceptable. The returned HTML should contain the answer. A{" "}
+          <Mono>403</Mono>, empty app shell, or JavaScript-only answer
+          prevents fetch-only agents from reading the page.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          The curl is not proof either way: bot blockers weigh where a
+          request comes from more than its user-agent string, so your
+          laptop may pass where the real agent is blocked, or the reverse.
+          The dependable test is your server logs. OpenAI and Anthropic
+          publish their crawlers’ IP ranges (separate per-bot lists from
+          OpenAI, one combined list from Anthropic) — find those requests
+          and confirm they return <Mono>200</Mono>.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          llms.txt belongs in the reading section because an agent can
+          request it only after discovering and reaching the site.
+        </p>
+      </section>
+
+      {/* Put the answer where agents read */}
+      <section
+        id="read"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § read
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Put the answer where agents read
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          After reaching a page, an agent must be able to extract the
+          answer from the returned content. In the studies, agents used the
+          same homepage and docs pages as human visitors. The
+          agent-specific files (llms.txt, AGENTS.md, markdown mirrors,
+          JSON-LD) just help agents find, fetch, and use those same
+          answers.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
+          If your site is client-rendered, getting answers into the initial
+          HTML is a real migration — SSR, prerendering, or a hybrid — but
+          it is the prerequisite for agents that fetch rather than run
+          JavaScript. The machinery beyond that — content negotiation, .md
+          endpoints, agent detection, frontmatter — did not change whether
+          agents succeeded in the studies. Links also matter: agents rarely
+          found pages or files that were not linked from content they had
+          already reached.
+        </p>
+
+        <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
+          Agents read the same pages people do
+        </h3>
+        <p className="font-serif text-base text-foreground/80 leading-relaxed mb-4 max-w-2xl">
+          Where agents go on your site, and what lets them pull the answer
+          once there:
+        </p>
+        <div className="space-y-0 mb-10">
+          {READ_PRACTICES.map((practice) => (
+            <PracticeRow key={practice.id} practice={practice} />
+          ))}
+        </div>
+
+        <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
+          Link the files that describe your site
+        </h3>
+        <p className="font-serif text-base text-foreground/80 leading-relaxed mb-4 max-w-2xl">
+          <SourceTag>STUDIES</SourceTag> Agents typically opened these
+          resources after visiting the homepage. Depending on the file
+          type, 86–100% of visits came through links rather than guessed
+          paths. Link each resource from content agents already visited,
+          such as the footer, page metadata like{" "}
+          <Mono>&lt;link rel=&quot;alternate&quot;&gt;</Mono> in the head,
+          or a resources section.
+        </p>
+        <div className="space-y-0 mb-8">
+          {DESCRIBING_FILES.map((practice) => (
+            <PracticeRow key={practice.id} practice={practice} />
+          ))}
+        </div>
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          When shipping an llms.txt, make it a lean, described index:
+        </p>
+
+        <CodeBlock label="llms.txt" code={LLMS_TXT_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
+          Inject JSON-LD at strategic places — the homepage above all — so
+          an agent fetching the raw HTML gets your key facts and routes in
+          one machine-readable block.
+        </p>
+
+        <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
+          Agents request markdown when offered — make it reachable
+        </h3>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          <SourceTag>STUDIES</SourceTag> Agents requested markdown on about
+          65% of web fetches. When they specified a format, they chose
+          markdown 96% of the time. Format did not determine task success
+          in the studies, so ensure the HTML works before adding a .md
+          mirror.
+        </p>
+
+        <CodeBlock
+          label="docs/quickstart.html"
+          code={MARKDOWN_ALTERNATE_SNIPPET}
+        />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
+          The same relation can also ride as an HTTP <Mono>Link:</Mono>{" "}
+          header, so a CDN can advertise the mirror without touching page
+          heads.
+        </p>
+
+        <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
+          Return accurate HTTP status codes
+        </h3>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          Return <Mono>404</Mono> for a missing path or a valid redirect to
+          a replacement. Do not return <Mono>200</Mono> for a missing page,
+          even if the body suggests alternatives; agents cannot distinguish
+          that response from a live page. In one observed case, a
+          single-page app returned <Mono>200</Mono> for every path, making
+          dead URLs appear valid.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          The same honesty applies when you throttle: answer with a{" "}
+          <Mono>429</Mono> and a <Mono>Retry-After</Mono> header (RFC
+          6585), not a silent challenge page — agents and crawlers treat{" "}
+          <Mono>429</Mono> as a back-off signal and will return.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          By the end of this layer the agent has found you and read you.
+          Whether it can act on what it reads is the final layer —
+          usability.
+        </p>
+      </section>
+
+      {/* Let agents act */}
+      <section
+        id="act"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § act
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Let agents act, not just read
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
+          Reading documentation does not let an agent complete a task. To
+          act, an agent needs an operable interface such as an API, MCP
+          server, SDK, or CLI, plus authentication it can complete. These
+          interfaces still depend on discoverable and readable
+          documentation.
+        </p>
+
+        <div className="space-y-0 mb-6">
+          {ACT_PRACTICES.map((practice) => (
+            <PracticeRow key={practice.id} practice={practice} />
+          ))}
+        </div>
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          That is the full journey — find, read, act. The last step happens
+          only if the first two did.
+        </p>
+      </section>
+
+      {/* Beyond this guide */}
+      <section
+        id="beyond"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § beyond this guide
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Beyond this guide
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          This guide covers the main practices, not the full surface of
+          agent readiness. The ora scanner covers additional
+          agent-readiness checks through its public methodology, per-check
+          breakdown, and leaderboard. The protocol changes as new agent
+          behavior is measured, so checks and weights may change between
+          guide versions.
+        </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          Scan any domain at{" "}
           <a
-            href="https://ora.run"
+            href="https://ora.ai"
             target="_blank"
             rel="noreferrer"
             className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
           >
-            Deep Scan by Ora
-          </a>{" "}
-          is the official AgentReady scanner. It is a free, public
-          implementation that evaluates any site against the current
-          spec and reports per-requirement results using the stable
-          identifiers above.
-        </p>
-        <p className="font-serif text-sm text-muted-foreground/75 leading-relaxed max-w-2xl">
-          The spec defines what agent readiness means; Deep Scan
-          provides the canonical way to measure it. Other implementations
-          are welcome and encouraged.
-        </p>
-      </section>
-
-      {/* Versioning */}
-      <section
-        id="versioning"
-        className="py-10 border-t border-border/50 scroll-mt-20"
-      >
-        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
-          § versioning
-        </p>
-        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
-          How the spec changes
-        </h2>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          AgentReady follows semantic versioning applied to normative
-          commitments, not to editorial text. A{" "}
-          <span className="font-mono text-[13px] text-foreground">MAJOR</span>{" "}
-          bump happens when an existing requirement changes its
-          strength to a stricter level, when a requirement is removed,
-          or when a stable ID is reassigned. A{" "}
-          <span className="font-mono text-[13px] text-foreground">MINOR</span>{" "}
-          bump happens when a requirement is added, when a strength
-          becomes looser, or when a reference is updated. A{" "}
-          <span className="font-mono text-[13px] text-foreground">PATCH</span>{" "}
-          bump covers clarifications and link fixes.
-        </p>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
-          Stable identifiers (
-          <span className="font-mono text-[13px] text-foreground">
-            AR-SECT-NN
-          </span>
-          ) are preserved across versions and are the canonical way to
-          cite a requirement. The machine-readable form of the current
-          version is available at{" "}
-          <a
-            href="/spec.json"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            /spec.json
+            ora.ai
           </a>
-          .
+          , or from the API:
         </p>
+
+        <CodeBlock label="Terminal" code={SCAN_CURL_SNIPPET} />
+        <CodeBlock label="Response (abridged)" code={SCAN_RESPONSE_SNIPPET} />
       </section>
 
-      {/* Provenance */}
+      {/* References */}
       <section
-        id="provenance"
+        id="references"
         className="py-10 border-t border-border/50 scroll-mt-20"
       >
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
-          § provenance
+          § references
         </p>
-        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
-          Where this comes from
-        </h2>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          AgentReady is currently maintained by a small group of
-          contributors and is not ratified by a standards body. It is
-          an open, MIT-licensed working specification — anyone can
-          read, fork, implement, or propose changes to it.
+        <ul className="max-w-2xl space-y-2">
+          {[
+            [
+              "What agents actually reach",
+              "the field report behind the trace numbers in this guide.",
+            ],
+            [
+              "The state of agent readiness",
+              "the scanner report behind the reachability figure.",
+            ],
+            [
+              "ora research",
+              "the ongoing research program behind the protocol.",
+            ],
+          ].map(([title, blurb]) => (
+            <li
+              key={title}
+              className="font-serif text-base text-foreground/85 leading-relaxed pl-5 relative before:content-['·'] before:absolute before:left-1 before:text-muted-foreground/60"
+            >
+              <span className="text-foreground">{title}</span> — {blurb}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Changelog */}
+      <section
+        id="changelog"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § changelog
         </p>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
-          The intent is for governance to broaden as the spec matures.
-          As independent implementations and contributors accumulate,
-          the project will move toward a documented multi-maintainer
-          governance model. Until then, treat AgentReady as an
-          opinionated community specification with the structural shape
-          of a standard.
+        <p className="font-mono text-[13px] text-foreground/80 tracking-wide">
+          v{GUIDE_VERSION} · {GUIDE_DATE_LABEL} · first public version.
         </p>
       </section>
 
@@ -328,7 +505,8 @@ export default function HomePage() {
           contribute
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
-          AgentReady is developed in the open. The spec and this site live on{" "}
+          AgentReady is developed in the open. The guide and this site live
+          on{" "}
           <a
             href="https://github.com/agentready-org/standard"
             target="_blank"
@@ -346,9 +524,7 @@ export default function HomePage() {
           >
             Discord
           </a>
-          . New requirements join the spec as{" "}
-          <InlineTag>emerging</InlineTag> so adoption can be observed
-          before they stabilize.
+          . Recommendations are revised as new agent behavior is measured.
         </p>
         <p className="font-mono text-xs text-muted-foreground/55 tracking-wide">
           MIT · revised as protocols emerge
@@ -358,36 +534,59 @@ export default function HomePage() {
   );
 }
 
-function InlineTag({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+function PracticeRow({ practice }: { practice: Practice }) {
   return (
-    <span
-      className={`inline-flex items-center px-1.5 py-0.5 font-mono text-[10px] tracking-wider border rounded align-middle text-muted-foreground/70 border-border/60 ${className}`}
+    <div
+      id={practice.id}
+      className="py-5 border-b border-border/50 scroll-mt-20"
     >
+      <p className="font-serif text-lg text-foreground">{practice.name}</p>
+      <p className="font-serif text-base text-foreground/70 mt-1 leading-relaxed max-w-2xl">
+        {practice.what}
+      </p>
+      {practice.evidence && (
+        <p className="font-serif text-sm text-foreground/75 mt-2.5 leading-relaxed max-w-2xl">
+          {practice.evidence.source && (
+            <SourceTag>{practice.evidence.source}</SourceTag>
+          )}
+          {practice.evidence.text}
+        </p>
+      )}
+      {practice.bestPractice && (
+        <p className="font-serif text-sm text-foreground/75 mt-2.5 leading-relaxed max-w-2xl">
+          <span className="font-mono text-[10px] tracking-wider text-muted-foreground/70 border border-border/60 rounded px-1.5 py-0.5 mr-2 align-middle whitespace-nowrap">
+            BEST PRACTICE
+          </span>
+          {practice.bestPractice}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function SourceTag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center px-1.5 py-0.5 mr-2 font-mono text-[10px] tracking-wider border rounded align-middle text-muted-foreground/70 border-border/60 whitespace-nowrap">
       {children}
     </span>
   );
 }
 
-function StrengthBadge({ value }: { value: SpecStrength }) {
-  const toneClass =
-    value === "MUST"
-      ? "text-foreground font-semibold"
-      : value === "SHOULD"
-        ? "text-foreground/85 font-medium"
-        : "text-muted-foreground/70";
-  return <span className={`font-mono tracking-wider ${toneClass}`}>{value}</span>;
+function Mono({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="font-mono text-[13px] text-foreground">{children}</span>
+  );
 }
 
-function StrengthInline({ value }: { value: SpecStrength }) {
+function CodeBlock({ label, code }: { label: string; code: string }) {
   return (
-    <span className="font-mono text-[13px] tracking-wider text-foreground">
-      {value}
-    </span>
+    <figure className="my-6 max-w-2xl">
+      <figcaption className="font-mono text-xs text-muted-foreground/60 tracking-wide mb-2">
+        {label}
+      </figcaption>
+      <pre className="font-mono text-[13px] leading-relaxed text-foreground/85 bg-muted/40 border border-border/50 rounded-lg p-4 overflow-x-auto">
+        <code>{code}</code>
+      </pre>
+    </figure>
   );
 }

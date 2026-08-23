@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Space_Mono } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { SPEC_VERSION, SPEC_DATE } from "@/lib/spec-data";
+import { GUIDE_VERSION, GUIDE_DATE } from "@/lib/guide-data";
 import "./globals.css";
 
 const lora = Lora({
@@ -21,7 +21,7 @@ const spaceMono = Space_Mono({
 const SITE_URL = "https://agentready.org";
 const TITLE = "AgentReady // The open standard for agent readiness";
 const DESCRIPTION =
-  "AgentReady is the open, vendor-neutral specification of the protocols, standards, and conventions a product should implement to be usable by AI agents: MCP, A2A, x402, llms.txt, Web Bot Auth, and more.";
+  "AgentReady is the community-driven standard for the agentic web: a practical, evidence-based guide to making your site readable by AI agents, grounded in real agent runs. Written with the ora.ai research lab, in collaboration with Vercel.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -57,7 +57,6 @@ export const metadata: Metadata = {
     canonical: "/",
     types: {
       "text/plain": "/llms.txt",
-      "application/json": "/spec.json",
     },
   },
   robots: {
@@ -117,20 +116,19 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "TechArticle",
               name: "AgentReady",
-              headline: "The open standard for agent readiness",
+              headline: "Make your site readable by AI agents",
               description:
-                "AgentReady is the open, vendor-neutral specification of the protocols, standards, and conventions a product should implement to be usable by AI agents.",
+                "A practical guide to making your website work for the agents that now read it — grounded in real agent runs and a controlled experiment. Written with the ora.ai research lab, in collaboration with Vercel.",
               url: "https://agentready.org",
               inLanguage: "en",
-              version: SPEC_VERSION,
-              datePublished: SPEC_DATE,
+              version: GUIDE_VERSION,
+              datePublished: GUIDE_DATE,
               license: "https://opensource.org/licenses/MIT",
+              contributor: [
+                { "@type": "Organization", name: "Vercel" },
+                { "@type": "Organization", name: "ora.ai research lab" },
+              ],
               encoding: [
-                {
-                  "@type": "MediaObject",
-                  encodingFormat: "application/json",
-                  contentUrl: "https://agentready.org/spec.json",
-                },
                 {
                   "@type": "MediaObject",
                   encodingFormat: "text/plain",

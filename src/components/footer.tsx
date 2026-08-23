@@ -13,10 +13,10 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <a
-            href="#spec"
+            href="#guide"
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
-            Spec
+            Guide
           </a>
           <a
             href="https://ora.run"
