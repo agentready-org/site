@@ -464,24 +464,39 @@ export default function HomePage() {
         </p>
         <ul className="max-w-2xl space-y-2">
           {[
-            [
-              "What agents actually reach",
-              "the field report behind the trace numbers in this guide.",
-            ],
-            [
-              "The state of agent readiness",
-              "the scanner report behind the reachability figure.",
-            ],
-            [
-              "ora research",
-              "the ongoing research program behind the protocol.",
-            ],
-          ].map(([title, blurb]) => (
+            {
+              title: "What agents actually reach",
+              href: "https://ora.ai/blog/what-agents-actually-reach",
+              blurb:
+                "the field report behind the trace numbers in this guide, drawing on part of the data used for this spec.",
+            },
+            {
+              title: "The state of agent readiness",
+              href: "https://ora.ai/blog/state-of-agent-readiness-2026",
+              blurb: "the scanner report behind the reachability figure.",
+            },
+            {
+              title: "ora research",
+              blurb: "the ongoing research program behind the protocol.",
+            },
+          ].map(({ title, href, blurb }) => (
             <li
               key={title}
               className="font-serif text-base text-foreground/85 leading-relaxed pl-5 relative before:content-['·'] before:absolute before:left-1 before:text-muted-foreground/60"
             >
-              <span className="text-foreground">{title}</span> — {blurb}
+              {href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground/70"
+                >
+                  {title}
+                </a>
+              ) : (
+                <span className="text-foreground">{title}</span>
+              )}{" "}
+              — {blurb}
             </li>
           ))}
         </ul>
