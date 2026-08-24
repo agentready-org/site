@@ -77,7 +77,6 @@ The ora scanner covers additional agent-readiness checks through its public meth
 - Put the answer where agents read: https://agentready.org/#read
 - Let agents act: https://agentready.org/#act
 - GitHub: https://github.com/agentready-org/standard
-- Discord: https://discord.gg/WKYedjmCu
 `;
 
   return new NextResponse(body, {

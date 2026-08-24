@@ -574,16 +574,8 @@ export default function HomePage() {
           >
             GitHub
           </a>
-          . Discussion, proposals, and builder conversations happen on{" "}
-          <a
-            href="https://discord.gg/WKYedjmCu"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            Discord
-          </a>
-          . Recommendations are revised as new agent behavior is measured.
+          , where discussion and proposals happen. Recommendations are
+          revised as new agent behavior is measured.
         </p>
         <p className="font-mono text-xs text-muted-foreground/55 tracking-wide">
           MIT · revised as protocols emerge

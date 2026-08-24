@@ -78,8 +78,7 @@ recommendations are revised as new agent behavior is measured; see
 ## Contributing
 
 AgentReady is developed in the open. File issues and pull requests on this
-repository; working sessions and proposal discussions happen on
-[Discord](https://discord.gg/WKYedjmCu).
+repository, where discussion and proposals happen.
 
 ## License
 
