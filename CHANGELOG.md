@@ -10,8 +10,8 @@ First public version of **"Make your site readable by AI agents."**
 
 The site's content pivoted from a requirements-style specification
 (stable identifiers, BCP 14 normative strengths, `/spec.json`) to a
-practical, evidence-based guide written with the ora.ai research lab, in
-collaboration with Vercel. The guide is organized by the order in which
+practical, evidence-based guide developed by ora.ai and Vercel. The
+guide is organized by the order in which
 agents encounter a site — find, read, act — and its figures are tagged by
 source (`[STUDIES]` for traced agent runs and the controlled experiment,
 `[ORA SCANNER]` for reachability checks).

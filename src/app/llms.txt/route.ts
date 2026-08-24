@@ -24,7 +24,7 @@ function renderPractice(p: Practice): string {
 export function GET() {
   const body = `# AgentReady — Make your site readable by AI agents
 
-> AgentReady is the first community-driven standard for the agentic web: an open specification of the protocols, standards, and conventions a product should implement to be usable by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how builders should score compliance. The current version is a practical guide grounded in real agent runs and a controlled experiment, written with the ora.ai research lab and developed in collaboration with Vercel.
+> AgentReady is the first community-driven standard for the agentic web: an open specification of the protocols, standards, and conventions a product should implement to be usable by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how builders should score compliance. The current version is a practical guide grounded in real agent runs and a controlled experiment, developed by ora.ai and Vercel.
 
 Version: v${GUIDE_VERSION}
 Last updated: ${GUIDE_DATE_LABEL}

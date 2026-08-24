@@ -21,7 +21,7 @@ const spaceMono = Space_Mono({
 const SITE_URL = "https://agentready.org";
 const TITLE = "AgentReady // The open standard for agent readiness";
 const DESCRIPTION =
-  "AgentReady is the community-driven standard for the agentic web: a practical, evidence-based guide to making your site readable by AI agents, grounded in real agent runs. Written with the ora.ai research lab, in collaboration with Vercel.";
+  "AgentReady is the community-driven standard for the agentic web: a practical, evidence-based guide to making your site readable by AI agents, grounded in real agent runs. Developed by ora.ai and Vercel.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -118,15 +118,15 @@ export default function RootLayout({
               name: "AgentReady",
               headline: "Make your site readable by AI agents",
               description:
-                "A practical guide to making your website work for the agents that now read it — grounded in real agent runs and a controlled experiment. Written with the ora.ai research lab, in collaboration with Vercel.",
+                "A practical guide to making your website work for the agents that now read it — grounded in real agent runs and a controlled experiment. Developed by ora.ai and Vercel.",
               url: "https://agentready.org",
               inLanguage: "en",
               version: GUIDE_VERSION,
               datePublished: GUIDE_DATE,
               license: "https://opensource.org/licenses/MIT",
               contributor: [
+                { "@type": "Organization", name: "ora.ai" },
                 { "@type": "Organization", name: "Vercel" },
-                { "@type": "Organization", name: "ora.ai research lab" },
               ],
               encoding: [
                 {

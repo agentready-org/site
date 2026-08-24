@@ -85,16 +85,7 @@ export default function HomePage() {
           revised as new protocols and conventions emerge.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
-          AgentReady is developed in collaboration with{" "}
-          <a
-            href="https://vercel.com"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            Vercel
-          </a>{" "}
-          and written with the{" "}
+          AgentReady is developed by{" "}
           <a
             href="https://ora.ai"
             target="_blank"
@@ -103,7 +94,16 @@ export default function HomePage() {
           >
             ora.ai
           </a>{" "}
-          research lab.
+          and{" "}
+          <a
+            href="https://vercel.com"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            Vercel
+          </a>
+          .
         </p>
       </section>
 
@@ -124,7 +124,7 @@ export default function HomePage() {
           experiment.
         </p>
         <p className="font-mono text-[12px] text-muted-foreground/70 tracking-wide mb-8">
-          Written with the{" "}
+          Developed by{" "}
           <a
             href="https://ora.ai"
             target="_blank"
@@ -133,8 +133,7 @@ export default function HomePage() {
           >
             ora.ai
           </a>{" "}
-          research lab · in collaboration with Vercel · v{GUIDE_VERSION} ·
-          last updated {GUIDE_DATE_LABEL}
+          and Vercel · v{GUIDE_VERSION} · last updated {GUIDE_DATE_LABEL}
         </p>
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">

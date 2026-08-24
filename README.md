@@ -4,8 +4,8 @@ The open standard for agent readiness.
 
 The site publishes **"Make your site readable by AI agents"** — a practical
 guide to making your website work for the agents that now read it, grounded
-in real agent runs and a controlled experiment. Written with the ora.ai
-research lab, in collaboration with Vercel.
+in real agent runs and a controlled experiment. Developed by ora.ai and
+Vercel.
 
 The guide is published as a single page. Key anchors:
 
