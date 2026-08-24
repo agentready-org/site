@@ -94,7 +94,16 @@ export default function HomePage() {
           >
             Vercel
           </a>{" "}
-          and written with the ora.ai research lab.
+          and written with the{" "}
+          <a
+            href="https://ora.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            ora.ai
+          </a>{" "}
+          research lab.
         </p>
       </section>
 
@@ -115,13 +124,30 @@ export default function HomePage() {
           experiment.
         </p>
         <p className="font-mono text-[12px] text-muted-foreground/70 tracking-wide mb-8">
-          Written with the ora.ai research lab · in collaboration with
-          Vercel · v{GUIDE_VERSION} · last updated {GUIDE_DATE_LABEL}
+          Written with the{" "}
+          <a
+            href="https://ora.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border underline-offset-4 hover:text-foreground"
+          >
+            ora.ai
+          </a>{" "}
+          research lab · in collaboration with Vercel · v{GUIDE_VERSION} ·
+          last updated {GUIDE_DATE_LABEL}
         </p>
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           AI agents visit websites on users’ behalf to answer questions,
-          integrate APIs, and complete tasks. Together with the ora.ai
+          integrate APIs, and complete tasks. Together with the{" "}
+          <a
+            href="https://ora.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            ora.ai
+          </a>{" "}
           research lab, we measured which site features help them succeed.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
@@ -139,8 +165,16 @@ export default function HomePage() {
           </p>
           <p className="font-serif text-sm text-foreground/80 leading-relaxed">
             Numbers in this guide are tagged by source.{" "}
-            <SourceTag>STUDIES</SourceTag> refers to research from the
-            ora.ai research lab: over 1,000 real agent runs across 25 sites
+            <SourceTag>STUDIES</SourceTag> refers to research from the{" "}
+            <a
+              href="https://ora.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+            >
+              ora.ai
+            </a>{" "}
+            research lab: over 1,000 real agent runs across 25 sites
             traced turn by turn and a controlled experiment that toggled one
             feature at a time. <SourceTag>ORA SCANNER</SourceTag> refers to
             agent-reachability checks across every scored site. Statements
@@ -431,7 +465,16 @@ export default function HomePage() {
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           This guide covers the main practices, not the full surface of
-          agent readiness. The ora scanner covers additional
+          agent readiness. The{" "}
+          <a
+            href="https://ora.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            ora scanner
+          </a>{" "}
+          covers additional
           agent-readiness checks through its public methodology, per-check
           breakdown, and leaderboard. The protocol changes as new agent
           behavior is measured, so checks and weights may change between
@@ -477,6 +520,7 @@ export default function HomePage() {
             },
             {
               title: "ora research",
+              href: "https://ora.ai",
               blurb: "the ongoing research program behind the protocol.",
             },
           ].map(({ title, href, blurb }) => (
