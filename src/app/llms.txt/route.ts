@@ -32,7 +32,7 @@ License: MIT
 
 ## How we know
 
-Numbers in this guide are tagged by source. [STUDIES] refers to research from the ora.ai research lab: over 1,000 real agent runs across 25 sites traced turn by turn and a controlled experiment that toggled one feature at a time. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
+Numbers in this guide are tagged by source. [STUDIES] refers to research from the ora.ai research lab: over 1,000 real agent runs across 25 sites traced turn by turn and a controlled experiment that toggled one feature at a time; the full dataset is public, with a per-claim breakdown to reproduce every [STUDIES] number. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
 
 In the studies, two changes caused agents to fail: hiding answers behind JavaScript and blocking access. The guide follows the order in which agents encounter a site: find, read, then act. All recommendations share one prerequisite: the agent must be able to reach the page and find the answer in the returned HTML.
 

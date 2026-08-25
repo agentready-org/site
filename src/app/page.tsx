@@ -5,8 +5,12 @@ import {
   GUIDE_VERSION,
   READ_PRACTICES,
   REACHABLE_PRACTICES,
-  type Practice,
 } from "@/lib/guide-data";
+import {
+  PracticeTable,
+  ProseEvidence,
+  SourceTag,
+} from "@/components/evidence";
 
 const GUIDE_SECTIONS: { id: string; name: string }[] = [
   { id: "reachable", name: "Be reachable and citable" },
@@ -175,7 +179,8 @@ export default function HomePage() {
             </a>{" "}
             research lab: over 1,000 real agent runs across 25 sites
             traced turn by turn and a controlled experiment that toggled one
-            feature at a time. <SourceTag>ORA SCANNER</SourceTag> refers to
+            feature at a time; the full dataset is public.{" "}
+            <SourceTag>ORA SCANNER</SourceTag> refers to
             agent-reachability checks across every scored site. Statements
             without a tag are recommendations rather than measured findings.
           </p>
@@ -355,6 +360,8 @@ export default function HomePage() {
           <Mono>&lt;link rel=&quot;alternate&quot;&gt;</Mono> in the head,
           or a resources section.
         </p>
+        <ProseEvidence evidenceId="discovery-file-linkage" />
+        <div className="mb-4" />
         <PracticeTable
           practices={DESCRIBING_FILES}
           firstHeader="file"
@@ -384,6 +391,7 @@ export default function HomePage() {
           in the studies, so ensure the HTML works before adding a .md
           mirror.
         </p>
+        <ProseEvidence evidenceId="markdown-requests" />
 
         <CodeBlock
           label="docs/quickstart.html"
@@ -522,6 +530,12 @@ export default function HomePage() {
               href: "https://ora.ai",
               blurb: "the ongoing research program behind the protocol.",
             },
+            {
+              title: "The agent readiness dataset",
+              href: undefined,
+              blurb:
+                "the runs and probes behind every [STUDIES] number, with a per-claim breakdown to reproduce them.",
+            },
           ].map(({ title, href, blurb }) => (
             <li
               key={title}
@@ -582,74 +596,6 @@ export default function HomePage() {
         </p>
       </section>
     </main>
-  );
-}
-
-function PracticeTable({
-  practices,
-  firstHeader = "practice",
-  lastHeader,
-  className = "",
-}: {
-  practices: readonly Practice[];
-  firstHeader?: string;
-  lastHeader: string;
-  className?: string;
-}) {
-  return (
-    <div className={`overflow-x-auto ${className}`}>
-      <table className="w-full min-w-[560px] border-collapse text-left">
-        <thead>
-          <tr className="border-b border-border">
-            <th className="w-[26%] py-2.5 pr-4 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
-              {firstHeader}
-            </th>
-            <th className="w-[30%] py-2.5 pr-4 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
-              what it does
-            </th>
-            <th className="py-2.5 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
-              {lastHeader}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {practices.map((practice) => (
-            <tr
-              key={practice.id}
-              id={practice.id}
-              className="border-b border-border/50 align-top scroll-mt-20"
-            >
-              <td className="py-4 pr-4 font-serif text-base text-foreground leading-snug">
-                {practice.name}
-              </td>
-              <td className="py-4 pr-4 font-serif text-sm text-foreground/75 leading-relaxed">
-                {practice.what}
-              </td>
-              <td className="py-4 font-serif text-sm text-foreground/75 leading-relaxed">
-                {practice.evidence ? (
-                  <>
-                    {practice.evidence.source && (
-                      <SourceTag>{practice.evidence.source}</SourceTag>
-                    )}
-                    {practice.evidence.text}
-                  </>
-                ) : (
-                  practice.bestPractice
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function SourceTag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center px-1.5 py-0.5 mr-2 font-mono text-[10px] tracking-wider border rounded align-middle text-muted-foreground/70 border-border/60 whitespace-nowrap">
-      {children}
-    </span>
   );
 }
 
