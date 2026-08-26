@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+  DATASET_URL,
   EVIDENCE,
   type EvidenceBlock,
   type Practice,
@@ -108,6 +109,14 @@ function EvidenceView({ block }: { block: EvidenceBlock }) {
       <p className="font-mono text-[11px] text-muted-foreground/70 leading-relaxed">
         {block.reproduce}
       </p>
+      <a
+        href={DATASET_URL}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-2 inline-block font-mono text-[11px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors"
+      >
+        browse the dataset →
+      </a>
     </div>
   );
 }

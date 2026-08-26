@@ -1,10 +1,12 @@
 import {
   ACT_PRACTICES,
+  DATASET_URL,
   DESCRIBING_FILES,
   GUIDE_DATE_LABEL,
   GUIDE_VERSION,
   READ_PRACTICES,
   REACHABLE_PRACTICES,
+  SPEC_SOURCE_URL,
 } from "@/lib/guide-data";
 import {
   PracticeTable,
@@ -179,8 +181,16 @@ export default function HomePage() {
             </a>{" "}
             research lab: over 1,000 real agent runs across 25 sites
             traced turn by turn and a controlled experiment that toggled one
-            feature at a time; the full dataset is public.{" "}
-            <SourceTag>ORA SCANNER</SourceTag> refers to
+            feature at a time;{" "}
+            <a
+              href={DATASET_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+            >
+              the full dataset is public
+            </a>
+            . <SourceTag>ORA SCANNER</SourceTag> refers to
             agent-reachability checks across every scored site. Statements
             without a tag are recommendations rather than measured findings.
           </p>
@@ -532,7 +542,7 @@ export default function HomePage() {
             },
             {
               title: "The agent readiness dataset",
-              href: undefined,
+              href: DATASET_URL,
               blurb:
                 "the runs and probes behind every [STUDIES] number, with a per-claim breakdown to reproduce them.",
             },
@@ -578,8 +588,26 @@ export default function HomePage() {
           contribute
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
-          AgentReady is developed in the open. The guide and this site live
-          on{" "}
+          AgentReady is developed in the open. The{" "}
+          <a
+            href={SPEC_SOURCE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            spec source
+          </a>
+          , the{" "}
+          <a
+            href={DATASET_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            dataset
+          </a>{" "}
+          behind every <SourceTag>STUDIES</SourceTag> number, and this site
+          live on{" "}
           <a
             href="https://github.com/agentready-org/standard"
             target="_blank"

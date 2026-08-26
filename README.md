@@ -19,6 +19,10 @@ The guide is published as a single page. Key anchors:
 Machine-readable artifacts:
 
 - `/llms.txt` — the guide's content in markdown, tuned for AI agents
+- [`spec/spec.md`](https://github.com/agentready-org/standard/blob/main/spec/spec.md)
+  — the spec's markdown source of truth
+- [`data/`](https://github.com/agentready-org/standard/tree/main/data) — the
+  dataset behind every `[STUDIES]` number, with a per-claim breakdown
 
 ## Stack
 

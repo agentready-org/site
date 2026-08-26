@@ -19,6 +19,14 @@ export const GUIDE_VERSION = "1.0";
 export const GUIDE_DATE = "2026-08";
 export const GUIDE_DATE_LABEL = "August 2026";
 
+/** The spec's markdown source of truth. */
+export const SPEC_SOURCE_URL =
+  "https://github.com/agentready-org/standard/blob/main/spec/spec.md";
+
+/** The public dataset behind every [STUDIES] number. */
+export const DATASET_URL =
+  "https://github.com/agentready-org/standard/tree/main/data";
+
 export type EvidenceSource = "STUDIES" | "ORA SCANNER";
 
 export type Evidence = {
