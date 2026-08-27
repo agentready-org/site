@@ -8,11 +8,10 @@ const navLink =
   "font-mono text-xs text-muted-foreground hover:text-foreground transition-colors";
 
 const ANCHORS: { href: string; label: string }[] = [
-  { href: "#spec", label: "Spec" },
+  { href: "#guide", label: "Guide" },
 ];
 
 const EXTERNAL_LINKS: { href: string; label: string }[] = [
-  { href: "https://discord.gg/WKYedjmCu", label: "Discord" },
   { href: "https://github.com/agentready-org/standard", label: "GitHub" },
 ];
 

@@ -1,6 +1,31 @@
 # Changelog
 
-All notable changes to the AgentReady specification are recorded here.
+All notable changes to AgentReady are recorded here.
+
+---
+
+## Guide v1.0 — August 2026
+
+First public version of **"Make your site readable by AI agents."**
+
+The site's content pivoted from a requirements-style specification
+(stable identifiers, BCP 14 normative strengths, `/spec.json`) to a
+practical, evidence-based guide developed by ora.ai and Vercel. The
+guide is organized by the order in which
+agents encounter a site — find, read, act — and its figures are tagged by
+source (`[STUDIES]` for traced agent runs and the controlled experiment,
+`[ORA SCANNER]` for reachability checks).
+
+Removed in this pivot:
+
+- The `/spec.json` machine-readable artifact and the `AR-SECT-NN` stable
+  identifier scheme (the entries below remain for history).
+- The BCP 14 conformance model (`MUST` / `SHOULD` / `MAY`, baseline vs.
+  conditional applicability).
+
+---
+
+# Historical: the AgentReady specification
 
 AgentReady follows semantic versioning applied to normative commitments, not
 to editorial text:

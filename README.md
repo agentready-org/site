@@ -1,22 +1,28 @@
 # agentready.org
 
-The open, vendor-neutral standard for agent readiness.
+The open standard for agent readiness.
 
-The spec is published as a single page. Key anchors:
+The site publishes **"Make your site readable by AI agents"** — a practical
+guide to making your website work for the agents that now read it, grounded
+in real agent runs and a controlled experiment. Developed by ora.ai and
+Vercel.
 
-- `/#spec` — the specification, grouped by section
-- `/#conformance` — what it means to claim AgentReady conformance
-- `/#versioning` — rules for MAJOR / MINOR / PATCH bumps
-- Individual requirements are addressable by slug, e.g. `/#mcp`
-- Requirements are also citable by stable identifier, e.g. `AR-CAPA-01`
+The guide is published as a single page. Key anchors:
+
+- `/#guide` — the guide's opening and section index
+- `/#reachable` — Be reachable and citable (find)
+- `/#read` — Put the answer where agents read
+- `/#act` — Let agents act, not just read
+- `/#beyond` — Beyond this guide (the ora scanner)
+- `/#changelog` — guide version history
 
 Machine-readable artifacts:
 
-- `/spec.json` — the canonical machine-readable spec
-- `/llms.txt` — a summary tuned for AI agents
-
-Deep Scan by Ora at [ora.run](https://ora.run) is a public implementation
-that checks any site against the current spec.
+- `/llms.txt` — the guide's content in markdown, tuned for AI agents
+- [`spec/spec.md`](https://github.com/agentready-org/standard/blob/main/spec/spec.md)
+  — the spec's markdown source of truth
+- [`data/`](https://github.com/agentready-org/standard/tree/main/data) — the
+  dataset behind every `[STUDIES]` number, with a per-claim breakdown
 
 ## Stack
 
@@ -50,9 +56,8 @@ npm run lint   # ESLint via eslint-config-next
 src/
   app/
     layout.tsx         # Root layout, fonts, metadata
-    page.tsx           # The one-pager
-    llms.txt/route.ts  # Machine-readable site summary for AI agents
-    spec.json/route.ts # Machine-readable specification artifact
+    page.tsx           # The one-pager (guide prose, code samples, sections)
+    llms.txt/route.ts  # Machine-readable guide summary for AI agents
     robots.ts          # robots.txt (allowlist for AI crawlers)
     sitemap.ts         # sitemap.xml
     globals.css        # Tailwind + design tokens + scroll-smooth
@@ -61,25 +66,23 @@ src/
     navbar.tsx         # Sticky nav
     footer.tsx         # Compact footer
   lib/
-    spec-data.ts       # Canonical SECTIONS + requirements (source of truth)
+    guide-data.ts      # Practice tables shared by the page and /llms.txt
 ```
 
-`src/lib/spec-data.ts` is the single source of truth for the specification.
-Stable identifiers (`AR-SECT-NN`), applicability (baseline vs. conditional),
-and normative strength (`MUST` / `SHOULD` / `MAY` per BCP 14) live here.
+`src/lib/guide-data.ts` holds the guide's structured practice rows and
+their evidence tags (`[STUDIES]` / `[ORA SCANNER]`); guide prose and code
+samples live in `src/app/page.tsx`.
 
 ## Versioning
 
-AgentReady follows semantic versioning applied to normative commitments, not
-editorial text. See [`CHANGELOG.md`](./CHANGELOG.md) for the full history and
-[`/#versioning`](https://agentready.org/#versioning) for the policy.
+The guide is versioned as a document (v1.0, August 2026). Checks and
+recommendations are revised as new agent behavior is measured; see
+[`CHANGELOG.md`](./CHANGELOG.md) and [`/#changelog`](https://agentready.org/#changelog).
 
 ## Contributing
 
 AgentReady is developed in the open. File issues and pull requests on this
-repository; working sessions and proposal discussions happen on
-[Discord](https://discord.gg/WKYedjmCu). New requirements join the spec as
-`emerging` so adoption can be observed before they stabilize.
+repository, where discussion and proposals happen.
 
 ## License
 

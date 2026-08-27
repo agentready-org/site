@@ -13,26 +13,18 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <a
-            href="#spec"
+            href="#guide"
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
-            Spec
+            Guide
           </a>
           <a
-            href="https://ora.run"
+            href="https://ora.ai"
             target="_blank"
             rel="noreferrer"
             className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             Deep Scan
-          </a>
-          <a
-            href="https://discord.gg/WKYedjmCu"
-            target="_blank"
-            rel="noreferrer"
-            className="font-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Discord
           </a>
           <a
             href="https://github.com/agentready-org/standard"
