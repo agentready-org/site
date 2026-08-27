@@ -517,6 +517,19 @@ export default function HomePage() {
 
         <CodeBlock label="Terminal" code={SCAN_CURL_SNIPPET} />
         <CodeBlock label="Response (abridged)" code={SCAN_RESPONSE_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
+          Full documentation for the scanner, CLI, and API is at{" "}
+          <a
+            href="https://ora.ai/docs"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            ora.ai/docs
+          </a>
+          .
+        </p>
       </section>
 
       {/* References */}
