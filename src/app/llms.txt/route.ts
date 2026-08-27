@@ -22,9 +22,9 @@ function renderPractice(p: Practice): string {
 }
 
 export function GET() {
-  const body = `# AgentReady — Make your site readable by AI agents
+  const body = `# AgentReady: Make your site readable by AI agents
 
-> AgentReady is the first community-driven standard for the agentic web: an open specification of the protocols, standards, and conventions a product should implement to be usable by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how builders should score compliance. The current version is a practical guide grounded in real agent runs and a controlled experiment, developed by ora.ai and Vercel.
+> AgentReady is a community-driven standard for the agentic web: an open specification of the protocols, standards, and conventions a product should implement to be usable by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how builders should score compliance. The current version is a practical guide based on real agent runs and a controlled experiment, developed by ora.ai and Vercel.
 
 Version: v${GUIDE_VERSION}
 Last updated: ${GUIDE_DATE_LABEL}
@@ -38,11 +38,11 @@ In the studies, two changes caused agents to fail: hiding answers behind JavaScr
 
 ## Be reachable and citable
 
-Agents can cite only pages they can discover and fetch. Pages blocked from crawlers cannot enter search indexes; they are absent rather than ranked lower.
+Agents can cite only pages they can discover and fetch. Pages blocked from crawlers do not appear in search indexes at all.
 
 ${REACHABLE_PRACTICES.map(renderPractice).join("\n")}
 
-Publish answers on one canonical, current first-party docs page. Write the crawl policy as one rule for all agents (User-agent: *), not an allowlist of named crawlers. Model providers run separate crawlers per job — training crawlers (GPTBot, ClaudeBot), search-index crawlers (OAI-SearchBot, Claude-SearchBot), and user-initiated fetchers (ChatGPT-User, Claude-User) — so you can block training without dropping out of search indexes or agent answers. A more specific group such as "User-agent: GPTBot" overrides the * group, and user-initiated fetchers may not consult robots.txt at all. The dependable reachability test is your server logs: find requests from the published OpenAI and Anthropic crawler IP ranges and confirm they return 200.
+Publish answers on one canonical, current first-party docs page. Write the crawl policy as one rule for all agents (User-agent: *) instead of an allowlist of named crawlers. Model providers run separate crawlers per job: training crawlers (GPTBot, ClaudeBot), search-index crawlers (OAI-SearchBot, Claude-SearchBot), and user-initiated fetchers (ChatGPT-User, Claude-User). Each obeys its own rule, so you can block training without dropping out of search indexes or agent answers. A more specific group such as "User-agent: GPTBot" overrides the * group, and user-initiated fetchers may not consult robots.txt at all. The dependable reachability test is your server logs: find requests from the published OpenAI and Anthropic crawler IP ranges and confirm they return 200.
 
 ## Put the answer where agents read
 
@@ -52,7 +52,7 @@ Pages agents read:
 
 ${READ_PRACTICES.map(renderPractice).join("\n")}
 
-Files that describe the site — link each from content agents already visit (footer, <link rel="alternate"> in the head, or a resources section); 86–100% of visits came through links rather than guessed paths [STUDIES]:
+Files that describe the site. Link each from content agents already visit (footer, <link rel="alternate"> in the head, or a resources section); 86–100% of visits came through links rather than guessed paths [STUDIES]:
 
 ${DESCRIBING_FILES.map(renderPractice).join("\n")}
 
@@ -62,7 +62,7 @@ Return accurate HTTP status codes: 404 for a missing path (never 200), and 429 w
 
 ## Let agents act, not just read
 
-To act, an agent needs an operable interface — API, MCP server, SDK, or CLI — plus authentication it can complete.
+To act, an agent needs an operable interface (API, MCP server, SDK, or CLI) plus authentication it can complete.
 
 ${ACT_PRACTICES.map(renderPractice).join("\n")}
 

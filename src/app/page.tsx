@@ -70,25 +70,25 @@ export default function HomePage() {
           The open standard for agent readiness
         </h1>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          Agents are a new class of user. A growing set of protocols has
-          emerged to serve them (MCP, A2A, x402, llms.txt, Web Bot Auth, and
-          more). What has not emerged is a shared definition of what being
-          ready for them means. Scanners, badges, and readiness grades are
-          already everywhere, and none of them agree.
+          Agents are a new class of user. Many protocols now serve them
+          (MCP, A2A, x402, llms.txt, Web Bot Auth, and more), but there is
+          no shared definition of what it means to be ready for them.
+          Scanners, badges, and readiness grades exist, and none of them
+          agree.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          AgentReady is the first community-driven standard for the agentic
-          web. It is an open specification of the protocols, standards, and
-          conventions a product should implement to be usable by AI agents,
-          from discovery to completion. It does not promote any specific
-          protocol or vendor, and it does not prescribe how builders
-          should score compliance.
+          AgentReady is a community-driven standard for the agentic web:
+          an open specification of the protocols, standards, and
+          conventions a product should implement to be usable by AI
+          agents, from discovery to completion. It does not promote any
+          specific protocol or vendor, and it does not prescribe how
+          builders should score compliance.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          The agentic web moves faster than any traditional standards
-          process. AgentReady is designed to keep up: the guide below is
-          grounded in measured agent behavior, and its recommendations are
-          revised as new protocols and conventions emerge.
+          The agentic web moves faster than a traditional standards
+          process. The guide below is based on measured agent behavior,
+          and its recommendations are revised as that behavior and the
+          protocols around it change.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
           AgentReady is developed by{" "}
@@ -125,8 +125,8 @@ export default function HomePage() {
           Make your site readable by AI agents
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-3 max-w-2xl">
-          A practical guide to making your website work for the agents that
-          now read it — grounded in real agent runs and a controlled
+          A practical guide to making your website work for the agents
+          that now read it, based on real agent runs and a controlled
           experiment.
         </p>
         <p className="font-mono text-[12px] text-muted-foreground/70 tracking-wide mb-8">
@@ -232,10 +232,9 @@ export default function HomePage() {
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
           Agents can cite only pages they can discover and fetch. They may
           receive or recall a URL, follow a link, or find a page through a
-          crawl-built search index. Pages blocked from crawlers cannot
-          enter those indexes; they are absent rather than ranked lower.
-          Blocking can also stop an agent from fetching a page while
-          answering a user.
+          crawl-built search index. Pages blocked from crawlers do not
+          appear in those indexes at all. Blocking can also stop an agent
+          from fetching a page while answering a user.
         </p>
 
         <PracticeTable
@@ -250,9 +249,9 @@ export default function HomePage() {
           page agents build their answers from.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          That covers what to publish; the crawl policy covers who may read
-          it. Write it as one rule for all agents, not an allowlist of
-          named crawlers:
+          That covers what to publish. The crawl policy covers who may
+          read it. Write one rule for all agents instead of an allowlist
+          of named crawlers:
         </p>
 
         <CodeBlock label="robots.txt" code={ROBOTS_TXT_SNIPPET} />
@@ -280,7 +279,7 @@ export default function HomePage() {
         </ul>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           Each obeys its own robots.txt rule, so you can block a training
-          crawler — opting out of training — without dropping out of search
+          crawler and opt out of training without dropping out of search
           indexes or agent answers. Two catches: a more specific group such
           as <Mono>User-agent: GPTBot</Mono> overrides your <Mono>*</Mono>{" "}
           group, so audit existing rules; and user-initiated fetchers may
@@ -301,13 +300,13 @@ export default function HomePage() {
           prevents fetch-only agents from reading the page.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          The curl is not proof either way: bot blockers weigh where a
-          request comes from more than its user-agent string, so your
-          laptop may pass where the real agent is blocked, or the reverse.
-          The dependable test is your server logs. OpenAI and Anthropic
-          publish their crawlers’ IP ranges (separate per-bot lists from
-          OpenAI, one combined list from Anthropic) — find those requests
-          and confirm they return <Mono>200</Mono>.
+          The curl does not prove much either way: bot blockers weigh
+          where a request comes from more than its user-agent string, so
+          your laptop may pass where the real agent is blocked, or the
+          reverse. The dependable test is your server logs. OpenAI and
+          Anthropic publish their crawlers’ IP ranges (separate per-bot
+          lists from OpenAI, one combined list from Anthropic). Find those
+          requests and confirm they return <Mono>200</Mono>.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
           llms.txt belongs in the reading section because an agent can
@@ -330,18 +329,18 @@ export default function HomePage() {
           After reaching a page, an agent must be able to extract the
           answer from the returned content. In the studies, agents used the
           same homepage and docs pages as human visitors. The
-          agent-specific files (llms.txt, markdown mirrors, JSON-LD) just
-          help agents find, fetch, and use those same answers.
+          agent-specific files (llms.txt, markdown mirrors, JSON-LD) help
+          agents find, fetch, and use those same answers.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
-          If your site is client-rendered, getting answers into the initial
-          HTML is a real migration — SSR, prerendering, or a hybrid — but
-          it is the prerequisite for agents that fetch rather than run
-          JavaScript. The machinery beyond that — content negotiation, .md
-          endpoints, agent detection, frontmatter — did not change whether
-          agents succeeded in the studies. Links also matter: agents rarely
-          found pages or files that were not linked from content they had
-          already reached.
+          If your site is client-rendered, getting answers into the
+          initial HTML is a real migration (SSR, prerendering, or a
+          hybrid), but it is the prerequisite for agents that fetch rather
+          than run JavaScript. The machinery beyond that (content
+          negotiation, .md endpoints, agent detection, frontmatter) did
+          not change whether agents succeeded in the studies. Links also
+          matter: agents rarely found pages or files that were not linked
+          from content they had already reached.
         </p>
 
         <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
@@ -385,13 +384,13 @@ export default function HomePage() {
         <CodeBlock label="llms.txt" code={LLMS_TXT_SNIPPET} />
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
-          Inject JSON-LD at strategic places — the homepage above all — so
-          an agent fetching the raw HTML gets your key facts and routes in
-          one machine-readable block.
+          Inject JSON-LD at strategic places, starting with the homepage,
+          so an agent fetching the raw HTML gets your key facts and routes
+          in one machine-readable block.
         </p>
 
         <h3 className="font-serif text-lg text-foreground mb-3 leading-tight">
-          Agents request markdown when offered — make it reachable
+          Agents request markdown when offered, so make it reachable
         </h3>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           <SourceTag>STUDIES</SourceTag> Agents requested markdown on about
@@ -408,7 +407,7 @@ export default function HomePage() {
         />
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
-          The same relation can also ride as an HTTP <Mono>Link:</Mono>{" "}
+          The same relation can also be sent as an HTTP <Mono>Link:</Mono>{" "}
           header, so a CDN can advertise the mirror without touching page
           heads.
         </p>
@@ -425,14 +424,14 @@ export default function HomePage() {
           dead URLs appear valid.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          The same honesty applies when you throttle: answer with a{" "}
+          The same applies when you throttle: answer with a{" "}
           <Mono>429</Mono> and a <Mono>Retry-After</Mono> header (RFC
-          6585), not a silent challenge page — agents and crawlers treat{" "}
-          <Mono>429</Mono> as a back-off signal and will return.
+          6585) rather than a silent challenge page. Agents and crawlers
+          treat <Mono>429</Mono> as a back-off signal and will return.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
           By the end of this layer the agent has found you and read you.
-          Whether it can act on what it reads is the final layer —
+          Whether it can act on what it reads is the final layer:
           usability.
         </p>
       </section>
@@ -463,7 +462,7 @@ export default function HomePage() {
         />
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
-          That is the full journey — find, read, act. The last step happens
+          That is the full journey: find, read, act. The last step happens
           only if the first two did.
         </p>
       </section>
@@ -480,8 +479,7 @@ export default function HomePage() {
           Beyond this guide
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-          This guide covers the main practices, not the full surface of
-          agent readiness. The{" "}
+          This guide covers the main practices. The{" "}
           <a
             href="https://ora.ai"
             target="_blank"
@@ -561,8 +559,8 @@ export default function HomePage() {
                 </a>
               ) : (
                 <span className="text-foreground">{title}</span>
-              )}{" "}
-              — {blurb}
+              )}
+              : {blurb}
             </li>
           ))}
         </ul>

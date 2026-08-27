@@ -72,17 +72,17 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
     what: "Makes you citable: the page an agent grounds its answer on and names as its source.",
     evidence: {
       source: "STUDIES",
-      text: "82% of answers traced back to a page the agent fetched — and that page was a docs page 47% of the time, more than any other page type.",
+      text: "82% of answers traced back to a page the agent fetched, and that page was a docs page 47% of the time, more than any other page type.",
     },
     evidenceId: "answer-provenance",
   },
   {
     id: "robots-txt",
     name: "Allow agents and crawlers in robots.txt",
-    what: "Declares which crawlers may fetch which paths — the gate to the search indexes.",
+    what: "Declares which crawlers may fetch which paths. This is the gate to the search indexes.",
     evidence: {
       source: "ORA SCANNER",
-      text: "Across ~50,000 scanned sites, 88% ship a robots.txt, and 80% stay reachable to every major AI crawler — about 1 in 10 block them entirely.",
+      text: "Across ~50,000 scanned sites, 88% ship a robots.txt, and 80% stay reachable to every major AI crawler. About 1 in 10 block them entirely.",
     },
   },
   {
@@ -91,7 +91,7 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
     what: "Maps every page you publish for indexing.",
     evidence: {
       source: "STUDIES",
-      text: "Fetched directly in 4% of runs — one of the files real agents touch least, yet still standard for crawlers and search engines.",
+      text: "Fetched directly in 4% of runs, one of the files real agents touch least. It is still standard for crawlers and search engines.",
     },
     evidenceId: "sitemap-reach",
   },
@@ -112,17 +112,17 @@ export const READ_PRACTICES: readonly Practice[] = [
   {
     id: "docs-pages",
     name: "Docs pages that answer",
-    what: "The surface agents actually read — where most tasks get resolved.",
+    what: "The pages agents actually read, where most tasks get resolved.",
     evidence: {
       source: "STUDIES",
-      text: "Reached in 83% of runs and fetched more than any other page type — about 3.4 docs pages per run.",
+      text: "Reached in 83% of runs and fetched more than any other page type, about 3.4 docs pages per run.",
     },
     evidenceId: "docs-reach",
   },
   {
     id: "no-javascript",
     name: "Fetchable without JavaScript",
-    what: "The answer is in the initial HTML — server-rendered or prerendered, not injected by a single-page app after load.",
+    what: "The answer is in the initial HTML, server-rendered or prerendered, rather than injected by a single-page app after load.",
     evidence: {
       source: "STUDIES",
       text: "A JavaScript-hidden answer was one of only two changes that broke an agent. The other was blocking it outright.",
@@ -149,7 +149,7 @@ export const DESCRIBING_FILES: readonly Practice[] = [
     what: "A curated, described index of your key pages.",
     evidence: {
       source: "STUDIES",
-      text: "Reached via links, not guesses — 86% of its fetches came from a page that pointed to it. One in three agents that read it went on to fetch a page it lists, and 36% drew their final answer from its content.",
+      text: "Reached via links rather than guesses: 86% of its fetches came from a page that pointed to it. One in three agents that read it went on to fetch a page it lists, and 36% drew their final answer from its content.",
     },
     evidenceId: "llms-txt-behavior",
   },
@@ -251,7 +251,7 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
   "docs-reach": {
     title: "Docs reach and depth",
     backs:
-      "Reached in 83% of runs and fetched more than any other page type — about 3.4 docs pages per run.",
+      "Reached in 83% of runs and fetched more than any other page type, about 3.4 docs pages per run.",
     tables: [
       {
         headers: ["", "Value"],
@@ -270,7 +270,7 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
     backs:
       "A JavaScript-hidden answer was one of only two changes that broke an agent. The other was blocking it outright.",
     intro:
-      "One docs site was served under 19 configurations and probed across 5 topics by two clients — a plain non-JavaScript fetch and a JavaScript-executing one (190 probes). Only three configurations failed, and they reduce to two kinds of change:",
+      "One docs site was served under 19 configurations and probed across 5 topics by two clients, a plain non-JavaScript fetch and a JavaScript-executing one (190 probes). Only three configurations failed, and they reduce to two kinds of change:",
     tables: [
       {
         headers: ["Configuration", "plain-fetch", "js-fetch"],
@@ -417,7 +417,7 @@ export const ACT_PRACTICES: readonly Practice[] = [
     name: "MCP server",
     what: "Standard tool protocol for docs search and actions.",
     bestPractice:
-      "Serve over Streamable HTTP at /mcp. Keep the docs MCP public; gate the product MCP with OAuth — protected-resource metadata at /.well-known/oauth-protected-resource (RFC 9728), with PKCE — and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery are an emerging convention (SEP-2127, a working-group draft that major hosts have begun to support): ship one if your target hosts read it, but expect the exact path to keep moving.",
+      "Serve over Streamable HTTP at /mcp. Keep the docs MCP public. Gate the product MCP with OAuth (protected-resource metadata at /.well-known/oauth-protected-resource per RFC 9728, with PKCE) and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery are an emerging convention (SEP-2127, a working-group draft that major hosts have begun to support): ship one if your target hosts read it, but expect the exact path to keep moving.",
   },
   {
     id: "mcp-apps",
@@ -429,7 +429,7 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "sdks-cli",
     name: "SDKs and a CLI",
-    what: "The forms agents act in — code and shell.",
+    what: "The forms agents act in: code and shell.",
     bestPractice:
       "Publish SDKs on npm and PyPI and a CLI; show install and first call in the docs.",
   },
