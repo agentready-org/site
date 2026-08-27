@@ -46,7 +46,7 @@ Publish answers on one canonical, current first-party docs page. Write the crawl
 
 ## Put the answer where agents read
 
-Agents use the same homepage and docs pages as human visitors. Agent-specific files (llms.txt, AGENTS.md, markdown mirrors, JSON-LD) help agents find, fetch, and use those same answers. Getting answers into the initial HTML (SSR or prerendering) is the prerequisite for agents that fetch rather than run JavaScript. Links matter: agents rarely found pages or files that were not linked from content they had already reached.
+Agents use the same homepage and docs pages as human visitors. Agent-specific files (llms.txt, markdown mirrors, JSON-LD) help agents find, fetch, and use those same answers. Getting answers into the initial HTML (SSR or prerendering) is the prerequisite for agents that fetch rather than run JavaScript. Links matter: agents rarely found pages or files that were not linked from content they had already reached.
 
 Pages agents read:
 

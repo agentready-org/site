@@ -174,16 +174,6 @@ export const DESCRIBING_FILES: readonly Practice[] = [
     evidenceId: "openapi-reach",
   },
   {
-    id: "agents-md",
-    name: "AGENTS.md / SKILLS.md",
-    what: "Install, auth, and usage in liftable blocks.",
-    evidence: {
-      source: "STUDIES",
-      text: "An emerging convention: some sites are starting to adopt it, though agent usage is still low. It may still be worth implementing.",
-    },
-    evidenceId: "agents-md-adoption",
-  },
-  {
     id: "json-ld",
     name: "JSON-LD",
     what: "Machine-readable facts and routes in the page.",
@@ -387,25 +377,6 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
     ],
     reproduce:
       "Reproduce over traces.csv: openapi_reached == 1 over site_ships_openapi == 1.",
-  },
-  "agents-md-adoption": {
-    title: "AGENTS.md adoption",
-    backs:
-      "An emerging convention: some sites are starting to adopt it, though agent usage is still low.",
-    intro:
-      "Adoption: 6 of the 25 sites ship an AGENTS.md. Usage, across all runs on those six sites:",
-    tables: [
-      {
-        headers: ["", "Runs", "Share"],
-        rows: [
-          ["Fetched the AGENTS.md", "38", "6%"],
-          ["Did not", "547", "94%"],
-        ],
-      },
-    ],
-    note: "Even where a site ships and links one, agents rarely fetched it — on five of the six shipping sites it was never fetched at all. Agents mostly stayed on the human docs pages.",
-    reproduce:
-      "Reproduce over traces.csv: adoption = count of distinct domains with site_ships_agents_md == 1; usage = agents_md_reached over runs where site_ships_agents_md == 1.",
   },
   "markdown-requests": {
     title: "Markdown requests",

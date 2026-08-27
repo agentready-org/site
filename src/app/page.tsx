@@ -330,9 +330,8 @@ export default function HomePage() {
           After reaching a page, an agent must be able to extract the
           answer from the returned content. In the studies, agents used the
           same homepage and docs pages as human visitors. The
-          agent-specific files (llms.txt, AGENTS.md, markdown mirrors,
-          JSON-LD) just help agents find, fetch, and use those same
-          answers.
+          agent-specific files (llms.txt, markdown mirrors, JSON-LD) just
+          help agents find, fetch, and use those same answers.
         </p>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
           If your site is client-rendered, getting answers into the initial
