@@ -68,7 +68,7 @@ ${ACT_PRACTICES.map(renderPractice).join("\n")}
 
 ## Beyond this guide
 
-The ora scanner covers additional agent-readiness checks through its public methodology, per-check breakdown, and leaderboard. Scan any domain at https://ora.ai or POST {"url": "example.com"} to https://ora.ai/api/scan.
+The ora scanner covers additional agent-readiness checks through its public methodology, per-check breakdown, and leaderboard. Scan any domain at https://ora.ai, run "npx @ora-ai/ax audit https://example.com" from the CLI, or POST {"url": "example.com"} to https://ora.ai/api/scan.
 
 ## Links
 

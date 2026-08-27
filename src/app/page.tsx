@@ -43,6 +43,8 @@ const LLMS_TXT_SNIPPET = `# Acme
 const MARKDOWN_ALTERNATE_SNIPPET = `<!-- A mirror nothing points to is a file nothing fetches. -->
 <link rel="alternate" type="text/markdown" href="/docs/quickstart.md">`;
 
+const SCAN_CLI_SNIPPET = `npx @ora-ai/ax audit https://example.com`;
+
 const SCAN_CURL_SNIPPET = `curl -X POST https://ora.ai/api/scan \\
   -H 'Content-Type: application/json' \\
   -d '{"url": "example.com"}'`;
@@ -504,7 +506,13 @@ export default function HomePage() {
           >
             ora.ai
           </a>
-          , or from the API:
+          , or from the CLI:
+        </p>
+
+        <CodeBlock label="Terminal" code={SCAN_CLI_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          The same scan is available from the API:
         </p>
 
         <CodeBlock label="Terminal" code={SCAN_CURL_SNIPPET} />
