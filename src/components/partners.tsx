@@ -14,8 +14,8 @@ export function Partners({ compact = false }: { compact?: boolean }) {
       <p
         className={`font-mono tracking-widest ${
           compact
-            ? "text-[10px] text-muted-foreground/50 mb-3"
-            : "text-[11px] text-muted-foreground/50 mb-4"
+            ? "text-[0.625rem] text-muted-foreground/50 mb-3"
+            : "text-[0.6875rem] text-muted-foreground/50 mb-4"
         }`}
       >
         in collaboration with

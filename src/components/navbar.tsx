@@ -93,7 +93,7 @@ export function Navbar() {
           <button
             ref={buttonRef}
             type="button"
-            className="font-mono text-[11px] text-muted-foreground border border-border/70 rounded-md px-2.5 py-1.5 hover:bg-muted/30 hover:text-foreground transition-colors"
+            className="font-mono text-[0.6875rem] text-muted-foreground border border-border/70 rounded-md px-2.5 py-1.5 hover:bg-muted/30 hover:text-foreground transition-colors"
             aria-expanded={menuOpen}
             aria-haspopup="menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}

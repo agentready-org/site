@@ -11,7 +11,7 @@ export function Essentials() {
           <div className="mb-2 sm:mb-0 sm:pt-0.5">
             <a
               href={layer.href}
-              className="font-mono text-[11px] tracking-widest text-muted-foreground/70 hover:text-foreground transition-colors"
+              className="font-mono text-[0.6875rem] tracking-widest text-muted-foreground/70 hover:text-foreground transition-colors"
             >
               {layer.label}
             </a>

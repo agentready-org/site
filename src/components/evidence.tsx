@@ -10,7 +10,7 @@ import {
 
 export function SourceTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center px-1.5 py-0.5 mr-2 font-mono text-[10px] tracking-wider border rounded align-middle text-muted-foreground/70 border-border/60 whitespace-nowrap">
+    <span className="inline-flex items-center px-1.5 py-0.5 mr-2 font-mono text-[0.625rem] tracking-wider border rounded align-middle text-muted-foreground/70 border-border/60 whitespace-nowrap">
       {children}
     </span>
   );
@@ -31,9 +31,9 @@ function EvidenceButton({
       onClick={onClick}
       aria-expanded={open}
       aria-controls={controlsId}
-      className="inline-flex items-center gap-1 font-mono text-[11px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors cursor-pointer"
+      className="inline-flex items-center gap-1 font-mono text-[0.6875rem] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors cursor-pointer"
     >
-      <span aria-hidden="true" className="text-[9px]">
+      <span aria-hidden="true" className="text-[0.5625rem]">
         {open ? "▾" : "▸"}
       </span>
       {open ? "hide evidence" : "evidence"}
@@ -44,11 +44,11 @@ function EvidenceButton({
 function EvidenceView({ block }: { block: EvidenceBlock }) {
   return (
     <div className="border-l-2 border-border bg-muted/20 rounded-r-lg pl-4 pr-4 py-4">
-      <p className="font-mono text-[11px] tracking-widest text-muted-foreground/60 mb-2">
+      <p className="font-mono text-[0.6875rem] tracking-widest text-muted-foreground/60 mb-2">
         {block.title.toLowerCase()}
       </p>
       <p className="font-serif text-sm text-foreground/80 leading-relaxed mb-3">
-        <span className="font-mono text-[11px] tracking-wide text-muted-foreground/70 mr-1.5">
+        <span className="font-mono text-[0.6875rem] tracking-wide text-muted-foreground/70 mr-1.5">
           backs:
         </span>
         “{block.backs}”
@@ -71,7 +71,7 @@ function EvidenceView({ block }: { block: EvidenceBlock }) {
                 {table.headers.map((h, j) => (
                   <th
                     key={j}
-                    className={`py-1.5 font-mono text-[10px] font-normal tracking-widest text-muted-foreground/60 ${
+                    className={`py-1.5 font-mono text-[0.625rem] font-normal tracking-widest text-muted-foreground/60 ${
                       j > 0 ? "pl-4 text-right" : "pr-4"
                     }`}
                   >
@@ -88,7 +88,7 @@ function EvidenceView({ block }: { block: EvidenceBlock }) {
                       key={k}
                       className={`py-1.5 font-serif text-sm leading-relaxed ${
                         k > 0
-                          ? "pl-4 text-right font-mono text-[12px] text-foreground/80 whitespace-nowrap align-bottom"
+                          ? "pl-4 text-right font-mono text-[0.75rem] text-foreground/80 whitespace-nowrap align-bottom"
                           : "pr-4 text-foreground/75"
                       }`}
                     >
@@ -106,14 +106,14 @@ function EvidenceView({ block }: { block: EvidenceBlock }) {
           {block.note}
         </p>
       )}
-      <p className="font-mono text-[11px] text-muted-foreground/70 leading-relaxed">
+      <p className="font-mono text-[0.6875rem] text-muted-foreground/70 leading-relaxed">
         {block.reproduce}
       </p>
       <a
         href={DATASET_URL}
         target="_blank"
         rel="noreferrer"
-        className="mt-2 inline-block font-mono text-[11px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors"
+        className="mt-2 inline-block font-mono text-[0.6875rem] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors"
       >
         browse the dataset →
       </a>
@@ -165,13 +165,13 @@ export function PracticeTable({
       <table className="w-full min-w-[560px] border-collapse text-left">
         <thead>
           <tr className="border-b border-border">
-            <th className="w-[26%] py-2.5 pr-4 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
+            <th className="w-[26%] py-2.5 pr-4 font-mono text-[0.6875rem] font-normal tracking-widest text-muted-foreground/60">
               {firstHeader}
             </th>
-            <th className="w-[30%] py-2.5 pr-4 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
+            <th className="w-[30%] py-2.5 pr-4 font-mono text-[0.6875rem] font-normal tracking-widest text-muted-foreground/60">
               what it does
             </th>
-            <th className="py-2.5 font-mono text-[11px] font-normal tracking-widest text-muted-foreground/60">
+            <th className="py-2.5 font-mono text-[0.6875rem] font-normal tracking-widest text-muted-foreground/60">
               {lastHeader}
             </th>
           </tr>

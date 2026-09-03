@@ -60,6 +60,7 @@ html.dark {
   }
   html {
     font-family: var(--font-serif);
+    font-size: 18px;
     scroll-behavior: smooth;
     color-scheme: light;
   }
