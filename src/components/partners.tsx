@@ -59,7 +59,7 @@ function VercelLogo() {
   return (
     <svg
       viewBox="0 0 262 52"
-      className="h-full w-auto"
+      className="h-[70%] w-auto"
       aria-hidden="true"
     >
       <path
