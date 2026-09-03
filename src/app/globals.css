@@ -3,9 +3,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-lora), Georgia, "Times New Roman", serif;
-  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
-  --font-mono: var(--font-space-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, "SFMono-Regular", monospace;
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-muted-foreground: var(--muted-foreground);
@@ -70,9 +70,6 @@ html.dark {
     html {
       scroll-behavior: auto;
     }
-  }
-  .font-mono {
-    -webkit-text-stroke: 0.2px currentColor;
   }
 }
 

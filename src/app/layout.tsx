@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Lora, Space_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Newsreader } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { GUIDE_VERSION, GUIDE_DATE } from "@/lib/guide-data";
 import "./globals.css";
 
-const lora = Lora({
-  variable: "--font-lora",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
@@ -100,13 +100,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${lora.variable} ${spaceMono.variable}`}
+      className={`${newsreader.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('theme');if(s==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`,
+            __html: `(function(){try{var s=localStorage.getItem('theme');var dark=s==='dark'||(s!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',dark);}catch(e){document.documentElement.classList.toggle('dark',window.matchMedia('(prefers-color-scheme: dark)').matches);}})();`,
           }}
         />
         <script

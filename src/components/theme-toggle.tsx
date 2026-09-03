@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
@@ -28,6 +28,20 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     getClientSnapshot,
     getServerSnapshot,
   );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const applySystem = () => {
+      try {
+        if (localStorage.getItem("theme")) return;
+      } catch {
+        return;
+      }
+      document.documentElement.classList.toggle("dark", mq.matches);
+    };
+    mq.addEventListener("change", applySystem);
+    return () => mq.removeEventListener("change", applySystem);
+  }, []);
 
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";

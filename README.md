@@ -31,7 +31,7 @@ Machine-readable artifacts:
 - React 19
 - TypeScript
 - Tailwind CSS v4 via PostCSS
-- Lora (serif) + Space Mono (mono)
+- Newsreader (serif) + IBM Plex Mono (mono)
 
 ## Local development
 
