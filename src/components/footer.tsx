@@ -7,7 +7,7 @@ export function Footer() {
             <p className="font-mono text-sm font-bold text-foreground">
               agentready.org
             </p>
-            <p className="font-mono text-[0.6875rem] text-muted-foreground/55 mt-1 tracking-wide">
+            <p className="font-mono text-[13px] text-muted-foreground/55 mt-1 tracking-wide">
               the open standard for agent readiness · MIT
             </p>
           </div>

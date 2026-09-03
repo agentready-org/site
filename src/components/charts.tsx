@@ -4,7 +4,7 @@ export function Scoreboard() {
   const cells = Array.from({ length: 100 }, (_, i) => i < 5);
   return (
     <figure className="max-w-2xl mt-10 mb-2">
-      <p className="font-mono text-[0.6875rem] tracking-widest text-muted-foreground/60 mb-4">
+      <p className="font-mono text-[13px] tracking-widest text-muted-foreground/60 mb-4">
         ora scanner
       </p>
 
@@ -31,7 +31,7 @@ export function Scoreboard() {
           />
         ))}
       </div>
-      <p className="font-mono text-[0.6875rem] text-muted-foreground/60 tracking-wide mt-2">
+      <p className="font-mono text-[13px] text-muted-foreground/60 tracking-wide mt-2">
         each square is 1% of ~53,000 sites
       </p>
 
@@ -44,7 +44,7 @@ export function Scoreboard() {
         <span className="bg-foreground/50" style={{ width: "22%" }} />
         <span className="bg-foreground" style={{ width: "5%" }} />
       </div>
-      <p className="mt-2 font-mono text-[0.6875rem] text-muted-foreground/70 tracking-wide">
+      <p className="mt-2 font-mono text-[13px] text-muted-foreground/70 tracking-wide">
         D or F · 73%
         <span className="text-muted-foreground/35 mx-2.5">/</span>
         C · 22%
@@ -71,14 +71,14 @@ export function Scoreboard() {
 export function Cliff() {
   return (
     <figure className="max-w-2xl my-8">
-      <p className="font-mono text-[0.6875rem] tracking-widest text-muted-foreground/60 mb-5">
+      <p className="font-mono text-[13px] tracking-widest text-muted-foreground/60 mb-5">
         what agents reach · studies
       </p>
       <ol className="space-y-1">
         <CliffRow value="83%" label="docs pages" size="lg" />
         <CliffRow value="69%" label="homepage" size="lg" />
       </ol>
-      <p className="font-mono text-[0.625rem] tracking-widest text-muted-foreground/45 py-4">
+      <p className="font-mono text-[12px] tracking-widest text-muted-foreground/45 py-4">
         — then a cliff —
       </p>
       <ol className="space-y-1">
@@ -131,7 +131,7 @@ function CliffRow({
 export function SplitStat() {
   return (
     <figure className="max-w-2xl my-8">
-      <p className="font-mono text-[0.6875rem] tracking-widest text-muted-foreground/60 mb-6">
+      <p className="font-mono text-[13px] tracking-widest text-muted-foreground/60 mb-6">
         the action gap · ora scanner
       </p>
       <div className="grid grid-cols-2 gap-6 sm:gap-10">

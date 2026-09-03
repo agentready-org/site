@@ -166,7 +166,7 @@ export default function HomePage() {
           a site: find, then read, then act.
         </p>
         <p className="font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl">
-          <span className="font-mono text-[0.6875rem] tracking-widest text-muted-foreground/55 mr-2">
+          <span className="font-mono text-[13px] tracking-widest text-muted-foreground/55 mr-2">
             how we know
           </span>
           <SourceTag>STUDIES</SourceTag>
@@ -230,7 +230,7 @@ export default function HomePage() {
                 className="font-serif text-base text-foreground/85 leading-relaxed pl-5 relative before:content-['·'] before:absolute before:left-1 before:text-muted-foreground/60"
               >
                 {kind}{" "}
-                <span className="font-mono text-[0.8125rem] text-foreground/70">
+                <span className="font-mono text-[15px] text-foreground/70">
                   ({bots})
                 </span>
               </li>
@@ -450,7 +450,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § changelog
         </p>
-        <p className="font-mono text-[0.8125rem] text-foreground/80 tracking-wide">
+        <p className="font-mono text-[15px] text-foreground/80 tracking-wide">
           v{GUIDE_VERSION} · {GUIDE_DATE_LABEL} · first public version.
         </p>
       </section>
@@ -508,11 +508,11 @@ function Fold({
 }) {
   return (
     <details className="max-w-2xl mt-6 group">
-      <summary className="cursor-pointer font-mono text-[0.6875rem] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors [&::-webkit-details-marker]:hidden list-none">
-        <span aria-hidden="true" className="text-[0.5625rem] mr-1 group-open:hidden">
+      <summary className="cursor-pointer font-mono text-[13px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors [&::-webkit-details-marker]:hidden list-none">
+        <span aria-hidden="true" className="text-[10px] mr-1 group-open:hidden">
           ▸
         </span>
-        <span aria-hidden="true" className="text-[0.5625rem] mr-1 hidden group-open:inline">
+        <span aria-hidden="true" className="text-[10px] mr-1 hidden group-open:inline">
           ▾
         </span>
         {label}
@@ -524,7 +524,7 @@ function Fold({
 
 function Mono({ children }: { children: ReactNode }) {
   return (
-    <span className="font-mono text-[0.8125rem] text-foreground">{children}</span>
+    <span className="font-mono text-[15px] text-foreground">{children}</span>
   );
 }
 
@@ -546,7 +546,7 @@ function ScanCard({
       rel="noreferrer"
       className="block border border-border/60 rounded-lg p-5 hover:border-foreground/30 hover:bg-muted/20 transition-colors"
     >
-      <p className="font-mono text-[0.625rem] tracking-widest text-muted-foreground/55 mb-2">
+      <p className="font-mono text-[12px] tracking-widest text-muted-foreground/55 mb-2">
         {kicker}
       </p>
       <p className="font-mono text-sm font-bold text-foreground mb-2">{name}</p>
@@ -563,7 +563,7 @@ function CodeBlock({ label, code }: { label: string; code: string }) {
       <figcaption className="font-mono text-xs text-muted-foreground/60 tracking-wide mb-2">
         {label}
       </figcaption>
-      <pre className="font-mono text-[0.8125rem] leading-relaxed text-foreground/85 bg-muted/40 border border-border/50 rounded-lg p-4 overflow-x-auto">
+      <pre className="font-mono text-[15px] leading-relaxed text-foreground/85 bg-muted/40 border border-border/50 rounded-lg p-4 overflow-x-auto">
         <code>{code}</code>
       </pre>
     </figure>
