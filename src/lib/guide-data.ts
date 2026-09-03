@@ -64,6 +64,101 @@ export type EvidenceBlock = {
   reproduce: string;
 };
 
+export type Essential = {
+  href: string;
+  name: string;
+  why: string;
+};
+
+export type EssentialLayer = {
+  id: "find" | "read" | "act";
+  href: string;
+  label: string;
+  note?: string;
+  items: readonly Essential[];
+};
+
+/**
+ * Compact checklist for the homepage TL;DR. Each item jumps to the
+ * matching practice (or heading) in the guide. Find and read are the
+ * essentials every site needs; act applies when agents should complete
+ * a task, not only read — the same split is-agentic.com uses.
+ */
+export const ESSENTIAL_LAYERS: readonly EssentialLayer[] = [
+  {
+    id: "find",
+    href: "#reachable",
+    label: "find",
+    items: [
+      {
+        href: "#first-party-docs",
+        name: "Publish first-party docs",
+        why: "The page agents ground answers on and name as the source.",
+      },
+      {
+        href: "#robots-txt",
+        name: "Allow agents in robots.txt",
+        why: "The gate to search indexes. About 1 in 10 scanned sites block AI crawlers entirely.",
+      },
+      {
+        href: "#sitemap-xml",
+        name: "List pages in a sitemap.xml",
+        why: "Standard for crawlers. Agents fetch it in 4% of runs.",
+      },
+    ],
+  },
+  {
+    id: "read",
+    href: "#read",
+    label: "read",
+    items: [
+      {
+        href: "#no-javascript",
+        name: "Put the answer in the initial HTML",
+        why: "Homepage and docs, server-rendered. A JavaScript-hidden answer was one of two changes that broke an agent.",
+      },
+      {
+        href: "#status-codes",
+        name: "Return real HTTP status codes",
+        why: "404 for a missing path, never 200. 429 with Retry-After when throttling.",
+      },
+      {
+        href: "#llms-txt",
+        name: "Link llms.txt, JSON-LD, and OpenAPI",
+        why: "86–100% of those fetches arrived through a link, not a guessed path.",
+      },
+      {
+        href: "#fenced-code",
+        name: "Fence and language-tag code",
+        why: "When an agent’s answer included code, 61% of the time it lifted lines verbatim.",
+      },
+    ],
+  },
+  {
+    id: "act",
+    href: "#act",
+    label: "act",
+    note: "if agents should complete a task, not only read",
+    items: [
+      {
+        href: "#auth",
+        name: "Auth an agent can finish",
+        why: "Self-serve keys or OAuth with discoverable metadata. The first gate of acting.",
+      },
+      {
+        href: "#public-api",
+        name: "A public API with OpenAPI",
+        why: "Typed operations, errors, and rate limits. The acting surface itself.",
+      },
+      {
+        href: "#mcp-server",
+        name: "MCP, SDKs, and a CLI as you ship them",
+        why: "Only the surfaces the product actually offers. Do not invent an MCP server to chase a score.",
+      },
+    ],
+  },
+];
+
 /** § Be reachable and citable */
 export const REACHABLE_PRACTICES: readonly Practice[] = [
   {

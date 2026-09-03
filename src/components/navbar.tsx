@@ -8,6 +8,8 @@ const navLink =
   "font-mono text-xs text-muted-foreground hover:text-foreground transition-colors";
 
 const ANCHORS: { href: string; label: string }[] = [
+  { href: "#essentials", label: "Essentials" },
+  { href: "#beyond", label: "Scan" },
   { href: "#guide", label: "Guide" },
 ];
 

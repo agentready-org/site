@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import {
   ACT_PRACTICES,
   DESCRIBING_FILES,
+  ESSENTIAL_LAYERS,
   GUIDE_DATE_LABEL,
   GUIDE_VERSION,
   READ_PRACTICES,
@@ -24,7 +25,7 @@ function renderPractice(p: Practice): string {
 export function GET() {
   const body = `# AgentReady: Make your site readable by AI agents
 
-> AgentReady is a community-driven standard for the agentic web: an open specification of the protocols, standards, and conventions a product should implement to be usable by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how builders should score compliance. The current version is a practical guide based on real agent runs and a controlled experiment, developed by ora.ai and Vercel.
+> AgentReady is a community-driven standard for the agentic web: an open specification of the protocols, standards, and conventions a product should implement to be usable by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how builders should score compliance. The current version is a practical guide based on real agent runs and a controlled experiment, developed in collaboration with Ora, Vercel, Mintlify, Auth0, and Stripe.
 
 Version: v${GUIDE_VERSION}
 Last updated: ${GUIDE_DATE_LABEL}
@@ -35,6 +36,21 @@ License: MIT
 Numbers in this guide are tagged by source. [STUDIES] refers to research from the ora.ai research lab: over 1,000 real agent runs across 25 sites traced turn by turn and a controlled experiment that toggled one feature at a time; the full dataset is public at https://github.com/agentready-org/standard/tree/main/data, with a per-claim breakdown to reproduce every [STUDIES] number. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
 
 In the studies, two changes caused agents to fail: hiding answers behind JavaScript and blocking access. The guide follows the order in which agents encounter a site: find, read, then act. All recommendations share one prerequisite: the agent must be able to reach the page and find the answer in the returned HTML.
+
+## Essentials
+
+The short version. Find and read are the essentials every site needs. Act applies when agents should complete a task, not only read.
+
+${ESSENTIAL_LAYERS.map(
+  (layer) =>
+    `### ${layer.label}${layer.note ? ` (${layer.note})` : ""}\n\n${layer.items
+      .map((item) => `- ${item.name}: ${item.why}`)
+      .join("\n")}`,
+).join("\n\n")}
+
+## Check your site
+
+Two public scanners share the same Ora engine and differ in how they read it. Both are free and need no signup. is-agentic.com is the Vercel × Ora essentials reading for sites whose job is content agents can find and use: scan at https://is-agentic.com or run "npx is-agentic example.com". ora.ai is the full ranker for products agents transact with (API, MCP, payments, leaderboard): scan at https://ora.ai, run "npx @ora-ai/ax audit https://example.com", or POST {"url": "example.com"} to https://ora.ai/api/scan. Docs: https://is-agentic.com/docs and https://ora.ai/docs.
 
 ## Be reachable and citable
 
@@ -66,16 +82,16 @@ To act, an agent needs an operable interface (API, MCP server, SDK, or CLI) plus
 
 ${ACT_PRACTICES.map(renderPractice).join("\n")}
 
-## Beyond this guide
-
-The ora scanner covers additional agent-readiness checks through its public methodology, per-check breakdown, and leaderboard. Scan any domain at https://ora.ai, run "npx @ora-ai/ax audit https://example.com" from the CLI, or POST {"url": "example.com"} to https://ora.ai/api/scan. Full documentation for the scanner, CLI, and API is at https://ora.ai/docs.
-
 ## Links
 
+- Essentials: https://agentready.org/#essentials
+- Check your site: https://agentready.org/#beyond
 - Guide: https://agentready.org/#guide
 - Be reachable and citable: https://agentready.org/#reachable
 - Put the answer where agents read: https://agentready.org/#read
 - Let agents act: https://agentready.org/#act
+- is-agentic.com: https://is-agentic.com
+- ora.ai: https://ora.ai
 - ora docs: https://ora.ai/docs
 - GitHub: https://github.com/agentready-org/standard
 - Spec source: https://github.com/agentready-org/standard/blob/main/spec/spec.md

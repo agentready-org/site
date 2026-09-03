@@ -21,7 +21,7 @@ const spaceMono = Space_Mono({
 const SITE_URL = "https://agentready.org";
 const TITLE = "AgentReady // The open standard for agent readiness";
 const DESCRIPTION =
-  "AgentReady is a community-driven standard for the agentic web: a practical guide to making your site readable by AI agents, based on real agent runs. Developed by ora.ai and Vercel.";
+  "AgentReady is a community-driven standard for the agentic web: a practical guide to making your site readable by AI agents, based on real agent runs. A collaboration between Ora, Vercel, Mintlify, Auth0, and Stripe.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -118,15 +118,18 @@ export default function RootLayout({
               name: "AgentReady",
               headline: "Make your site readable by AI agents",
               description:
-                "A practical guide to making your website work for the agents that now read it, based on real agent runs and a controlled experiment. Developed by ora.ai and Vercel.",
+                "A practical guide to making your website work for the agents that now read it, based on real agent runs and a controlled experiment. A collaboration between Ora, Vercel, Mintlify, Auth0, and Stripe.",
               url: "https://agentready.org",
               inLanguage: "en",
               version: GUIDE_VERSION,
               datePublished: GUIDE_DATE,
               license: "https://opensource.org/licenses/MIT",
               contributor: [
-                { "@type": "Organization", name: "ora.ai" },
-                { "@type": "Organization", name: "Vercel" },
+                { "@type": "Organization", name: "Ora", url: "https://ora.ai" },
+                { "@type": "Organization", name: "Vercel", url: "https://vercel.com" },
+                { "@type": "Organization", name: "Mintlify", url: "https://www.mintlify.com" },
+                { "@type": "Organization", name: "Auth0", url: "https://auth0.com" },
+                { "@type": "Organization", name: "Stripe", url: "https://stripe.com" },
               ],
               encoding: [
                 {

@@ -4,16 +4,17 @@ The open standard for agent readiness.
 
 The site publishes **"Make your site readable by AI agents"** — a practical
 guide to making your website work for the agents that now read it, grounded
-in real agent runs and a controlled experiment. Developed by ora.ai and
-Vercel.
+in real agent runs and a controlled experiment. A collaboration between Ora,
+Vercel, Mintlify, Auth0, and Stripe.
 
 The guide is published as a single page. Key anchors:
 
-- `/#guide` — the guide's opening and section index
+- `/#essentials` — compact checklist of what to ship
+- `/#beyond` — Check your site (is-agentic.com and ora.ai)
+- `/#guide` — the guide's opening
 - `/#reachable` — Be reachable and citable (find)
 - `/#read` — Put the answer where agents read
 - `/#act` — Let agents act, not just read
-- `/#beyond` — Beyond this guide (the ora scanner)
 - `/#changelog` — guide version history
 
 Machine-readable artifacts:
@@ -64,7 +65,8 @@ src/
     icon.svg           # Favicon
   components/
     navbar.tsx         # Sticky nav
-    footer.tsx         # Compact footer
+    footer.tsx         # Compact footer with partner logos
+    partners.tsx       # Collaboration logo strip (Ora, Vercel, Mintlify, Auth0, Stripe)
   lib/
     guide-data.ts      # Practice tables shared by the page and /llms.txt
 ```
