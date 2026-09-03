@@ -58,9 +58,11 @@ export function Navbar() {
         <div className="flex items-center gap-3 min-w-0">
           <Link
             href="/"
+            aria-label="agentready.org"
             className="font-mono text-lg font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
           >
-            agentready.org
+            agentready
+            <span className="font-normal text-muted-foreground/55">.org</span>
           </Link>
         </div>
 
