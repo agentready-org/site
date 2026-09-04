@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLink =
-  "font-mono text-[12px] text-muted-foreground hover:text-foreground transition-colors";
+  "font-mono text-[13px] text-muted-foreground hover:text-foreground transition-colors";
 
 const ANCHORS: { href: string; label: string }[] = [
   { href: "#essentials", label: "Essentials" },
@@ -59,7 +59,7 @@ export function Navbar() {
           <Link
             href="/"
             aria-label="agentready.org"
-            className="font-mono text-[18px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
+            className="font-mono text-[20px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
           >
             agentready
             <span className="font-normal text-muted-foreground/55">.org</span>
@@ -93,7 +93,7 @@ export function Navbar() {
           <button
             ref={buttonRef}
             type="button"
-            className="font-mono text-[11px] text-muted-foreground border border-border/70 rounded-md px-2.5 py-1.5 hover:bg-muted/30 hover:text-foreground transition-colors"
+            className="font-mono text-[12px] text-muted-foreground border border-border/70 rounded-md px-2.5 py-1.5 hover:bg-muted/30 hover:text-foreground transition-colors"
             aria-expanded={menuOpen}
             aria-haspopup="menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -111,7 +111,7 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="block px-4 py-2.5 font-mono text-[12px] text-muted-foreground hover:bg-muted/40 hover:text-foreground transition-colors"
+                  className="block px-4 py-2.5 font-mono text-[13px] text-muted-foreground hover:bg-muted/40 hover:text-foreground transition-colors"
                   role="menuitem"
                   onClick={() => setMenuOpen(false)}
                 >
@@ -124,7 +124,7 @@ export function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="block px-4 py-2.5 font-mono text-[12px] text-muted-foreground hover:bg-muted/40 hover:text-foreground transition-colors"
+                  className="block px-4 py-2.5 font-mono text-[13px] text-muted-foreground hover:bg-muted/40 hover:text-foreground transition-colors"
                   role="menuitem"
                   onClick={() => setMenuOpen(false)}
                 >

@@ -53,7 +53,7 @@ export default function HomePage() {
         <Partners />
         <p className="font-serif text-base text-foreground/85 leading-relaxed max-w-2xl">
           Agents are a new class of user. Many protocols now serve them
-          (MCP, A2A, x402, llms.txt, Web Bot Auth, and more), but there is
+          (MCP, WebMCP, A2A, x402, llms.txt, Web Bot Auth, and more), but there is
           no shared definition of what it means to be ready for them.
           AgentReady is an open specification of what a product should
           implement to be usable by AI agents, from discovery to completion.
@@ -376,7 +376,7 @@ export default function HomePage() {
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-2 max-w-2xl">
           Reading documentation does not let an agent complete a task. To
-          act, it needs an API, MCP server, SDK, or CLI, plus
+          act, it needs an API, MCP server, WebMCP tools, SDK, or CLI, plus
           authentication it can finish. The last step happens only if the
           first two did.
         </p>
@@ -406,6 +406,12 @@ export default function HomePage() {
               title: "The state of agent readiness",
               href: "https://ora.ai/blog/state-of-agent-readiness-2026",
               blurb: "the scanner report behind the reachability figure.",
+            },
+            {
+              title: "WebMCP",
+              href: "https://webmachinelearning.github.io/webmcp/",
+              blurb:
+                "the W3C Community Group draft for in-page MCP tools on document.modelContext.",
             },
             {
               title: "is-agentic.com",

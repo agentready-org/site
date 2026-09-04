@@ -78,7 +78,7 @@ Return accurate HTTP status codes: 404 for a missing path (never 200), and 429 w
 
 ## Let agents act, not just read
 
-To act, an agent needs an operable interface (API, MCP server, SDK, or CLI) plus authentication it can complete.
+To act, an agent needs an operable interface (API, MCP server, WebMCP tools, SDK, or CLI) plus authentication it can complete.
 
 ${ACT_PRACTICES.map(renderPractice).join("\n")}
 
@@ -93,6 +93,7 @@ ${ACT_PRACTICES.map(renderPractice).join("\n")}
 - is-agentic.com: https://is-agentic.com
 - ora.ai: https://ora.ai
 - ora docs: https://ora.ai/docs
+- WebMCP draft: https://webmachinelearning.github.io/webmcp/
 - GitHub: https://github.com/agentready-org/standard
 - Spec source: https://github.com/agentready-org/standard/blob/main/spec/spec.md
 - Dataset: https://github.com/agentready-org/standard/tree/main/data

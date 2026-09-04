@@ -155,6 +155,11 @@ export const ESSENTIAL_LAYERS: readonly EssentialLayer[] = [
         name: "MCP, SDKs, and a CLI as you ship them",
         why: "Only the surfaces the product actually offers. Do not invent an MCP server to chase a score.",
       },
+      {
+        href: "#webmcp",
+        name: "WebMCP on pages agents should act through",
+        why: "In-page tools on document.modelContext, in the user's session. Complementary to a server MCP. Do not invent tools to chase a score.",
+      },
     ],
   },
 ];
@@ -513,6 +518,13 @@ export const ACT_PRACTICES: readonly Practice[] = [
     what: "Standard tool protocol for docs search and actions.",
     bestPractice:
       "Serve over Streamable HTTP at /mcp. Keep the docs MCP public. Gate the product MCP with OAuth (protected-resource metadata at /.well-known/oauth-protected-resource per RFC 9728, with PKCE) and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery are an emerging convention (SEP-2127, a working-group draft that major hosts have begun to support): ship one if your target hosts read it, but expect the exact path to keep moving.",
+  },
+  {
+    id: "webmcp",
+    name: "WebMCP",
+    what: "The same tool contract, registered on the page itself.",
+    bestPractice:
+      "If the product has a web UI an agent should operate, register tools on document.modelContext. Feature-detect; the API is a W3C Community Group draft. Complementary to a server MCP: these tools run in the live page with the signed-in session. Only ship tools that map to actions the product actually offers.",
   },
   {
     id: "mcp-apps",
