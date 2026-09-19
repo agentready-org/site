@@ -26,11 +26,11 @@ export function Footer() {
             <a href="#essentials" className={footerLink}>
               Essentials
             </a>
-            <a href="#beyond" className={footerLink}>
-              Scan
-            </a>
             <a href="#guide" className={footerLink}>
               Guide
+            </a>
+            <a href="#beyond" className={footerLink}>
+              Scan
             </a>
             <a
               href="https://is-agentic.com"
@@ -47,6 +47,14 @@ export function Footer() {
               className={footerLink}
             >
               ora.ai
+            </a>
+            <a
+              href="https://www.mintlify.com/score"
+              target="_blank"
+              rel="noreferrer"
+              className={footerLink}
+            >
+              mintlify
             </a>
             <a
               href="https://github.com/agentready-org/standard"

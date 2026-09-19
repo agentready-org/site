@@ -50,7 +50,7 @@ ${ESSENTIAL_LAYERS.map(
 
 ## Check your site
 
-Two public scanners share the same Ora engine and differ in how they read it. Both are free and need no signup. is-agentic.com is the Vercel × Ora essentials reading for sites whose job is content agents can find and use: scan at https://is-agentic.com or run "npx is-agentic example.com". ora.ai is the full ranker for products agents transact with (API, MCP, payments, leaderboard): scan at https://ora.ai, run "npx @ora-ai/ax audit https://example.com", or POST {"url": "example.com"} to https://ora.ai/api/scan. Docs: https://is-agentic.com/docs and https://ora.ai/docs.
+Three public rankers cover different surfaces. None of them is the spec. All three have a free browser score. is-agentic.com is the Vercel × Ora essentials reading for sites whose job is content agents can find and use: scan at https://is-agentic.com or run "npx is-agentic example.com". ora.ai is the full ranker for products agents transact with (API, MCP, payments, leaderboard): scan at https://ora.ai, run "npx @ora-ai/ax audit https://example.com", or POST {"url": "example.com"} to https://ora.ai/api/scan. mintlify.com/score is Mintlify's Agent Score for documentation sites (29 checks on the Agent-Friendly Documentation Spec): scan at https://www.mintlify.com/score or run "npx mint score docs.example.com". Docs: https://is-agentic.com/docs, https://ora.ai/docs, and https://www.mintlify.com/blog/agent-score.
 
 ## Be reachable and citable
 
@@ -85,14 +85,15 @@ ${ACT_PRACTICES.map(renderPractice).join("\n")}
 ## Links
 
 - Essentials: https://agentready.org/#essentials
-- Check your site: https://agentready.org/#beyond
 - Guide: https://agentready.org/#guide
 - Be reachable and citable: https://agentready.org/#reachable
 - Put the answer where agents read: https://agentready.org/#read
 - Let agents act: https://agentready.org/#act
+- Check your site: https://agentready.org/#beyond
 - is-agentic.com: https://is-agentic.com
 - ora.ai: https://ora.ai
 - ora docs: https://ora.ai/docs
+- Mintlify Agent Score: https://www.mintlify.com/score
 - WebMCP draft: https://webmachinelearning.github.io/webmcp/
 - GitHub: https://github.com/agentready-org/standard
 - Spec source: https://github.com/agentready-org/standard/blob/main/spec/spec.md

@@ -10,11 +10,11 @@ Vercel, Mintlify, Auth0, and Stripe.
 The guide is published as a single page. Key anchors:
 
 - `/#essentials` — compact checklist of what to ship
-- `/#beyond` — Check your site (is-agentic.com and ora.ai)
 - `/#guide` — the guide's opening
 - `/#reachable` — Be reachable and citable (find)
 - `/#read` — Put the answer where agents read
 - `/#act` — Let agents act, not just read
+- `/#beyond` — Check your site (is-agentic.com, ora.ai, Mintlify Agent Score)
 - `/#changelog` — guide version history
 
 Machine-readable artifacts:

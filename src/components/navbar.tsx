@@ -9,8 +9,8 @@ const navLink =
 
 const ANCHORS: { href: string; label: string }[] = [
   { href: "#essentials", label: "Essentials" },
-  { href: "#beyond", label: "Scan" },
   { href: "#guide", label: "Guide" },
+  { href: "#beyond", label: "Scan" },
 ];
 
 const EXTERNAL_LINKS: { href: string; label: string }[] = [

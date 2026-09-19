@@ -42,6 +42,7 @@ const MARKDOWN_ALTERNATE_SNIPPET = `<!-- A mirror nothing points to is a file no
 
 const SCAN_IS_AGENTIC_SNIPPET = `npx is-agentic example.com`;
 const SCAN_CLI_SNIPPET = `npx @ora-ai/ax audit https://example.com`;
+const SCAN_MINTLIFY_SNIPPET = `npx mint score docs.example.com`;
 
 export default function HomePage() {
   return (
@@ -82,63 +83,6 @@ export default function HomePage() {
           readable.
         </p>
         <Essentials />
-      </section>
-
-      <section
-        id="beyond"
-        className="py-10 border-t border-border/50 scroll-mt-20"
-      >
-        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
-          § check your site
-        </p>
-        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
-          Check your site
-        </h2>
-        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
-          Two public scanners share the same Ora engine and differ in how
-          they read it. Both are free and need no signup.
-        </p>
-
-        <div className="grid sm:grid-cols-2 gap-4 mb-8 max-w-2xl">
-          <ScanCard
-            href="https://is-agentic.com"
-            name="is-agentic.com"
-            kicker="essentials"
-            body="A Vercel × Ora reading for sites whose job is content agents can find and use. Essentials carry the score; capability checks (MCP, auth, commerce) sit in a recommended tier."
-          />
-          <ScanCard
-            href="https://ora.ai"
-            name="ora.ai"
-            kicker="full ranker"
-            body="The population ranker for products agents transact with: 100+ checks, per-layer breakdown, and a leaderboard. Use this when the product has an API, MCP server, or payments."
-          />
-        </div>
-
-        <CodeBlock label="is-agentic.com" code={SCAN_IS_AGENTIC_SNIPPET} />
-        <CodeBlock label="ora.ai" code={SCAN_CLI_SNIPPET} />
-
-        <p className="font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl">
-          Scanner methodology and docs:{" "}
-          <a
-            href="https://is-agentic.com/docs"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            is-agentic.com/docs
-          </a>{" "}
-          and{" "}
-          <a
-            href="https://ora.ai/docs"
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
-          >
-            ora.ai/docs
-          </a>
-          . The protocol changes as new agent behavior is measured, so
-          checks and weights may change between guide versions.
-        </p>
       </section>
 
       <section
@@ -388,6 +332,80 @@ export default function HomePage() {
       </section>
 
       <section
+        id="beyond"
+        className="py-10 border-t border-border/50 scroll-mt-20"
+      >
+        <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
+          § check your site
+        </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-3 leading-tight">
+          Check your site
+        </h2>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
+          Three public rankers cover different surfaces. None of them is
+          the spec. All three have a free browser score.
+        </p>
+
+        <div className="max-w-2xl mb-4 divide-y divide-border/50 border-y border-border/50">
+          <ScanCard
+            href="https://is-agentic.com"
+            name="is-agentic.com"
+            kicker="essentials"
+            body="Vercel × Ora, for sites whose job is content. Essentials carry the score; capability checks sit in a recommended tier."
+          />
+          <ScanCard
+            href="https://ora.ai"
+            name="ora.ai"
+            kicker="full ranker"
+            body="The population ranker for products agents transact with: 100+ checks, per-layer breakdown, and a leaderboard."
+          />
+          <ScanCard
+            href="https://www.mintlify.com/score"
+            name="mintlify.com/score"
+            kicker="docs"
+            body="Mintlify's Agent Score for documentation sites. 29 checks on the Agent-Friendly Documentation Spec."
+          />
+        </div>
+
+        <Fold label="CLI">
+          <CodeBlock label="is-agentic.com" code={SCAN_IS_AGENTIC_SNIPPET} />
+          <CodeBlock label="ora.ai" code={SCAN_CLI_SNIPPET} />
+          <CodeBlock label="mintlify.com/score" code={SCAN_MINTLIFY_SNIPPET} />
+        </Fold>
+
+        <p className="font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl mt-5">
+          Methodology:{" "}
+          <a
+            href="https://is-agentic.com/docs"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            is-agentic.com/docs
+          </a>
+          ,{" "}
+          <a
+            href="https://ora.ai/docs"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            ora.ai/docs
+          </a>
+          , and{" "}
+          <a
+            href="https://www.mintlify.com/blog/agent-score"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            Mintlify Agent Score
+          </a>
+          . Checks and weights may change between guide versions.
+        </p>
+      </section>
+
+      <section
         id="references"
         className="py-10 border-t border-border/50 scroll-mt-20"
       >
@@ -418,6 +436,12 @@ export default function HomePage() {
               href: "https://is-agentic.com",
               blurb:
                 "the Vercel × Ora scanner for site essentials, powered by the same engine as the Ora ranker.",
+            },
+            {
+              title: "Mintlify Agent Score",
+              href: "https://www.mintlify.com/score",
+              blurb:
+                "the docs ranker: 29 checks on the Agent-Friendly Documentation Spec.",
             },
             {
               title: "ora research",
@@ -550,15 +574,19 @@ function ScanCard({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="block border border-border/60 rounded-lg p-5 hover:border-foreground/30 hover:bg-muted/20 transition-colors"
+      className="grid sm:grid-cols-[7.5rem_1fr] gap-x-4 gap-y-0.5 py-3.5 hover:bg-muted/20 -mx-2 px-2 transition-colors"
     >
-      <p className="font-mono text-[12px] tracking-widest text-muted-foreground/55 mb-2">
+      <p className="font-mono text-[11px] tracking-widest text-muted-foreground/55 sm:pt-1">
         {kicker}
       </p>
-      <p className="font-mono text-sm font-bold text-foreground mb-2">{name}</p>
-      <p className="font-serif text-sm text-foreground/75 leading-relaxed">
-        {body}
-      </p>
+      <div>
+        <p className="font-mono text-[13px] font-bold text-foreground leading-snug">
+          {name}
+        </p>
+        <p className="font-serif text-[13px] text-foreground/70 leading-relaxed mt-0.5">
+          {body}
+        </p>
+      </div>
     </a>
   );
 }
