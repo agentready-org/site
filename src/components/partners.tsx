@@ -49,7 +49,14 @@ export function Partners({ compact = false }: { compact?: boolean }) {
 
 function OraLogo() {
   return (
-    <span className="font-mono font-bold tracking-wide leading-none text-[1.45em]">
+    <span
+      className="font-bold tracking-wide leading-none text-[1.45em]"
+      style={{
+        fontFamily:
+          'var(--font-space-mono), ui-monospace, "SFMono-Regular", monospace',
+        WebkitTextStroke: "0.2px currentColor",
+      }}
+    >
       ora
     </span>
   );
