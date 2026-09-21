@@ -66,7 +66,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={toggle}
       aria-label={label}
       title={label}
-      className={`inline-flex items-center justify-center h-7 w-7 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-colors ${className}`}
+      className={`inline-flex items-center justify-center h-8 w-8 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-colors ${className}`}
     >
       {theme === "dark" ? <SunIcon /> : <MoonIcon />}
       <span className="sr-only">{label}</span>
@@ -77,8 +77,8 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
 function SunIcon() {
   return (
     <svg
-      width="14"
-      height="14"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -103,8 +103,8 @@ function SunIcon() {
 function MoonIcon() {
   return (
     <svg
-      width="14"
-      height="14"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

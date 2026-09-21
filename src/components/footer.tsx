@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const footerLink =
-  "font-mono text-[13px] text-muted-foreground hover:text-foreground transition-colors";
+  "font-mono text-[15px] text-muted-foreground hover:text-foreground transition-colors";
 
 export function Footer() {
   return (
@@ -12,12 +12,12 @@ export function Footer() {
             <Link
               href="/"
               aria-label="agentready.org"
-              className="font-mono text-[20px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
+              className="font-mono text-[22px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
             >
               agentready
               <span className="font-normal text-muted-foreground/55">.org</span>
             </Link>
-            <p className="font-mono text-[13px] text-muted-foreground/55 mt-1 tracking-wide">
+            <p className="font-mono text-[15px] text-muted-foreground/55 mt-1 tracking-wide">
               the open standard for agent readiness · MIT
             </p>
           </div>

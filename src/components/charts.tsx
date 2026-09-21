@@ -1,7 +1,7 @@
 /** Figures for the guide. Editorial, not dashboard. */
 
 export function Scoreboard() {
-  const cells = Array.from({ length: 100 }, (_, i) => i < 5);
+  const cells = Array.from({ length: 100 }, (_, i) => i < 3);
   return (
     <figure className="max-w-2xl mt-10 mb-2">
       <p className="font-mono text-[13px] tracking-widest text-muted-foreground/60 mb-4">
@@ -10,7 +10,7 @@ export function Scoreboard() {
 
       <div className="flex items-baseline gap-5">
         <p className="font-serif text-6xl sm:text-7xl text-foreground tracking-tight leading-none tabular-nums">
-          5%
+          3%
         </p>
         <p className="font-serif text-base text-foreground/80 leading-snug">
           of scanned sites grade B or above
@@ -20,7 +20,7 @@ export function Scoreboard() {
       <div
         className="mt-5 grid gap-[3px] grid-cols-[repeat(20,minmax(0,1fr))]"
         role="img"
-        aria-label="5 of 100 cells filled, one per percent of sites at grade B or above"
+        aria-label="3 of 100 cells filled, one per percent of sites at grade B or above"
       >
         {cells.map((on, i) => (
           <span
@@ -38,18 +38,18 @@ export function Scoreboard() {
       <div
         className="mt-4 flex h-1.5 rounded-sm overflow-hidden"
         role="img"
-        aria-label="73% grade D or F, 22% grade C, 5% grade B or above"
+        aria-label="75% grade D or F, 22% grade C, 3% grade B or above"
       >
-        <span className="bg-foreground/20" style={{ width: "73%" }} />
+        <span className="bg-foreground/20" style={{ width: "75%" }} />
         <span className="bg-foreground/50" style={{ width: "22%" }} />
-        <span className="bg-foreground" style={{ width: "5%" }} />
+        <span className="bg-foreground" style={{ width: "3%" }} />
       </div>
       <p className="mt-2 font-mono text-[13px] text-muted-foreground/70 tracking-wide">
-        D or F · 73%
+        D or F · 75%
         <span className="text-muted-foreground/35 mx-2.5">/</span>
         C · 22%
         <span className="text-muted-foreground/35 mx-2.5">/</span>
-        B+ · 5%
+        B+ · 3%
       </p>
 
       <figcaption className="mt-5 font-serif text-sm text-foreground/70 leading-relaxed">
