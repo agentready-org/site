@@ -21,14 +21,14 @@ export function Partners({ compact = false }: { compact?: boolean }) {
         in collaboration with
       </p>
       <ul
-        className={`flex flex-nowrap items-center overflow-x-auto py-0.5 ${
-          compact ? "gap-x-6" : "gap-x-6 sm:gap-x-8"
+        className={`flex flex-wrap items-center ${
+          compact ? "gap-x-6 gap-y-3" : "gap-x-6 gap-y-3 sm:gap-x-8"
         }`}
       >
         {partners
           .filter((p) => !("hidden" in p && p.hidden))
           .map(({ name, href, Logo }) => (
-          <li key={name} className="shrink-0">
+          <li key={name}>
             <a
               href={href}
               target="_blank"
