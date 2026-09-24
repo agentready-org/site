@@ -33,12 +33,13 @@ export function Partners({ compact = false }: { compact?: boolean }) {
               href={href}
               target="_blank"
               rel="noreferrer"
-              aria-label={name}
               className={`inline-flex items-center text-foreground/90 hover:text-foreground transition-colors ${
                 compact ? "h-5 text-[20px]" : "h-6 sm:h-7 text-[24px] sm:text-[28px]"
               }`}
             >
               <Logo />
+              {/* The accessible name, and the link text for markdown converters. */}
+              <span className="sr-only">{name}</span>
             </a>
           </li>
         ))}
@@ -50,6 +51,7 @@ export function Partners({ compact = false }: { compact?: boolean }) {
 function OraLogo() {
   return (
     <span
+      aria-hidden="true"
       className="font-bold tracking-wide leading-none text-[1.45em]"
       style={{
         fontFamily:

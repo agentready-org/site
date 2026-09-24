@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import {
   ACT_PRACTICES,
+  ANNOUNCEMENT_URL,
+  CHANGELOG_URL,
   DATASET_URL,
   DESCRIBING_FILES,
   GUIDE_DATE_LABEL,
@@ -40,8 +42,11 @@ const LLMS_TXT_SNIPPET = `# Acme
 const MARKDOWN_ALTERNATE_SNIPPET = `<!-- A mirror nothing points to is a file nothing fetches. -->
 <link rel="alternate" type="text/markdown" href="/docs/quickstart.md">`;
 
+const AI_CATALOG_SNIPPET = `<!-- In the homepage head, and as an HTTP Link header from the CDN. -->
+<link rel="ai-catalog" href="/.well-known/ai-catalog.json">`;
+
 const SCAN_IS_AGENTIC_SNIPPET = `npx is-agentic example.com`;
-const SCAN_CLI_SNIPPET = `npx @ora-ai/ax audit https://example.com`;
+const SCAN_CLI_SNIPPET = `npx ax audit https://example.com`;
 const SCAN_MINTLIFY_SNIPPET = `npx mint score docs.example.com`;
 
 export default function HomePage() {
@@ -107,7 +112,19 @@ export default function HomePage() {
           </a>{" "}
           research lab we traced 1,033 real agent runs and ran a controlled
           experiment. The sections below follow the order agents encounter
-          a site: find, then read, then act.
+          a site: find, then read, then act. Each practice carries its
+          stable identifier from the{" "}
+          <a
+            href={SPEC_SOURCE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            spec source
+          </a>{" "}
+          (AR-FIND-01 and so on) and its strength: MUST for the changes
+          that broke an agent in the studies, SHOULD for practices that
+          measurably shaped where agents went, MAY for emerging conventions.
         </p>
         <p className="font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl">
           <span className="font-mono text-[13px] tracking-widest text-muted-foreground/55 mr-2">
@@ -157,6 +174,28 @@ export default function HomePage() {
         />
 
         <CodeBlock label="robots.txt" code={ROBOTS_TXT_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          An AI Catalog is the one place an agent can learn what you ship
+          for it: a JSON manifest at{" "}
+          <Mono>/.well-known/ai-catalog.json</Mono> whose entries point to
+          your MCP server card, OpenAPI, GraphQL schema, A2A agent card,
+          docs, llms.txt, and skills, each typed by media type. Agentic
+          Resource Discovery (ARD) is the registry layer on top: a registry
+          such as{" "}
+          <a
+            href="https://ora.ai/directory"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            Ora Directory
+          </a>{" "}
+          indexes published catalogs and answers search across them.
+          Publish the catalog, then link it from the homepage head, since
+          files nothing points to are files nothing fetches.
+        </p>
+        <CodeBlock label="index.html" code={AI_CATALOG_SNIPPET} />
 
         <Fold label="crawler jobs and how to test">
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
@@ -268,6 +307,9 @@ export default function HomePage() {
           className="scroll-mt-20 mb-4 max-w-2xl"
         >
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4">
+            <span className="font-mono text-[11px] tracking-widest text-muted-foreground/55 mr-2">
+              AR-READ-02 · MUST
+            </span>
             Return <Mono>404</Mono> for a missing path or a valid redirect
             to a replacement. Do not return <Mono>200</Mono> for a missing
             page, even if the body suggests alternatives; agents cannot
@@ -289,6 +331,9 @@ export default function HomePage() {
           </p>
           <CodeBlock label="llms.txt" code={LLMS_TXT_SNIPPET} />
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+            <span className="font-mono text-[11px] tracking-widest text-muted-foreground/55 mr-2">
+              AR-READ-09 · MAY
+            </span>
             <SourceTag>STUDIES</SourceTag> Agents requested markdown on
             about 65% of web fetches. When they specified a format, they
             chose markdown 96% of the time. Format did not determine task
@@ -321,8 +366,8 @@ export default function HomePage() {
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-2 max-w-2xl">
           Reading documentation does not let an agent complete a task. To
           act, it needs an API, MCP server, WebMCP tools, SDK, or CLI, plus
-          authentication it can finish. The last step happens only if the
-          first two did.
+          authentication it can finish, and, if the product charges, a way
+          to pay. The last step happens only if the first two did.
         </p>
         <SplitStat />
         <PracticeTable
@@ -401,7 +446,8 @@ export default function HomePage() {
           >
             Mintlify Agent Score
           </a>
-          . Checks and weights may change between guide versions.
+          . Scanner checks and weights may change independently of this
+          spec.
         </p>
       </section>
 
@@ -446,7 +492,7 @@ export default function HomePage() {
             {
               title: "ora research",
               href: "https://ora.ai",
-              blurb: "the ongoing research program behind the protocol.",
+              blurb: "the ongoing research program behind the standard.",
             },
             {
               title: "The agent readiness dataset",
@@ -480,8 +526,44 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § changelog
         </p>
-        <p className="font-mono text-[15px] text-foreground/80 tracking-wide">
-          v{GUIDE_VERSION} · {GUIDE_DATE_LABEL} · first public version.
+        <ul className="max-w-2xl space-y-3">
+          <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
+            v{GUIDE_VERSION} · {GUIDE_DATE_LABEL}
+            <span className="block mt-1 font-serif text-sm text-foreground/70 leading-relaxed tracking-normal">
+              Restructured into find / read / act with AR-FIND, AR-READ,
+              and AR-ACT identifiers, strengths assigned from the studies,
+              and every figure tagged by source. The earlier identifiers
+              and /spec.json are retired.
+            </span>
+          </li>
+          <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
+            v1.0.0 · April 2026
+            <span className="block mt-1 font-serif text-sm text-foreground/70 leading-relaxed tracking-normal">
+              First published version, announced March 20, 2026 in{" "}
+              <a
+                href={ANNOUNCEMENT_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+              >
+                Introducing AgentReady
+              </a>
+              : five topic sections, AR-DISC / AR-CONT / AR-CAPA / AR-IDEN /
+              AR-COMM identifiers, and a /spec.json artifact.
+            </span>
+          </li>
+        </ul>
+        <p className="mt-4 font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl">
+          Full history, including every retired identifier, in the{" "}
+          <a
+            href={CHANGELOG_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            changelog
+          </a>
+          .
         </p>
       </section>
 

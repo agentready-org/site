@@ -4,24 +4,54 @@ All notable changes to AgentReady are recorded here.
 
 ---
 
-## Guide v1.0 — August 2026
+## Unreleased
+
+- The site now shows each practice's stable identifier (`AR-FIND-01` and
+  so on) and BCP 14 strength (`MUST` / `SHOULD` / `MAY`) from the spec
+  source, and `/llms.txt` carries them too.
+- New practices: `AR-FIND-04` AI Catalog at `/.well-known/ai-catalog.json`
+  with ARD as the registry layer (MAY); `AR-ACT-07` WebMCP (MAY, previously
+  on the site without an identifier); `AR-ACT-08` agent payments via
+  x402 / MPP for per-call pricing and UCP / ACP for checkout (MAY);
+  `AR-ACT-09` NLWeb `/ask` endpoint with an `ask` tool over MCP (MAY).
+  These identifiers need matching rows in `spec/spec.md`.
+- Hero scoreboard numbers (sites scanned, average score, share at grade B
+  or above, grade split) are read from `ora.ai/api/stats` at build time
+  instead of being hardcoded. The "action gap" and robots.txt figures are
+  dated to the April 2026 report.
+- Collaborator list unified to Ora, Vercel, Mintlify, and Auth0 across the
+  page, metadata, JSON-LD, `/llms.txt`, and README.
+- Ora CLI command corrected to `npx ax audit`.
+
+---
+
+## v1.0 — August 2026
 
 First public version of **"Make your site readable by AI agents."**
 
-The site's content pivoted from a requirements-style specification
-(stable identifiers, BCP 14 normative strengths, `/spec.json`) to a
-practical, evidence-based guide developed by ora.ai and Vercel. The
-guide is organized by the order in which
-agents encounter a site — find, read, act — and its figures are tagged by
-source (`[STUDIES]` for traced agent runs and the controlled experiment,
-`[ORA SCANNER]` for reachability checks).
+The spec was restructured from five topic sections (Discoverability,
+Content, Capabilities, Identity & Access, Commerce) into the order in
+which agents encounter a site — find, read, act — with every requirement
+grounded in the studies. Stable identifiers moved from `AR-DISC-*` /
+`AR-CONT-*` / `AR-CAPA-*` / `AR-IDEN-*` / `AR-COMM-*` to `AR-FIND-*` /
+`AR-READ-*` / `AR-ACT-*`; the old identifiers are retired, not reused.
+Strengths (`MUST` / `SHOULD` / `MAY`) are now assigned from measurement:
+the two changes that broke an agent in the studies are `MUST`, practices
+that measurably shaped where agents went are `SHOULD`, emerging
+conventions are `MAY`. Figures are tagged by source (`[STUDIES]` for
+traced agent runs and the controlled experiment, `[ORA SCANNER]` for
+reachability checks).
 
-Removed in this pivot:
+Removed in this restructure:
 
-- The `/spec.json` machine-readable artifact and the `AR-SECT-NN` stable
-  identifier scheme (the entries below remain for history).
-- The BCP 14 conformance model (`MUST` / `SHOULD` / `MAY`, baseline vs.
-  conditional applicability).
+- The `/spec.json` machine-readable artifact (the markdown source in
+  `spec/spec.md` is the machine-readable form for now).
+- The baseline vs. conditional applicability model; applicability is
+  stated in each requirement's text.
+
+The v1.0.0 entry below is the version announced on March 20, 2026
+([ora.ai/blog/agentready-open-standard](https://ora.ai/blog/agentready-open-standard))
+and published on April 24, 2026.
 
 ---
 

@@ -1,9 +1,14 @@
 /**
  * AgentReady — "Make your site readable by AI agents".
  *
- * This module is the source of truth for the guide's practice tables.
+ * This module is the source of truth for the spec's practice tables.
  * Prose, code samples, and section ordering live in `src/app/page.tsx`;
  * the structured rows below are shared with the `/llms.txt` rendering.
+ *
+ * Each practice carries the stable identifier (`AR-FIND-01` and so on)
+ * and BCP 14 strength (MUST / SHOULD / MAY) from the spec source,
+ * `spec/spec.md` in agentready-org/standard. Identifiers are preserved
+ * across versions and never reused.
  *
  * Evidence entries are tagged by source:
  *  - STUDIES: research from the ora.ai research lab — over 1,000 real
@@ -18,6 +23,12 @@
 export const GUIDE_VERSION = "1.0";
 export const GUIDE_DATE = "2026-08";
 export const GUIDE_DATE_LABEL = "August 2026";
+
+/** The version announced in March 2026 and published as v1.0.0 in April. */
+export const ANNOUNCEMENT_URL =
+  "https://ora.ai/blog/agentready-open-standard";
+export const CHANGELOG_URL =
+  "https://github.com/agentready-org/standard/blob/main/CHANGELOG.md";
 
 /** The spec's markdown source of truth. */
 export const SPEC_SOURCE_URL =
@@ -34,8 +45,14 @@ export type Evidence = {
   text: string;
 };
 
+export type Strength = "MUST" | "SHOULD" | "MAY";
+
 export type Practice = {
   id: string;
+  /** Stable requirement identifier from the spec source, e.g. AR-FIND-01. */
+  arId: string;
+  /** BCP 14 normative strength from the spec source. */
+  strength: Strength;
   name: string;
   what: string;
   evidence?: Evidence;
@@ -168,6 +185,8 @@ export const ESSENTIAL_LAYERS: readonly EssentialLayer[] = [
 export const REACHABLE_PRACTICES: readonly Practice[] = [
   {
     id: "first-party-docs",
+    arId: "AR-FIND-02",
+    strength: "SHOULD",
     name: "Publish the answer as first-party docs",
     what: "Makes you citable: the page an agent grounds its answer on and names as its source.",
     evidence: {
@@ -178,15 +197,19 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
   },
   {
     id: "robots-txt",
+    arId: "AR-FIND-01",
+    strength: "MUST",
     name: "Allow agents and crawlers in robots.txt",
     what: "Declares which crawlers may fetch which paths. This is the gate to the search indexes.",
     evidence: {
       source: "ORA SCANNER",
-      text: "Across ~50,000 scanned sites, 88% ship a robots.txt, and 80% stay reachable to every major AI crawler. About 1 in 10 block them entirely.",
+      text: "In the April 2026 report (~50,000 scanned sites), 88% shipped a robots.txt and 80% stayed reachable to every major AI crawler. About 1 in 10 blocked them entirely.",
     },
   },
   {
     id: "sitemap-xml",
+    arId: "AR-FIND-03",
+    strength: "SHOULD",
     name: "List your pages in a sitemap.xml",
     what: "Maps every page you publish for indexing.",
     evidence: {
@@ -195,12 +218,24 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
     },
     evidenceId: "sitemap-reach",
   },
+  {
+    id: "ai-catalog",
+    arId: "AR-FIND-04",
+    strength: "MAY",
+    name: "Publish an AI Catalog and link it",
+    what: "One manifest at /.well-known/ai-catalog.json listing every agent-facing resource you ship, from MCP server card to llms.txt.",
+    evidence: {
+      text: "Not measured in the studies. Link it from the homepage head, since 86–100% of discovery-file visits arrive through links. ARD registries such as Ora Directory index published catalogs so agents can search across sites.",
+    },
+  },
 ];
 
 /** § Put the answer where agents read — the pages agents visit */
 export const READ_PRACTICES: readonly Practice[] = [
   {
     id: "homepage-html",
+    arId: "AR-READ-03",
+    strength: "SHOULD",
     name: "Homepage in raw HTML",
     what: "The front door, with real links to docs, product, and pricing.",
     evidence: {
@@ -211,6 +246,8 @@ export const READ_PRACTICES: readonly Practice[] = [
   },
   {
     id: "docs-pages",
+    arId: "AR-READ-04",
+    strength: "SHOULD",
     name: "Docs pages that answer",
     what: "The pages agents actually read, where most tasks get resolved.",
     evidence: {
@@ -221,6 +258,8 @@ export const READ_PRACTICES: readonly Practice[] = [
   },
   {
     id: "no-javascript",
+    arId: "AR-READ-01",
+    strength: "MUST",
     name: "Fetchable without JavaScript",
     what: "The answer is in the initial HTML, server-rendered or prerendered, rather than injected by a single-page app after load.",
     evidence: {
@@ -231,6 +270,8 @@ export const READ_PRACTICES: readonly Practice[] = [
   },
   {
     id: "fenced-code",
+    arId: "AR-READ-05",
+    strength: "SHOULD",
     name: "Fenced code, language-tagged",
     what: "Turns snippets into examples an agent can lift and use.",
     evidence: {
@@ -245,6 +286,8 @@ export const READ_PRACTICES: readonly Practice[] = [
 export const DESCRIBING_FILES: readonly Practice[] = [
   {
     id: "llms-txt",
+    arId: "AR-READ-07",
+    strength: "SHOULD",
     name: "llms.txt",
     what: "A curated, described index of your key pages.",
     evidence: {
@@ -255,6 +298,8 @@ export const DESCRIBING_FILES: readonly Practice[] = [
   },
   {
     id: "well-known",
+    arId: "AR-READ-06",
+    strength: "SHOULD",
     name: ".well-known/*",
     what: "Protocol and metadata discovery.",
     evidence: {
@@ -265,6 +310,8 @@ export const DESCRIBING_FILES: readonly Practice[] = [
   },
   {
     id: "openapi-json",
+    arId: "AR-ACT-02",
+    strength: "SHOULD",
     name: "openapi.json",
     what: "Machine-readable API contract.",
     evidence: {
@@ -275,6 +322,8 @@ export const DESCRIBING_FILES: readonly Practice[] = [
   },
   {
     id: "json-ld",
+    arId: "AR-READ-08",
+    strength: "SHOULD",
     name: "JSON-LD",
     what: "Machine-readable facts and routes in the page.",
     evidence: {
@@ -500,6 +549,8 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
 export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "auth",
+    arId: "AR-ACT-01",
+    strength: "SHOULD",
     name: "Auth an agent can get through",
     what: "The first gate of acting.",
     bestPractice:
@@ -507,6 +558,8 @@ export const ACT_PRACTICES: readonly Practice[] = [
   },
   {
     id: "public-api",
+    arId: "AR-ACT-02",
+    strength: "SHOULD",
     name: "Public API with a machine-readable contract",
     what: "The acting surface itself.",
     bestPractice:
@@ -514,13 +567,17 @@ export const ACT_PRACTICES: readonly Practice[] = [
   },
   {
     id: "mcp-server",
+    arId: "AR-ACT-03",
+    strength: "SHOULD",
     name: "MCP server",
     what: "Standard tool protocol for docs search and actions.",
     bestPractice:
-      "Serve over Streamable HTTP at /mcp. Keep the docs MCP public. Gate the product MCP with OAuth (protected-resource metadata at /.well-known/oauth-protected-resource per RFC 9728, with PKCE) and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery are an emerging convention (SEP-2127, a working-group draft that major hosts have begun to support): ship one if your target hosts read it, but expect the exact path to keep moving.",
+      "Serve over Streamable HTTP at /mcp. Keep the docs MCP public. Gate the product MCP with OAuth (protected-resource metadata at /.well-known/oauth-protected-resource per RFC 9728, with PKCE) and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery (AR-ACT-04, MAY) are an emerging convention (SEP-2127, a working-group draft that major hosts have begun to support): ship one if your target hosts read it, but expect the exact path to keep moving.",
   },
   {
     id: "webmcp",
+    arId: "AR-ACT-07",
+    strength: "MAY",
     name: "WebMCP",
     what: "The same tool contract, registered on the page itself.",
     bestPractice:
@@ -528,16 +585,38 @@ export const ACT_PRACTICES: readonly Practice[] = [
   },
   {
     id: "mcp-apps",
+    arId: "AR-ACT-05",
+    strength: "MAY",
     name: "MCP Apps",
     what: "Your UI, rendered inside the agent host.",
     bestPractice:
-      "If your product has a UI, ship an app view (ui:// resource) so the agent can hand a working surface back to the user.",
+      "If your product has a UI, ship a View (a ui:// resource) so the agent can hand a working surface back to the user.",
+  },
+  {
+    id: "nlweb",
+    arId: "AR-ACT-09",
+    strength: "MAY",
+    name: "NLWeb ask endpoint",
+    what: "A lighter alternative to a full tool surface for content-heavy sites.",
+    bestPractice:
+      "Serve /ask, which takes a natural-language question and returns schema.org-shaped results, and expose the same ask tool over MCP. Suits publishers, catalogs, and docs whose value is content rather than operations.",
   },
   {
     id: "sdks-cli",
+    arId: "AR-ACT-06",
+    strength: "SHOULD",
     name: "SDKs and a CLI",
     what: "The forms agents act in: code and shell.",
     bestPractice:
       "Publish SDKs on npm and PyPI and a CLI; show install and first call in the docs.",
+  },
+  {
+    id: "payments",
+    arId: "AR-ACT-08",
+    strength: "MAY",
+    name: "Let agents pay",
+    what: "The last gate of acting. Applies only if the product charges.",
+    bestPractice:
+      "Per-call pricing: x402 or MPP, so an agent can settle a 402 and retry without an account. Checkout: UCP or ACP, so a shopping agent can complete a purchase. Do not put a CAPTCHA wall in front of a verified agent.",
   },
 ];

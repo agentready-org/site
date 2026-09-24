@@ -223,6 +223,9 @@ function PracticeRows({
       >
         <td className="py-4 pr-4 font-serif text-base text-foreground leading-snug">
           {practice.name}
+          <span className="block mt-1 font-mono text-[11px] tracking-widest text-muted-foreground/55 whitespace-nowrap">
+            {practice.arId} · {practice.strength}
+          </span>
         </td>
         <td className="py-4 pr-4 font-serif text-sm text-foreground/75 leading-relaxed">
           {practice.what}

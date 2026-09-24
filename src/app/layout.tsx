@@ -28,7 +28,7 @@ const spaceMono = Space_Mono({
 const SITE_URL = "https://agentready.org";
 const TITLE = "AgentReady // The open standard for agent readiness";
 const DESCRIPTION =
-  "AgentReady is a community-driven standard for the agentic web: a practical guide to making your site readable by AI agents, based on real agent runs. A collaboration between Ora, Vercel, Mintlify, Auth0, and Stripe.";
+  "AgentReady is the open standard for agent readiness: a spec of what a site should implement to be found, read, and used by AI agents, with every requirement grounded in real agent runs. A collaboration between Ora, Vercel, Mintlify, and Auth0.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -51,8 +51,12 @@ export const metadata: Metadata = {
     "WebMCP",
     "A2A",
     "x402",
+    "MPP",
     "ACP",
     "UCP",
+    "NLWeb",
+    "AI Catalog",
+    "ARD",
     "llms.txt",
     "Web Bot Auth",
     "OAuth",
@@ -125,8 +129,7 @@ export default function RootLayout({
               "@type": "TechArticle",
               name: "AgentReady",
               headline: "Make your site readable by AI agents",
-              description:
-                "A practical guide to making your website work for the agents that now read it, based on real agent runs and a controlled experiment. A collaboration between Ora, Vercel, Mintlify, Auth0, and Stripe.",
+              description: DESCRIPTION,
               url: "https://agentready.org",
               inLanguage: "en",
               version: GUIDE_VERSION,
@@ -137,7 +140,6 @@ export default function RootLayout({
                 { "@type": "Organization", name: "Vercel", url: "https://vercel.com" },
                 { "@type": "Organization", name: "Mintlify", url: "https://www.mintlify.com" },
                 { "@type": "Organization", name: "Auth0", url: "https://auth0.com" },
-                { "@type": "Organization", name: "Stripe", url: "https://stripe.com" },
               ],
               encoding: [
                 {
@@ -153,8 +155,11 @@ export default function RootLayout({
                 "WebMCP",
                 "A2A",
                 "x402",
+                "MPP",
                 "ACP",
                 "UCP",
+                "NLWeb",
+                "ARD",
                 "llms.txt",
                 "Web Bot Auth",
               ],
