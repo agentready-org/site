@@ -4,7 +4,7 @@ export function Partners({ compact = false }: { compact?: boolean }) {
     { name: "Vercel", href: "https://vercel.com", Logo: VercelLogo },
     { name: "Mintlify", href: "https://www.mintlify.com", Logo: MintlifyLogo },
     { name: "Auth0", href: "https://auth0.com", Logo: Auth0Logo },
-    { name: "Stripe", href: "https://stripe.com", Logo: StripeLogo, hidden: true },
+    { name: "Stripe", href: "https://stripe.com", Logo: StripeLogo },
   ] as const;
   return (
     <div
