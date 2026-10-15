@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { IBM_Plex_Mono, Newsreader, Space_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Newsreader } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { GUIDE_VERSION, GUIDE_DATE } from "@/lib/guide-data";
@@ -16,13 +16,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "700"],
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["700"],
   display: "swap",
 });
 
@@ -113,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${ibmPlexMono.variable} ${spaceMono.variable}`}
+      className={`${newsreader.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
       <head>
