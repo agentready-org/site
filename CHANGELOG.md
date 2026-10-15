@@ -12,7 +12,10 @@ All notable changes to AgentReady are recorded here.
 - New practices: `AR-FIND-04` AI Catalog at `/.well-known/ai-catalog.json`
   with ARD as the registry layer (MAY); `AR-ACT-07` WebMCP (MAY, previously
   on the site without an identifier); `AR-ACT-08` agent payments via
-  x402 / MPP for per-call pricing and UCP / ACP for checkout (MAY);
+  x402 / MPP for per-call pricing and UCP / ACP for checkout, plus Stripe
+  Link (Link on checkout and Shared Payment Tokens) for agents paying
+  with a Link Agent Wallet (MAY), backed by Ora's October 2026 checkout
+  study (92.3% of Link test checkouts done right);
   `AR-ACT-09` NLWeb `/ask` endpoint with an `ask` tool over MCP (MAY).
   These identifiers need matching rows in `spec/spec.md`.
 - Hero scoreboard numbers (sites scanned, average score, share at grade B

@@ -14,11 +14,12 @@ export const dynamic = "force-static";
 
 function renderPractice(p: Practice): string {
   const tag = p.evidence?.source ? `[${p.evidence.source}] ` : "";
-  const detail = p.evidence
-    ? `${tag}${p.evidence.text}`
-    : p.bestPractice
-      ? `Best practice: ${p.bestPractice}`
-      : "";
+  const detail = [
+    p.bestPractice && `Best practice: ${p.bestPractice}`,
+    p.evidence && `${tag}${p.evidence.text}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
   return `- ${p.arId} (${p.strength}) ${p.name}: ${p.what}${detail ? ` ${detail}` : ""}`;
 }
 

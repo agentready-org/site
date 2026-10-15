@@ -110,12 +110,12 @@ function EvidenceView({ block }: { block: EvidenceBlock }) {
         {block.reproduce}
       </p>
       <a
-        href={DATASET_URL}
+        href={block.source?.href ?? DATASET_URL}
         target="_blank"
         rel="noreferrer"
         className="mt-2 inline-block font-mono text-[13px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors"
       >
-        browse the dataset →
+        {block.source?.label ?? "browse the dataset"} →
       </a>
     </div>
   );
@@ -233,6 +233,9 @@ function PracticeRows({
         <td className="py-4 font-serif text-sm text-foreground/75 leading-relaxed">
           {practice.evidence ? (
             <>
+              {practice.bestPractice && (
+                <span className="block mb-2">{practice.bestPractice}</span>
+              )}
               {practice.evidence.source && (
                 <SourceTag>{practice.evidence.source}</SourceTag>
               )}

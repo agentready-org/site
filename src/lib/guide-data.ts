@@ -79,6 +79,8 @@ export type EvidenceBlock = {
   tables: readonly EvidenceTable[];
   note?: string;
   reproduce: string;
+  /** Where the data lives when it is not in the public dataset yet. */
+  source?: { href: string; label: string };
 };
 
 export type Essential = {
@@ -543,6 +545,28 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
     reproduce:
       "Reproduce over traces.csv: markdown_calls / web_fetch_calls; markdown_calls / format_set_calls.",
   },
+  "link-checkout": {
+    title: "Link checkout",
+    backs:
+      "Paying through Link, agents got 92.3% of test checkouts right; 18 of 26 agents got at least 90%.",
+    intro:
+      "26 agents (5 agent apps × 6 models), the same 33 checkout tasks for every setup. Only failures the agents caused are counted:",
+    tables: [
+      {
+        headers: ["Way of paying", "Done right", "Share"],
+        rows: [
+          ["Link, cloud browser", "733 of 794", "92.3%"],
+          ["Saved card, cloud browser", "807 of 844", "95.6%"],
+          ["Saved card, local browser", "821 of 850", "96.6%"],
+          ["Agent's choice of Link or saved card", "317 of 322", "98.4%"],
+        ],
+      },
+    ],
+    note: "The most common Link miss, 27 of the 61 failed runs: the agent asked the person to approve, then stopped.",
+    reproduce:
+      "Ora research, October 2026. Stripe test mode, fictional stores, no real money. Link is @stripe/link-cli 0.26.0 against a stand-in wallet that approved every request within seconds.",
+    source: { href: "https://ora.ai/research", label: "ora research" },
+  },
 };
 
 /** § Let agents act, not just read */
@@ -617,6 +641,11 @@ export const ACT_PRACTICES: readonly Practice[] = [
     name: "Let agents pay",
     what: "The last gate of acting. Applies only if the product charges.",
     bestPractice:
-      "Per-call pricing: x402 or MPP, so an agent can settle a 402 and retry without an account. Checkout: UCP or ACP, so a shopping agent can complete a purchase. Do not put a CAPTCHA wall in front of a verified agent.",
+      "Per-call pricing: x402 or MPP, so an agent can settle a 402 and retry without an account. Checkout: UCP or ACP, so a shopping agent can complete a purchase. On Stripe, enable Link on checkout and accept Shared Payment Tokens, so an agent holding a Link Agent Wallet pays with a one-time credential the user approved, without filling a card form. Do not put a CAPTCHA wall in front of a verified agent.",
+    evidence: {
+      source: "STUDIES",
+      text: "Paying through Link, agents got 92.3% of test checkouts right; 18 of 26 agents got at least 90%.",
+    },
+    evidenceId: "link-checkout",
   },
 ];
