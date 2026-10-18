@@ -34,9 +34,9 @@ All notable changes to AgentReady are recorded here.
   backed by pricing answers being 60% accurate from the business's own
   pages against 37% from elsewhere. Needs a matching row in
   `spec/spec.md`.
-- The crawler notes name agent search APIs (Tavily, Exa, Parallel, Brave
-  Search API) as a crawler kind the wildcard rule covers.
-- Stripe and Tavily join the collaborators.
+- The crawler notes name agent search APIs (Brave Search API, Exa,
+  Parallel, Tavily) as a crawler kind the wildcard rule covers.
+- Stripe joins the collaborators.
 - Collaborator list unified to Ora, Vercel, Mintlify, and Auth0 across the
   page, metadata, JSON-LD, `/llms.txt`, and README.
 - Ora CLI command corrected to `npx ax audit`.

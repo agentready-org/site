@@ -249,9 +249,9 @@ export default function HomePage() {
             not consult robots.txt at all.
           </p>
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
-            Agents also find pages through agent search APIs such as
-            Tavily, Exa, Parallel, and the Brave Search API, which run
-            their own crawlers and indexes. The wildcard rule covers them;
+            Agents also find pages through agent search APIs such as the
+            Brave Search API, Exa, Parallel, and Tavily, which run their
+            own crawlers and indexes. The wildcard rule covers them;
             an allowlist of named crawlers does not.
           </p>
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
