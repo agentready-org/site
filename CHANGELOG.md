@@ -36,6 +36,9 @@ All notable changes to AgentReady are recorded here.
   `spec/spec.md`.
 - The crawler notes name agent search APIs (Brave Search API, Exa,
   Parallel, Tavily) as a crawler kind the wildcard rule covers.
+- "Check your site" lists Tavily's Agent Visibility Report
+  (avr.tavily.com) next to the three rankers, for how a site ranks when
+  agents search its market.
 - Stripe joins the collaborators.
 - Collaborator list unified to Ora, Vercel, Mintlify, and Auth0 across the
   page, metadata, JSON-LD, `/llms.txt`, and README.

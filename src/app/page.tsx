@@ -414,8 +414,10 @@ export default function HomePage() {
           Check your site
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
-          Three public rankers cover different surfaces. None of them is
-          the spec. All three have a free browser score.
+          Three public rankers score the site itself, each on a different
+          surface, and one report shows how you rank when agents search
+          your market. None of them is the spec. The rankers have a free
+          browser score; the report runs on a free Tavily API key.
         </p>
 
         <div className="max-w-2xl mb-4 divide-y divide-border/50 border-y border-border/50">
@@ -436,6 +438,12 @@ export default function HomePage() {
             name="mintlify.com/score"
             kicker="docs"
             body="Mintlify's Agent Score for documentation sites. 29 checks on the Agent-Friendly Documentation Spec."
+          />
+          <ScanCard
+            href="https://avr.tavily.com"
+            name="avr.tavily.com"
+            kicker="visibility"
+            body="Tavily's Agent Visibility Report. About 96 live searches across 8 buyer intents in your market: who agents find, which competitors come up, and what to publish."
           />
         </div>
 
