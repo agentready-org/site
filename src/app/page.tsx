@@ -53,7 +53,7 @@ export default function HomePage() {
   return (
     <main className="max-w-3xl mx-auto px-6 pb-20">
       <section className="pt-12 sm:pt-16 pb-10">
-        <h1 className="font-sans font-semibold tracking-[-0.025em] text-3xl sm:text-4xl text-foreground leading-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl text-foreground leading-tight">
           The open standard for agent readiness
         </h1>
         <Partners />
@@ -77,7 +77,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § essentials
         </p>
-        <h2 className="font-sans font-semibold tracking-[-0.025em] text-2xl sm:text-3xl text-foreground mb-4 leading-tight">
+        <h2 className="font-serif text-2xl sm:text-3xl text-foreground mb-4 leading-tight">
           The short version
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-8 max-w-2xl">
@@ -97,7 +97,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § the guide
         </p>
-        <h2 className="font-sans font-semibold tracking-[-0.025em] text-2xl sm:text-3xl text-foreground mb-4 leading-tight">
+        <h2 className="font-serif text-2xl sm:text-3xl text-foreground mb-4 leading-tight">
           Make your site readable by AI agents
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
@@ -153,7 +153,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § find
         </p>
-        <h2 className="font-sans font-semibold tracking-[-0.025em] text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
           Be reachable and citable
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
@@ -258,7 +258,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § read
         </p>
-        <h2 className="font-sans font-semibold tracking-[-0.025em] text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
           Put the answer where agents read
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
@@ -360,7 +360,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § act
         </p>
-        <h2 className="font-sans font-semibold tracking-[-0.025em] text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
           Let agents act, not just read
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-2 max-w-2xl">
@@ -383,7 +383,7 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § check your site
         </p>
-        <h2 className="font-sans font-semibold tracking-[-0.025em] text-xl sm:text-2xl text-foreground mb-3 leading-tight">
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-3 leading-tight">
           Check your site
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
@@ -665,7 +665,7 @@ function ScanCard({
         <p className="font-mono text-[13px] font-bold text-foreground leading-snug">
           {name}
         </p>
-        <p className="font-sans text-[13px] text-foreground/70 leading-relaxed mt-0.5">
+        <p className="font-serif text-[13px] text-foreground/70 leading-relaxed mt-0.5">
           {body}
         </p>
       </div>

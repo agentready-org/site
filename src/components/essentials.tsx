@@ -16,7 +16,7 @@ export function Essentials() {
               {layer.label}
             </a>
             {layer.note && (
-              <p className="font-sans text-xs text-muted-foreground/55 leading-snug mt-1 max-w-[9.5rem]">
+              <p className="font-serif text-xs text-muted-foreground/55 leading-snug mt-1 max-w-[9.5rem]">
                 {layer.note}
               </p>
             )}
@@ -26,7 +26,7 @@ export function Essentials() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="font-sans font-medium text-base text-foreground leading-snug tracking-[-0.01em] hover:text-foreground/60 transition-colors"
+                  className="font-serif text-base text-foreground leading-snug hover:text-foreground/60 transition-colors"
                 >
                   {item.name}
                 </a>

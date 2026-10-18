@@ -59,10 +59,10 @@ export function Navbar() {
           <Link
             href="/"
             aria-label="agentready.org"
-            className="font-sans text-[22px] font-semibold tracking-[-0.03em] text-foreground hover:opacity-70 transition-opacity"
+            className="font-mono text-[22px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
           >
             agentready
-            <span className="font-medium text-muted-foreground/55">.org</span>
+            <span className="font-normal text-muted-foreground/55">.org</span>
           </Link>
         </div>
 

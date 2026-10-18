@@ -86,7 +86,7 @@ function EvidenceView({ block }: { block: EvidenceBlock }) {
                   {row.map((cell, k) => (
                     <td
                       key={k}
-                      className={`py-1.5 font-sans text-sm leading-relaxed ${
+                      className={`py-1.5 font-serif text-sm leading-relaxed ${
                         k > 0
                           ? "pl-4 text-right font-mono text-[14px] text-foreground/80 whitespace-nowrap align-bottom"
                           : "pr-4 text-foreground/75"
@@ -221,16 +221,16 @@ function PracticeRows({
           open ? "" : "border-b border-border/50"
         }`}
       >
-        <td className="py-4 pr-4 font-sans font-medium text-base text-foreground leading-snug tracking-[-0.01em]">
+        <td className="py-4 pr-4 font-serif text-base text-foreground leading-snug">
           {practice.name}
           <span className="block mt-1 font-mono text-[11px] tracking-widest text-muted-foreground/55 whitespace-nowrap">
             {practice.arId} · {practice.strength}
           </span>
         </td>
-        <td className="py-4 pr-4 font-sans text-sm text-foreground/75 leading-relaxed">
+        <td className="py-4 pr-4 font-serif text-sm text-foreground/75 leading-relaxed">
           {practice.what}
         </td>
-        <td className="py-4 font-sans text-sm text-foreground/75 leading-relaxed">
+        <td className="py-4 font-serif text-sm text-foreground/75 leading-relaxed">
           {practice.evidence ? (
             <>
               {practice.bestPractice && (
