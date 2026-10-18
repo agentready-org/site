@@ -15,10 +15,10 @@ export async function Scoreboard() {
       </p>
 
       <div className="flex items-baseline gap-5">
-        <p className="font-serif text-6xl sm:text-7xl text-foreground tracking-tight leading-none tabular-nums">
+        <p className="font-sans font-semibold text-6xl sm:text-7xl text-foreground tracking-[-0.045em] leading-none tabular-nums">
           {pctAboveB}%
         </p>
-        <p className="font-serif text-base text-foreground/80 leading-snug">
+        <p className="font-sans text-base text-foreground/80 leading-snug">
           of scanned sites grade B or above
         </p>
       </div>
@@ -113,7 +113,7 @@ function CliffRow({
   return (
     <li className="flex items-baseline gap-4">
       <span
-        className={`font-serif tabular-nums tracking-tight ${
+        className={`font-sans font-semibold tabular-nums tracking-[-0.03em] ${
           size === "lg"
             ? "text-3xl sm:text-4xl text-foreground w-[4.5rem] sm:w-[5.5rem]"
             : "text-lg text-foreground/55 w-[4.5rem] sm:w-[5.5rem]"
@@ -122,7 +122,7 @@ function CliffRow({
         {value}
       </span>
       <span
-        className={`font-serif leading-snug ${
+        className={`font-sans leading-snug ${
           size === "lg"
             ? "text-base sm:text-lg text-foreground/85"
             : "text-sm text-foreground/55"
@@ -142,18 +142,18 @@ export function SplitStat() {
       </p>
       <div className="grid grid-cols-2 gap-6 sm:gap-10">
         <div>
-          <p className="font-serif text-5xl sm:text-6xl text-foreground tracking-tight leading-none">
+          <p className="font-sans font-semibold text-5xl sm:text-6xl text-foreground tracking-[-0.045em] leading-none">
             80%
           </p>
-          <p className="font-serif text-sm sm:text-base text-foreground/80 mt-3 leading-snug">
+          <p className="font-sans text-sm sm:text-base text-foreground/80 mt-3 leading-snug">
             reachable to every major AI crawler
           </p>
         </div>
         <div>
-          <p className="font-serif text-5xl sm:text-6xl text-foreground tracking-tight leading-none">
+          <p className="font-sans font-semibold text-5xl sm:text-6xl text-foreground tracking-[-0.045em] leading-none">
             3%
           </p>
-          <p className="font-serif text-sm sm:text-base text-foreground/80 mt-3 leading-snug">
+          <p className="font-sans text-sm sm:text-base text-foreground/80 mt-3 leading-snug">
             ship a spec-grade MCP server
           </p>
         </div>

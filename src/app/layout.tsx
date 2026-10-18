@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { IBM_Plex_Mono, Instrument_Sans, Newsreader } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { GUIDE_VERSION, GUIDE_DATE } from "@/lib/guide-data";
 import "./globals.css";
+
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -106,7 +112,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${ibmPlexMono.variable}`}
+      className={`${instrumentSans.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}
       suppressHydrationWarning
     >
       <head>
