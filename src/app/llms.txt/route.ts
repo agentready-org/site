@@ -26,7 +26,7 @@ function renderPractice(p: Practice): string {
 export function GET() {
   const body = `# AgentReady: Make your site readable by AI agents
 
-> AgentReady is the open standard for agent readiness: a spec of the protocols, standards, and conventions a product should implement to be found, read, and used by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how scanners should weight or score compliance. Every requirement carries a stable identifier (AR-FIND-01 and so on) and a BCP 14 strength (MUST / SHOULD / MAY) assigned from real agent runs and a controlled experiment. Developed in collaboration with Ora, Vercel, Mintlify, and Auth0.
+> AgentReady is the open standard for agent readiness: a spec of the protocols, standards, and conventions a product should implement to be found, read, and used by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how scanners should weight or score compliance. Every requirement carries a stable identifier (AR-FIND-01 and so on) and a BCP 14 strength (MUST / SHOULD / MAY) assigned from real agent runs and a controlled experiment. Developed in collaboration with Ora, Vercel, Mintlify, Auth0, Stripe, and Tavily.
 
 Version: v${GUIDE_VERSION}
 Last updated: ${GUIDE_DATE_LABEL}
@@ -34,7 +34,7 @@ License: MIT
 
 ## How we know
 
-Numbers in this spec are tagged by source. [STUDIES] refers to research from the ora.ai research lab: over 1,000 real agent runs across 25 sites traced turn by turn and a controlled experiment that toggled one feature at a time; the full dataset is public at https://github.com/agentready-org/standard/tree/main/data, with a per-claim breakdown to reproduce every [STUDIES] number. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
+Numbers in this spec are tagged by source. [STUDIES] refers to research from the ora.ai research lab: over 1,000 real agent runs across 25 sites traced turn by turn and a controlled experiment that toggled one feature at a time, with the full dataset public at https://github.com/agentready-org/standard/tree/main/data; plus the Ora research reports cited next to their numbers. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
 
 In the studies, two changes caused agents to fail: hiding answers behind JavaScript and blocking access. The spec follows the order in which agents encounter a site: find, read, then act. Strengths come from measurement: those two changes are MUST, practices that measurably shaped where agents went are SHOULD, emerging conventions are MAY. All recommendations share one prerequisite: the agent must be able to reach the page and find the answer in the returned HTML.
 
@@ -57,11 +57,13 @@ Three public rankers cover different surfaces. None of them is the spec. All thr
 
 Agents can cite only pages they can discover and fetch. Pages blocked from crawlers do not appear in search indexes at all.
 
+[STUDIES] When an agent cannot read your site, it answers anyway, from web search and other people's pages. Across 1,056 business sites, those answers were 3.7× as likely to contain none of the facts the user asked for, and agent-ready businesses were clearly recommended 1.9× as often (AX is the New AEO: https://ora.ai/blog/ax-is-the-new-aeo).
+
 ${REACHABLE_PRACTICES.map(renderPractice).join("\n")}
 
 An AI Catalog at /.well-known/ai-catalog.json lists every agent-facing resource (MCP server card, OpenAPI, GraphQL, A2A agent card, docs, llms.txt, skills); link it from the homepage head with <link rel="ai-catalog"> and an HTTP Link header. Agentic Resource Discovery (ARD) registries such as Ora Directory (https://ora.ai/directory) index published catalogs and answer search across them.
 
-Publish answers on one canonical, current first-party docs page. Write the crawl policy as one rule for all agents (User-agent: *) instead of an allowlist of named crawlers. Model providers run separate crawlers per job: training crawlers (GPTBot, ClaudeBot), search-index crawlers (OAI-SearchBot, Claude-SearchBot), and user-initiated fetchers (ChatGPT-User, Claude-User). Each obeys its own rule, so you can block training without dropping out of search indexes or agent answers. A more specific group such as "User-agent: GPTBot" overrides the * group, and user-initiated fetchers may not consult robots.txt at all. The dependable reachability test is your server logs: find requests from the published OpenAI and Anthropic crawler IP ranges and confirm they return 200.
+Publish answers on one canonical, current first-party docs page. Write the crawl policy as one rule for all agents (User-agent: *) instead of an allowlist of named crawlers. Model providers run separate crawlers per job: training crawlers (GPTBot, ClaudeBot), search-index crawlers (OAI-SearchBot, Claude-SearchBot), and user-initiated fetchers (ChatGPT-User, Claude-User). Each obeys its own rule, so you can block training without dropping out of search indexes or agent answers. A more specific group such as "User-agent: GPTBot" overrides the * group, and user-initiated fetchers may not consult robots.txt at all. Agents also find pages through agent search APIs such as Tavily, Exa, Parallel, and the Brave Search API, which run their own crawlers and indexes; the wildcard rule covers them, an allowlist of named crawlers does not. Bot protection is a second gate that robots.txt does not control: a WAF or bot manager that answers agents with a 403 or a challenge page blocks them however permissive the file is. Let verified agents through by the providers' published IP ranges or Web Bot Auth signatures, and throttle with a 429 instead of a challenge. [STUDIES] Sites that were not agent-ready blocked agents 2.1× as often. The dependable reachability test is your server logs: find requests from the published OpenAI and Anthropic crawler IP ranges and confirm they return 200.
 
 ## Put the answer where agents read
 

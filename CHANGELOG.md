@@ -22,6 +22,21 @@ All notable changes to AgentReady are recorded here.
   or above, grade split) are read from `ora.ai/api/stats` at build time
   instead of being hardcoded. The "action gap" and robots.txt figures are
   dated to the April 2026 report.
+- The find section opens with what happens when agents cannot read a
+  site, from Ora's AX is the New AEO study (1,056 business sites): the
+  agent answers anyway, and those answers are 3.7× as likely to miss
+  every fact asked for. `[STUDIES]` now also covers Ora research reports,
+  each cited from its evidence block.
+- `AR-FIND-01` now covers bot protection as well as robots.txt: let
+  verified agents through the WAF or bot manager, and throttle with a
+  `429` instead of a challenge page.
+- New practice: `AR-READ-10` pricing on a first-party page (SHOULD),
+  backed by pricing answers being 60% accurate from the business's own
+  pages against 37% from elsewhere. Needs a matching row in
+  `spec/spec.md`.
+- The crawler notes name agent search APIs (Tavily, Exa, Parallel, Brave
+  Search API) as a crawler kind the wildcard rule covers.
+- Stripe and Tavily join the collaborators.
 - Collaborator list unified to Ora, Vercel, Mintlify, and Auth0 across the
   page, metadata, JSON-LD, `/llms.txt`, and README.
 - Ora CLI command corrected to `npx ax audit`.

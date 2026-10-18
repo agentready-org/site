@@ -5,7 +5,7 @@ The open standard for agent readiness.
 The site publishes **"Make your site readable by AI agents"** — the spec of
 what a site should implement to be found, read, and used by AI agents, with
 every requirement grounded in real agent runs and a controlled experiment.
-A collaboration between Ora, Vercel, Mintlify, and Auth0.
+A collaboration between Ora, Vercel, Mintlify, Auth0, Stripe, and Tavily.
 
 The spec is published as a single page. Key anchors:
 
@@ -23,7 +23,8 @@ Machine-readable artifacts:
 - [`spec/spec.md`](https://github.com/agentready-org/standard/blob/main/spec/spec.md)
   — the spec's markdown source of truth
 - [`data/`](https://github.com/agentready-org/standard/tree/main/data) — the
-  dataset behind every `[STUDIES]` number, with a per-claim breakdown
+  dataset behind the trace and experiment `[STUDIES]` numbers, with a
+  per-claim breakdown
 
 ## Stack
 
@@ -66,7 +67,7 @@ src/
   components/
     navbar.tsx         # Sticky nav
     footer.tsx         # Compact footer with partner logos
-    partners.tsx       # Collaboration logo strip (Ora, Vercel, Mintlify, Auth0)
+    partners.tsx       # Collaboration logo strip (Ora, Vercel, Mintlify, Auth0, Stripe, Tavily)
   lib/
     guide-data.ts      # Practice tables (AR ids, strengths) shared by the page and /llms.txt
     ora-stats.ts       # Build-time fetch of the hero numbers from ora.ai/api/stats

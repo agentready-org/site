@@ -22,7 +22,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 const SITE_URL = "https://agentready.org";
 const TITLE = "AgentReady // The open standard for agent readiness";
 const DESCRIPTION =
-  "AgentReady is the open standard for agent readiness: a spec of what a site should implement to be found, read, and used by AI agents, with every requirement grounded in real agent runs. A collaboration between Ora, Vercel, Mintlify, and Auth0.";
+  "AgentReady is the open standard for agent readiness: a spec of what a site should implement to be found, read, and used by AI agents, with every requirement grounded in real agent runs. A collaboration between Ora, Vercel, Mintlify, Auth0, Stripe, and Tavily.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -134,6 +134,8 @@ export default function RootLayout({
                 { "@type": "Organization", name: "Vercel", url: "https://vercel.com" },
                 { "@type": "Organization", name: "Mintlify", url: "https://www.mintlify.com" },
                 { "@type": "Organization", name: "Auth0", url: "https://auth0.com" },
+                { "@type": "Organization", name: "Stripe", url: "https://stripe.com" },
+                { "@type": "Organization", name: "Tavily", url: "https://tavily.com" },
               ],
               encoding: [
                 {

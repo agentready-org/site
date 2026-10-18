@@ -13,7 +13,8 @@
  * Evidence entries are tagged by source:
  *  - STUDIES: research from the ora.ai research lab — over 1,000 real
  *    agent runs across 25 sites traced turn by turn, plus a controlled
- *    experiment that toggled one feature at a time.
+ *    experiment that toggled one feature at a time, plus later Ora
+ *    research reports, which an EvidenceBlock cites through `source`.
  *  - ORA SCANNER: agent-reachability checks across every scored site.
  *
  * Rows without an evidence tag are recommendations rather than measured
@@ -34,7 +35,7 @@ export const CHANGELOG_URL =
 export const SPEC_SOURCE_URL =
   "https://github.com/agentready-org/standard/blob/main/spec/spec.md";
 
-/** The public dataset behind every [STUDIES] number. */
+/** The public dataset behind the trace and experiment [STUDIES] numbers. */
 export const DATASET_URL =
   "https://github.com/agentready-org/standard/tree/main/data";
 
@@ -116,8 +117,8 @@ export const ESSENTIAL_LAYERS: readonly EssentialLayer[] = [
       },
       {
         href: "#robots-txt",
-        name: "Allow agents in robots.txt",
-        why: "The gate to search indexes. About 1 in 10 scanned sites block AI crawlers entirely.",
+        name: "Allow agents in robots.txt and bot protection",
+        why: "The gate to search indexes and live fetches. About 1 in 10 scanned sites block AI crawlers entirely, and a bot manager can block agents the file allows.",
       },
       {
         href: "#sitemap-xml",
@@ -201,8 +202,8 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
     id: "robots-txt",
     arId: "AR-FIND-01",
     strength: "MUST",
-    name: "Allow agents and crawlers in robots.txt",
-    what: "Declares which crawlers may fetch which paths. This is the gate to the search indexes.",
+    name: "Allow agents in robots.txt and bot protection",
+    what: "Declares which crawlers may fetch which paths, and lets verified agents through the bot manager. This is the gate to the search indexes.",
     evidence: {
       source: "ORA SCANNER",
       text: "In the April 2026 report (~50,000 scanned sites), 88% shipped a robots.txt and 80% stayed reachable to every major AI crawler. About 1 in 10 blocked them entirely.",
@@ -251,12 +252,24 @@ export const READ_PRACTICES: readonly Practice[] = [
     arId: "AR-READ-04",
     strength: "SHOULD",
     name: "Docs pages that answer",
-    what: "The pages agents actually read, where most tasks get resolved.",
+    what: "The pages agents actually read, where most tasks get resolved. Link setup and quickstart pages from the homepage.",
     evidence: {
       source: "STUDIES",
       text: "Reached in 83% of runs and fetched more than any other page type, about 3.4 docs pages per run.",
     },
     evidenceId: "docs-reach",
+  },
+  {
+    id: "pricing-page",
+    arId: "AR-READ-10",
+    strength: "SHOULD",
+    name: "Pricing on a first-party page",
+    what: "Plans, free tier, and limits as text in the HTML, not an image, a calculator, or a sales form.",
+    evidence: {
+      source: "STUDIES",
+      text: "Built from the business’s own pages, 60% of pricing answers were accurate, against 37% from elsewhere, the widest gap of any question type.",
+    },
+    evidenceId: "answers-by-question-type",
   },
   {
     id: "no-javascript",
@@ -544,6 +557,64 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
     ],
     reproduce:
       "Reproduce over traces.csv: markdown_calls / web_fetch_calls; markdown_calls / format_set_calls.",
+  },
+  "off-site-answers": {
+    title: "Answers built without the site",
+    backs:
+      "When an agent could not read the site, it answered anyway, from web search and other people’s pages. Those answers were 3.7× as likely to contain none of the facts the user asked for.",
+    intro:
+      "37,927 agent journeys across 1,056 business sites. Each agent-ready site was paired with a not-agent-ready one in the same industry, matched on brand fame and citations elsewhere. What the finished answer was built from:",
+    tables: [
+      {
+        headers: ["", "Agent-ready", "Not agent-ready"],
+        rows: [
+          ["The site’s own pages", "78%", "58%"],
+          ["Web search", "12%", "25%"],
+          ["Training knowledge", "7%", "10%"],
+          ["Answers that clearly recommend the business", "20%", "11%"],
+        ],
+      },
+      {
+        caption:
+          "Graded fact by fact against each business’s own site (2,499 answers, 131 businesses):",
+        headers: ["", "From the site", "From elsewhere"],
+        rows: [
+          ["Answers with none of the facts asked for", "7%", "25%"],
+          ["Pricing answers that were accurate", "60%", "37%"],
+        ],
+      },
+    ],
+    note: "In about 99% of journeys that hit a dead end on the site, the agent answered anyway. Not-agent-ready sites blocked agents 2.1× as often, and runs took 23% more turns.",
+    reproduce:
+      "Ora research, AX is the New AEO (arXiv:2609.34951), September 2026. Four agent stacks on Claude and GPT models; the two GPT stacks searched the web through Tavily. Analysis code and sample data at github.com/ora/research.",
+    source: {
+      href: "https://ora.ai/blog/ax-is-the-new-aeo",
+      label: "read the report",
+    },
+  },
+  "answers-by-question-type": {
+    title: "Accuracy by question type",
+    backs:
+      "Built from the business’s own pages, 60% of pricing answers were accurate, against 37% from elsewhere, the widest gap of any question type.",
+    intro:
+      "Answers graded fact by fact against each business’s own site, by where the evidence came from:",
+    tables: [
+      {
+        headers: ["Question type", "From the site", "From elsewhere"],
+        rows: [
+          ["Pricing", "60%", "37%"],
+          ["Features", "46%", "39%"],
+          ["Setup", "24%", "24%"],
+        ],
+      },
+    ],
+    note: "Answers that punted to “contact sales for a quote” were more common when the agent could not read the site (22% against 15%). Setup is a findability problem: two-thirds of setup facts never surfaced, and sites where agents could ground setup answers scored 31% against 18%.",
+    reproduce:
+      "Ora research, AX is the New AEO (arXiv:2609.34951), September 2026. 2,499 graded answers across 131 businesses. Analysis code and sample data at github.com/ora/research.",
+    source: {
+      href: "https://ora.ai/blog/ax-is-the-new-aeo",
+      label: "read the report",
+    },
   },
   "link-checkout": {
     title: "Link checkout",

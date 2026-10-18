@@ -131,7 +131,8 @@ export default function HomePage() {
             how we know
           </span>
           <SourceTag>STUDIES</SourceTag>
-          is the traced runs and experiment;{" "}
+          is ora.ai research: the traced runs and experiment, plus the
+          reports linked from each evidence block;{" "}
           <a
             href={DATASET_URL}
             target="_blank"
@@ -166,6 +167,15 @@ export default function HomePage() {
           crawl policy as one rule for all agents instead of an allowlist
           of named crawlers.
         </p>
+        <p className="font-serif text-base text-foreground/80 leading-relaxed mb-4 max-w-2xl">
+          <SourceTag>STUDIES</SourceTag> When an agent cannot read your
+          site, it answers anyway, from web search and other people’s
+          pages. Across 1,056 business sites, those answers were 3.7× as
+          likely to contain none of the facts the user asked for, and
+          agent-ready businesses were clearly recommended 1.9× as often.
+        </p>
+        <ProseEvidence evidenceId="off-site-answers" />
+        <div className="mb-6" />
 
         <PracticeTable
           practices={REACHABLE_PRACTICES}
@@ -174,6 +184,17 @@ export default function HomePage() {
         />
 
         <CodeBlock label="robots.txt" code={ROBOTS_TXT_SNIPPET} />
+
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-6 max-w-2xl">
+          Bot protection is the second gate, and robots.txt does not
+          control it. A WAF or bot manager that answers agents with a{" "}
+          <Mono>403</Mono> or a challenge page blocks them however
+          permissive the file is. Let verified agents through by the
+          providers&apos; published IP ranges or Web Bot Auth signatures,
+          and throttle with a <Mono>429</Mono> instead of a challenge. In
+          the study above, sites that were not agent-ready blocked agents
+          2.1× as often.
+        </p>
 
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
           An AI Catalog is the one place an agent can learn what you ship
@@ -226,6 +247,12 @@ export default function HomePage() {
             as <Mono>User-agent: GPTBot</Mono> overrides your <Mono>*</Mono>{" "}
             group, so audit existing rules; and user-initiated fetchers may
             not consult robots.txt at all.
+          </p>
+          <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+            Agents also find pages through agent search APIs such as
+            Tavily, Exa, Parallel, and the Brave Search API, which run
+            their own crawlers and indexes. The wildcard rule covers them;
+            an allowlist of named crawlers does not.
           </p>
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
             Then fetch a page with an agent user-agent string to inspect the
@@ -467,6 +494,12 @@ export default function HomePage() {
                 "the field report behind the trace numbers in this guide, drawing on part of the data used for this spec.",
             },
             {
+              title: "AX is the New AEO",
+              href: "https://ora.ai/blog/ax-is-the-new-aeo",
+              blurb:
+                "the study of 1,056 business sites behind the find-section numbers, with web search through Tavily.",
+            },
+            {
               title: "The state of agent readiness",
               href: "https://ora.ai/blog/state-of-agent-readiness-2026",
               blurb: "the scanner report behind the reachability figure.",
@@ -498,7 +531,7 @@ export default function HomePage() {
               title: "The agent readiness dataset",
               href: DATASET_URL,
               blurb:
-                "the runs and probes behind every [STUDIES] number, with a per-claim breakdown to reproduce them.",
+                "the runs and probes behind the trace and experiment [STUDIES] numbers, with a per-claim breakdown to reproduce them.",
             },
           ].map(({ title, href, blurb }) => (
             <li
@@ -590,7 +623,8 @@ export default function HomePage() {
           >
             dataset
           </a>{" "}
-          behind every <SourceTag>STUDIES</SourceTag> number, and this site
+          behind the trace and experiment <SourceTag>STUDIES</SourceTag>{" "}
+          numbers, and this site
           live on{" "}
           <a
             href="https://github.com/agentready-org/standard"
