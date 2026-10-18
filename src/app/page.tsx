@@ -443,7 +443,7 @@ export default function HomePage() {
             href="https://avr.tavily.com"
             name="avr.tavily.com"
             kicker="visibility"
-            body="Tavily's Agent Visibility Report. About 96 live searches across 8 buyer intents in your market: who agents find, which competitors come up, and what to publish."
+            body="Tavily's report on who agents find when they search your market."
           />
         </div>
 
