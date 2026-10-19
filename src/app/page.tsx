@@ -85,7 +85,8 @@ export default function HomePage() {
           and blocking access. Everything else is find, then read, then
           act. Find and read are the essentials every site needs. Act
           applies when the product should complete a task, not only be
-          readable.
+          readable, and then an agent needs an MCP server or a CLI to act
+          through.
         </p>
         <Essentials />
       </section>
@@ -110,8 +111,8 @@ export default function HomePage() {
           >
             ora.ai
           </a>{" "}
-          research lab we traced 1,033 real agent runs and ran a controlled
-          experiment. The sections below follow the order agents encounter
+          research lab we learned from more than 250,000 real agent runs
+          and a controlled experiment. The sections below follow the order agents encounter
           a site: find, then read, then act. Each practice carries its
           stable identifier from the{" "}
           <a
@@ -122,9 +123,11 @@ export default function HomePage() {
           >
             spec source
           </a>{" "}
-          (AR-FIND-01 and so on) and its strength: MUST for the changes
-          that broke an agent in the studies, SHOULD for practices that
-          measurably shaped where agents went, MAY for emerging conventions.
+          (AR-FIND-01 and so on) and its strength: MUST for what an agent
+          fails without (the changes that broke an agent in the studies,
+          and an interface to act through when it should finish a task),
+          SHOULD for practices that measurably shaped where agents went or
+          make acting reliable, MAY for emerging conventions.
         </p>
         <p className="font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl">
           <span className="font-mono text-[13px] tracking-widest text-muted-foreground/55 mr-2">

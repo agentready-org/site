@@ -93,7 +93,7 @@ export function Cliff() {
         <CliffRow value="4%" label="sitemap.xml" size="sm" />
       </ol>
       <figcaption className="mt-5 font-serif text-sm text-foreground/70 leading-relaxed">
-        Share of 1,033 traced runs that reached each surface. Agents use the
+        Share of traced runs that reached each surface. Agents use the
         same pages people do. Files built for machines are reached only if
         something already fetched points to them.
       </figcaption>

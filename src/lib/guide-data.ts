@@ -11,8 +11,8 @@
  * across versions and never reused.
  *
  * Evidence entries are tagged by source:
- *  - STUDIES: research from the ora.ai research lab — over 1,000 real
- *    agent runs across 25 sites traced turn by turn, plus a controlled
+ *  - STUDIES: research from the ora.ai research lab — more than 250,000
+ *    real agent runs, plus a controlled
  *    experiment that toggled one feature at a time, plus later Ora
  *    research reports, which an EvidenceBlock cites through `source`.
  *  - ORA SCANNER: agent-reachability checks across every scored site.
@@ -171,9 +171,9 @@ export const ESSENTIAL_LAYERS: readonly EssentialLayer[] = [
         why: "Typed operations, errors, and rate limits. The acting surface itself.",
       },
       {
-        href: "#mcp-server",
-        name: "MCP, SDKs, and a CLI as you ship them",
-        why: "Only the surfaces the product actually offers. Do not invent an MCP server to chase a score.",
+        href: "#mcp-or-cli",
+        name: "An MCP server or a CLI",
+        why: "The interface an agent acts through. Ship at least one; without it, an agent cannot finish the task.",
       },
       {
         href: "#webmcp",
@@ -356,7 +356,7 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
     title: "Answer provenance",
     backs:
       "82% of answers traced back to a page the agent fetched, and that page was a docs page 47% of the time, more than any other page type.",
-    intro: "Across 1,033 runs, where did the agent’s final answer come from?",
+    intro: "Across the traced runs, where did the agent’s final answer come from?",
     tables: [
       {
         headers: ["", "Runs", "Share"],
@@ -398,12 +398,12 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
     title: "Homepage reach and first hop",
     backs:
       "Reached in 69% of runs, and it was the agent’s first step in 92% of them. In 59% of the runs that reached it, the next hop was a docs page.",
-    intro: "The homepage funnel across 1,033 runs:",
+    intro: "The homepage funnel across the traced runs:",
     tables: [
       {
         headers: ["", "Runs", "Share"],
         rows: [
-          ["Reached the homepage", "708", "69% of 1,033"],
+          ["Reached the homepage", "708", "69% of runs"],
           ["Homepage was the first fetch", "648", "92% of 708"],
           ["Next hop after homepage was a docs page", "416", "59% of 708"],
         ],
@@ -420,7 +420,7 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
       {
         headers: ["", "Value"],
         rows: [
-          ["Runs that reached a docs page", "855 (83% of 1,033)"],
+          ["Runs that reached a docs page", "855 (83% of runs)"],
           ["Docs pages fetched, total", "2,870"],
           ["Docs pages per docs-reaching run (mean)", "3.4"],
         ],
@@ -661,6 +661,15 @@ export const ACT_PRACTICES: readonly Practice[] = [
       "OpenAPI with operation IDs, typed responses and errors, /v1/ versioning, documented rate limits.",
   },
   {
+    id: "mcp-or-cli",
+    arId: "AR-ACT-10",
+    strength: "MUST",
+    name: "An MCP server or a CLI",
+    what: "The interface an agent acts through. Without one, an agent cannot finish the task.",
+    bestPractice:
+      "Ship at least one. An MCP server (AR-ACT-03) serves agents working in chat and IDE hosts; a CLI (AR-ACT-06) serves agents working in a shell. Build the one that fits how agents use the product, and do not ship an empty surface to meet the requirement.",
+  },
+  {
     id: "mcp-server",
     arId: "AR-ACT-03",
     strength: "SHOULD",
@@ -672,7 +681,7 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "webmcp",
     arId: "AR-ACT-07",
-    strength: "MAY",
+    strength: "SHOULD",
     name: "WebMCP",
     what: "The same tool contract, registered on the page itself.",
     bestPractice:

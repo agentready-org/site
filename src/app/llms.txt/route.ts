@@ -34,9 +34,9 @@ License: MIT
 
 ## How we know
 
-Numbers in this spec are tagged by source. [STUDIES] refers to research from the ora.ai research lab: over 1,000 real agent runs across 25 sites traced turn by turn and a controlled experiment that toggled one feature at a time, with the full dataset public at https://github.com/agentready-org/standard/tree/main/data; plus the Ora research reports cited next to their numbers. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
+Numbers in this spec are tagged by source. [STUDIES] refers to research from the ora.ai research lab: more than 250,000 real agent runs and a controlled experiment that toggled one feature at a time, with the data behind each claim public at https://github.com/agentready-org/standard/tree/main/data; plus the Ora research reports cited next to their numbers. [ORA SCANNER] refers to agent-reachability checks across every scored site. Statements without a tag are recommendations rather than measured findings.
 
-In the studies, two changes caused agents to fail: hiding answers behind JavaScript and blocking access. The spec follows the order in which agents encounter a site: find, read, then act. Strengths come from measurement: those two changes are MUST, practices that measurably shaped where agents went are SHOULD, emerging conventions are MAY. All recommendations share one prerequisite: the agent must be able to reach the page and find the answer in the returned HTML.
+In the studies, two changes caused agents to fail: hiding answers behind JavaScript and blocking access. The spec follows the order in which agents encounter a site: find, read, then act. MUST marks what an agent fails without: those two changes, and, when agents should complete a task, an MCP server or a CLI to act through. Practices that measurably shaped where agents went or make acting reliable are SHOULD, emerging conventions are MAY. All recommendations share one prerequisite: the agent must be able to reach the page and find the answer in the returned HTML.
 
 ## Essentials
 

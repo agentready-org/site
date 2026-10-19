@@ -6,6 +6,16 @@ All notable changes to AgentReady are recorded here.
 
 ## Unreleased
 
+- New practice: `AR-ACT-10` an MCP server or a CLI (MUST, at least one)
+  when agents should complete a task. MUST now marks what an agent fails
+  without: the two changes that broke an agent in the studies, and an
+  interface to act through. `AR-ACT-03` (MCP server) and `AR-ACT-06`
+  (SDKs and a CLI) stay SHOULD as the specific forms. `AR-ACT-07` WebMCP
+  moves from MAY to SHOULD. Needs matching rows in `spec/spec.md`.
+- `[STUDIES]` is described by the full research base behind the spec:
+  more than 250,000 real agent runs and the controlled experiment, on the
+  page and in `/llms.txt`. The per-claim evidence tables keep their raw
+  counts from the public dataset.
 - The site now shows each practice's stable identifier (`AR-FIND-01` and
   so on) and BCP 14 strength (`MUST` / `SHOULD` / `MAY`) from the spec
   source, and `/llms.txt` carries them too.
