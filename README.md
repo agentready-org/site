@@ -5,7 +5,7 @@ The open standard for agent readiness.
 The site publishes **"Make your site readable by AI agents"** — the spec of
 what a site should implement to be found, read, and used by AI agents, with
 every requirement grounded in real agent runs and a controlled experiment.
-A collaboration between Ora, Vercel, Mintlify, Auth0, and Stripe.
+A collaboration between Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily.
 
 The spec is published as a single page. Key anchors:
 
@@ -64,10 +64,13 @@ src/
     sitemap.ts         # sitemap.xml
     globals.css        # Tailwind + design tokens + scroll-smooth
     icon.svg           # Favicon
+    opengraph-image.tsx  # Share image with the collaborator logos
+    twitter-image.tsx  # Re-exports the share image for X
+    fonts/             # Newsreader and IBM Plex Mono for the share image
   components/
     navbar.tsx         # Sticky nav
     footer.tsx         # Compact footer with partner logos
-    partners.tsx       # Collaboration logo strip (Ora, Vercel, Mintlify, Auth0, Stripe)
+    partners.tsx       # Collaboration logos (Ora, Vercel, Stripe, Auth0, Mintlify, Tavily)
   lib/
     guide-data.ts      # Practice tables (AR ids, strengths) shared by the page and /llms.txt
     ora-stats.ts       # Build-time fetch of the hero numbers from ora.ai/api/stats
@@ -85,10 +88,12 @@ that file and the caption says when it was last read. Redeploy to refresh.
 
 ## Versioning
 
-The spec is versioned as a document (v1.0, August 2026). It was announced on
+The spec is versioned as a document (v2.0, October 2026). It was announced on
 March 20, 2026 and first published as v1.0.0 on April 24, 2026 with five
-topic sections and `AR-DISC-*`-style identifiers; v1.0 restructured it into
-find / read / act with `AR-FIND-*`, `AR-READ-*`, and `AR-ACT-*` identifiers.
+topic sections and `AR-DISC-*`-style identifiers; v1.0 (August 2026)
+restructured it into find / read / act with `AR-FIND-*`, `AR-READ-*`, and
+`AR-ACT-*` identifiers; v2.0 made an MCP server or a CLI a `MUST` for
+products agents act on (`AR-ACT-10`).
 Scanner checks and weights may change independently of the spec; see
 [`CHANGELOG.md`](./CHANGELOG.md) and [`/#changelog`](https://agentready.org/#changelog).
 

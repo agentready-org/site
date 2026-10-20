@@ -68,7 +68,7 @@ export async function Scoreboard() {
         >
           ora.ai
         </a>{" "}
-        in {when}; the live figures are there.
+        in {when}.
       </figcaption>
     </figure>
   );

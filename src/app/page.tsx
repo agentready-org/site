@@ -397,7 +397,7 @@ export default function HomePage() {
           Reading documentation does not let an agent complete a task. To
           act, it needs an API, MCP server, WebMCP tools, SDK, or CLI, plus
           authentication it can finish, and, if the product charges, a way
-          to pay. The last step happens only if the first two did.
+          to pay.
         </p>
         <SplitStat />
         <PracticeTable
@@ -573,6 +573,19 @@ export default function HomePage() {
         <ul className="max-w-2xl space-y-3">
           <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
             v{GUIDE_VERSION} · {GUIDE_DATE_LABEL}
+            <span className="block mt-1 font-serif text-sm text-foreground/70 leading-relaxed tracking-normal">
+              An MCP server or a CLI is now MUST when agents should complete
+              a task (AR-ACT-10), and WebMCP moves from MAY to SHOULD. New
+              practices: AI Catalog (AR-FIND-04), pricing on a first-party
+              page (AR-READ-11), agent payments with Stripe Link (AR-ACT-08),
+              and NLWeb (AR-ACT-09). The find section opens with Ora&apos;s
+              AX is the New AEO findings, AR-FIND-01 now covers bot
+              protection, and the studies are described by their 250,000
+              agent runs.
+            </span>
+          </li>
+          <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
+            v1.0 · August 2026
             <span className="block mt-1 font-serif text-sm text-foreground/70 leading-relaxed tracking-normal">
               Restructured into find / read / act with AR-FIND, AR-READ,
               and AR-ACT identifiers, strengths assigned from the studies,

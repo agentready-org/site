@@ -4,14 +4,18 @@ All notable changes to AgentReady are recorded here.
 
 ---
 
-## Unreleased
+## v2.0 — October 2026
+
+A major version: `AR-ACT-10` adds a `MUST`, so a product that conformed
+to v1.0 may not conform to v2.0, and `AR-ACT-07` WebMCP is raised from
+`MAY` to `SHOULD`.
 
 - New practice: `AR-ACT-10` an MCP server or a CLI (MUST, at least one)
   when agents should complete a task. MUST now marks what an agent fails
   without: the two changes that broke an agent in the studies, and an
   interface to act through. `AR-ACT-03` (MCP server) and `AR-ACT-06`
   (SDKs and a CLI) stay SHOULD as the specific forms. `AR-ACT-07` WebMCP
-  moves from MAY to SHOULD. Needs matching rows in `spec/spec.md`.
+  moves from MAY to SHOULD.
 - `[STUDIES]` is described by the full research base behind the spec:
   more than 250,000 real agent runs and the controlled experiment, on the
   page and in `/llms.txt`. The per-claim evidence tables keep their raw
@@ -20,14 +24,13 @@ All notable changes to AgentReady are recorded here.
   so on) and BCP 14 strength (`MUST` / `SHOULD` / `MAY`) from the spec
   source, and `/llms.txt` carries them too.
 - New practices: `AR-FIND-04` AI Catalog at `/.well-known/ai-catalog.json`
-  with ARD as the registry layer (MAY); `AR-ACT-07` WebMCP (MAY, previously
+  with ARD as the registry layer (MAY); `AR-ACT-07` WebMCP (previously
   on the site without an identifier); `AR-ACT-08` agent payments via
   x402 / MPP for per-call pricing and UCP / ACP for checkout, plus Stripe
   Link (Link on checkout and Shared Payment Tokens) for agents paying
   with a Link Agent Wallet (MAY), backed by Ora's October 2026 checkout
   study (92.3% of Link test checkouts done right);
   `AR-ACT-09` NLWeb `/ask` endpoint with an `ask` tool over MCP (MAY).
-  These identifiers need matching rows in `spec/spec.md`.
 - Hero scoreboard numbers (sites scanned, average score, share at grade B
   or above, grade split) are read from `ora.ai/api/stats` at build time
   instead of being hardcoded. The "action gap" and robots.txt figures are
@@ -40,18 +43,21 @@ All notable changes to AgentReady are recorded here.
 - `AR-FIND-01` now covers bot protection as well as robots.txt: let
   verified agents through the WAF or bot manager, and throttle with a
   `429` instead of a challenge page.
-- New practice: `AR-READ-10` pricing on a first-party page (SHOULD),
+- New practice: `AR-READ-11` pricing on a first-party page (SHOULD),
   backed by pricing answers being 60% accurate from the business's own
-  pages against 37% from elsewhere. Needs a matching row in
-  `spec/spec.md`.
+  pages against 37% from elsewhere. It takes the next unused number:
+  `AR-READ-10` (`AGENTS.md` / `SKILLS.md`, MAY) was removed in August
+  2026 and stays retired.
 - The crawler notes name agent search APIs (Brave Search API, Exa,
   Parallel, Tavily) as a crawler kind the wildcard rule covers.
 - "Check your site" lists Tavily's Agent Visibility Report
   (avr.tavily.com) next to the three rankers, for how a site ranks when
   agents search its market.
-- Stripe joins the collaborators.
-- Collaborator list unified to Ora, Vercel, Mintlify, and Auth0 across the
-  page, metadata, JSON-LD, `/llms.txt`, and README.
+- Stripe and Tavily (by Nebius) join the collaborators. The list reads
+  Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily across the logo strip,
+  metadata, JSON-LD, `/llms.txt`, and README.
+- The share image shows the collaborator logos and is set in the site's
+  fonts, Newsreader and IBM Plex Mono.
 - Ora CLI command corrected to `npx ax audit`.
 
 ---

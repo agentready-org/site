@@ -21,9 +21,9 @@
  * findings.
  */
 
-export const GUIDE_VERSION = "1.0";
-export const GUIDE_DATE = "2026-08";
-export const GUIDE_DATE_LABEL = "August 2026";
+export const GUIDE_VERSION = "2.0";
+export const GUIDE_DATE = "2026-10";
+export const GUIDE_DATE_LABEL = "October 2026";
 
 /** The version announced in March 2026 and published as v1.0.0 in April. */
 export const ANNOUNCEMENT_URL =
@@ -261,7 +261,7 @@ export const READ_PRACTICES: readonly Practice[] = [
   },
   {
     id: "pricing-page",
-    arId: "AR-READ-10",
+    arId: "AR-READ-11",
     strength: "SHOULD",
     name: "Pricing on a first-party page",
     what: "Plans, free tier, and limits as text in the HTML, not an image, a calculator, or a sales form.",

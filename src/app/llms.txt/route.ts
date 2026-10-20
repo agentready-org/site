@@ -26,7 +26,7 @@ function renderPractice(p: Practice): string {
 export function GET() {
   const body = `# AgentReady: Make your site readable by AI agents
 
-> AgentReady is the open standard for agent readiness: a spec of the protocols, standards, and conventions a product should implement to be found, read, and used by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how scanners should weight or score compliance. Every requirement carries a stable identifier (AR-FIND-01 and so on) and a BCP 14 strength (MUST / SHOULD / MAY) assigned from real agent runs and a controlled experiment. Developed in collaboration with Ora, Vercel, Mintlify, Auth0, and Stripe.
+> AgentReady is the open standard for agent readiness: a spec of the protocols, standards, and conventions a product should implement to be found, read, and used by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how scanners should weight or score compliance. Every requirement carries a stable identifier (AR-FIND-01 and so on) and a BCP 14 strength (MUST / SHOULD / MAY) assigned from real agent runs and a controlled experiment. Developed in collaboration with Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily.
 
 Version: v${GUIDE_VERSION}
 Last updated: ${GUIDE_DATE_LABEL}
