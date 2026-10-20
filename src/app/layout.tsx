@@ -91,11 +91,6 @@ export const metadata: Metadata = {
     site: "@agentready",
     creator: "@agentready",
   },
-  icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
-  },
 };
 
 export default function RootLayout({
