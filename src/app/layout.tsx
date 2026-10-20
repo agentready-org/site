@@ -3,7 +3,11 @@ import { Analytics } from "@vercel/analytics/next";
 import { IBM_Plex_Mono, Newsreader } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { GUIDE_VERSION, GUIDE_DATE } from "@/lib/guide-data";
+import {
+  GUIDE_VERSION,
+  GUIDE_DATE,
+  GUIDE_FIRST_PUBLISHED,
+} from "@/lib/guide-data";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -20,9 +24,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 const SITE_URL = "https://agentready.org";
-const TITLE = "AgentReady // The open standard for agent readiness";
+const HEADLINE = "The open standard for agent readiness";
+const TITLE = `AgentReady // ${HEADLINE}`;
 const DESCRIPTION =
-  "AgentReady is the open standard for agent readiness: a spec of what a site should implement to be found, read, and used by AI agents, with every requirement grounded in real agent runs. A collaboration between Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily.";
+  "The open standard for agent readiness: what a site should implement to be found, read, and used by AI agents, grounded in 250,000 real agent runs.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -88,8 +93,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    site: "@agentready",
-    creator: "@agentready",
+    site: "@oradotai",
+    creator: "@oradotai",
   },
 };
 
@@ -115,44 +120,71 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "TechArticle",
-              name: "AgentReady",
-              headline: "Make your site readable by AI agents",
-              description: DESCRIPTION,
-              url: "https://agentready.org",
-              inLanguage: "en",
-              version: GUIDE_VERSION,
-              datePublished: GUIDE_DATE,
-              license: "https://opensource.org/licenses/MIT",
-              contributor: [
-                { "@type": "Organization", name: "Ora", url: "https://ora.ai" },
-                { "@type": "Organization", name: "Vercel", url: "https://vercel.com" },
-                { "@type": "Organization", name: "Stripe", url: "https://stripe.com" },
-                { "@type": "Organization", name: "Auth0", url: "https://auth0.com" },
-                { "@type": "Organization", name: "Mintlify", url: "https://www.mintlify.com" },
-                { "@type": "Organization", name: "Tavily", url: "https://www.tavily.com" },
-              ],
-              encoding: [
+              "@graph": [
                 {
-                  "@type": "MediaObject",
-                  encodingFormat: "text/plain",
-                  contentUrl: "https://agentready.org/llms.txt",
+                  "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
+                  name: "AgentReady",
+                  url: SITE_URL,
+                  logo: `${SITE_URL}/apple-icon`,
+                  sameAs: ["https://github.com/agentready-org"],
                 },
-              ],
-              keywords: [
-                "agent readiness",
-                "open standard",
-                "MCP",
-                "WebMCP",
-                "A2A",
-                "x402",
-                "MPP",
-                "ACP",
-                "UCP",
-                "NLWeb",
-                "ARD",
-                "llms.txt",
-                "Web Bot Auth",
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  name: "AgentReady",
+                  url: SITE_URL,
+                  inLanguage: "en",
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                },
+                {
+                  "@type": "TechArticle",
+                  "@id": `${SITE_URL}/#article`,
+                  name: "AgentReady",
+                  headline: HEADLINE,
+                  description: DESCRIPTION,
+                  url: SITE_URL,
+                  mainEntityOfPage: SITE_URL,
+                  isPartOf: { "@id": `${SITE_URL}/#website` },
+                  image: `${SITE_URL}/opengraph-image`,
+                  author: { "@id": `${SITE_URL}/#organization` },
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                  inLanguage: "en",
+                  version: GUIDE_VERSION,
+                  datePublished: GUIDE_FIRST_PUBLISHED,
+                  dateModified: GUIDE_DATE,
+                  license: "https://opensource.org/licenses/MIT",
+                  contributor: [
+                    { "@type": "Organization", name: "Ora", url: "https://ora.ai" },
+                    { "@type": "Organization", name: "Vercel", url: "https://vercel.com" },
+                    { "@type": "Organization", name: "Stripe", url: "https://stripe.com" },
+                    { "@type": "Organization", name: "Auth0", url: "https://auth0.com" },
+                    { "@type": "Organization", name: "Mintlify", url: "https://www.mintlify.com" },
+                    { "@type": "Organization", name: "Tavily", url: "https://www.tavily.com" },
+                  ],
+                  encoding: [
+                    {
+                      "@type": "MediaObject",
+                      encodingFormat: "text/plain",
+                      contentUrl: `${SITE_URL}/llms.txt`,
+                    },
+                  ],
+                  keywords: [
+                    "agent readiness",
+                    "open standard",
+                    "MCP",
+                    "WebMCP",
+                    "A2A",
+                    "x402",
+                    "MPP",
+                    "ACP",
+                    "UCP",
+                    "NLWeb",
+                    "ARD",
+                    "llms.txt",
+                    "Web Bot Auth",
+                  ],
+                },
               ],
             }),
           }}

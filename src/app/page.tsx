@@ -496,6 +496,9 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § references
         </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          References
+        </h2>
         <ul className="max-w-2xl space-y-2">
           {[
             {
@@ -570,6 +573,9 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           § changelog
         </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Changelog
+        </h2>
         <ul className="max-w-2xl space-y-3">
           <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
             v{GUIDE_VERSION} · {GUIDE_DATE_LABEL}
@@ -628,6 +634,9 @@ export default function HomePage() {
         <p className="font-mono text-xs text-muted-foreground/50 tracking-widest mb-4">
           contribute
         </p>
+        <h2 className="font-serif text-xl sm:text-2xl text-foreground mb-4 leading-tight">
+          Contribute
+        </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
           AgentReady is developed in the open. The{" "}
           <a

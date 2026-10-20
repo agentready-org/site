@@ -22,8 +22,9 @@
  */
 
 export const GUIDE_VERSION = "2.0";
-export const GUIDE_DATE = "2026-10";
+export const GUIDE_DATE = "2026-10-20";
 export const GUIDE_DATE_LABEL = "October 2026";
+export const GUIDE_FIRST_PUBLISHED = "2026-04-24";
 
 /** The version announced in March 2026 and published as v1.0.0 in April. */
 export const ANNOUNCEMENT_URL =
