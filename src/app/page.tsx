@@ -678,14 +678,16 @@ function Fold({
 }) {
   return (
     <details className="max-w-2xl mt-6 group">
-      <summary className="cursor-pointer font-mono text-[13px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors [&::-webkit-details-marker]:hidden list-none">
-        <span aria-hidden="true" className="text-[10px] mr-1 group-open:hidden">
+      <summary className="cursor-pointer font-mono text-[15px] tracking-wide text-foreground/75 hover:text-foreground transition-colors [&::-webkit-details-marker]:hidden list-none">
+        <span aria-hidden="true" className="text-[16px] mr-1.5 group-open:hidden">
           ▸
         </span>
-        <span aria-hidden="true" className="text-[10px] mr-1 hidden group-open:inline">
+        <span aria-hidden="true" className="text-[16px] mr-1.5 hidden group-open:inline">
           ▾
         </span>
-        {label}
+        <span className="underline decoration-border decoration-2 underline-offset-4">
+          {label}
+        </span>
       </summary>
       <div className="mt-5">{children}</div>
     </details>

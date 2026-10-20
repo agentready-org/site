@@ -31,12 +31,14 @@ function EvidenceButton({
       onClick={onClick}
       aria-expanded={open}
       aria-controls={controlsId}
-      className="inline-flex items-center gap-1 font-mono text-[13px] tracking-wide text-muted-foreground underline decoration-border decoration-2 underline-offset-4 hover:text-foreground transition-colors cursor-pointer"
+      className="inline-flex items-center gap-1.5 font-mono text-[15px] tracking-wide text-foreground/75 hover:text-foreground transition-colors cursor-pointer"
     >
-      <span aria-hidden="true" className="text-[10px]">
+      <span aria-hidden="true" className="text-[16px] leading-none">
         {open ? "▾" : "▸"}
       </span>
-      {open ? "hide evidence" : "evidence"}
+      <span className="underline decoration-border decoration-2 underline-offset-4">
+        {open ? "hide evidence" : "evidence"}
+      </span>
     </button>
   );
 }
