@@ -59,9 +59,9 @@ export function Navbar() {
           <Link
             href="/"
             aria-label="agentready.org"
-            className="inline-flex items-center gap-2.5 font-mono text-[22px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
+            className="inline-flex items-center gap-2 font-mono text-[22px] font-bold tracking-wide text-foreground hover:opacity-70 transition-opacity"
           >
-            <svg aria-hidden="true" viewBox="0 0 32 32" className="size-6 shrink-0">
+            <svg aria-hidden="true" viewBox="0 0 32 32" className="size-[18px] shrink-0">
               <rect width="32" height="32" rx="6" className="fill-foreground" />
               <path
                 d="M6 15.5 L10.5 20 L18.5 10.5"
