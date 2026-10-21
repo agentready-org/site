@@ -331,6 +331,14 @@ export default function HomePage() {
           so an agent fetching the raw HTML gets your key facts and routes
           in one machine-readable block.
         </p>
+        <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
+          But being in the HTML is not the same as being read. Most agents
+          read a page&apos;s text, not its <Mono>&lt;script&gt;</Mono>{" "}
+          elements, so a fact that exists only in JSON-LD, a JSON config, or
+          a hydration payload goes unseen. In our work with Elementor on
+          WordPress sites, one example is the annual price behind a pricing
+          toggle, served only as JSON. Repeat key facts as visible text.
+        </p>
 
         <div
           id="status-codes"
