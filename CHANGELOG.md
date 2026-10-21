@@ -56,6 +56,13 @@ to v1.0 may not conform to v2.0, and `AR-ACT-07` WebMCP is raised from
 - Stripe and Tavily (by Nebius) join the collaborators. The list reads
   Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily across the logo strip,
   metadata, JSON-LD, `/llms.txt`, and README.
+- Google, MIT, and Elementor join the collaborators. The logo strip and
+  the share image lay the nine logos out in column-aligned rows of five
+  and four.
+- The read section notes that a fact only inside a `<script>` element
+  (JSON-LD, a JSON config, or a hydration payload) is in the HTML but not
+  in the text most agents read, with an example from work with Elementor
+  on WordPress sites.
 - The share image shows the collaborator logos and is set in the site's
   fonts, Newsreader and IBM Plex Mono.
 - Ora CLI command corrected to `npx ax audit`.

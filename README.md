@@ -5,7 +5,8 @@ The open standard for agent readiness.
 The site publishes **"Make your site readable by AI agents"** — the spec of
 what a site should implement to be found, read, and used by AI agents, with
 every requirement grounded in real agent runs and a controlled experiment.
-A collaboration between Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily.
+A collaboration between Ora, Vercel, Stripe, Auth0, Mintlify, Tavily, Google,
+MIT, and Elementor.
 
 The spec is published as a single page. Key anchors:
 
@@ -70,7 +71,7 @@ src/
   components/
     navbar.tsx         # Sticky nav
     footer.tsx         # Compact footer with partner logos
-    partners.tsx       # Collaboration logos (Ora, Vercel, Stripe, Auth0, Mintlify, Tavily)
+    partners.tsx       # Collaboration logos, also used by the share image
   lib/
     guide-data.ts      # Practice tables (AR ids, strengths) shared by the page and /llms.txt
     ora-stats.ts       # Build-time fetch of the hero numbers from ora.ai/api/stats
