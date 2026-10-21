@@ -14,6 +14,7 @@ const LOGO_COLUMNS = Array.from({ length: LOGO_COLUMN_COUNT }, (_, i) =>
   PARTNERS.filter((_, j) => j % LOGO_COLUMN_COUNT === i)
 );
 const LOGO_GAP = 72;
+const LAST_PARTNER = PARTNERS[PARTNERS.length - 1].name;
 
 export default async function OpengraphImage() {
   const fontDir = join(process.cwd(), "src/app/fonts");
@@ -86,7 +87,14 @@ export default async function OpengraphImage() {
                 {column.map(({ name, Logo, scale }) => (
                   <div
                     key={name}
-                    style={{ display: "flex", alignItems: "center", height: LOGO_HEIGHT }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      height: LOGO_HEIGHT,
+                      // The last logo has empty space to its right, so it
+                      // overflows its column instead of widening it.
+                      ...(name === LAST_PARTNER && { width: 0 }),
+                    }}
                   >
                     <Logo height={LOGO_HEIGHT * scale} />
                   </div>

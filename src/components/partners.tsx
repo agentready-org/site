@@ -34,11 +34,13 @@ export function Partners({ compact = false }: { compact?: boolean }) {
       >
         in collaboration with
       </p>
+      {/* The last logo has empty space to its right, so it overflows its
+          column instead of widening it and the gap in the row above. */}
       <ul
         className={
           compact
             ? "flex flex-wrap items-center gap-x-6 gap-y-3"
-            : "grid grid-cols-3 items-center gap-x-4 gap-y-5 md:grid-cols-[repeat(5,auto)] md:justify-start md:gap-x-10 md:gap-y-6"
+            : "grid grid-cols-3 items-center gap-x-4 gap-y-5 md:grid-cols-[repeat(5,auto)] md:justify-start md:gap-x-10 md:gap-y-6 md:[&>li:last-child]:w-0"
         }
       >
         {partners
