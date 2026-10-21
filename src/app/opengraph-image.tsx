@@ -8,6 +8,12 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const LOGO_HEIGHT = 36;
+const LOGO_COLUMN_COUNT = 5;
+/** Satori has no grid, so the two logo rows are laid out as columns to line them up. */
+const LOGO_COLUMNS = Array.from({ length: LOGO_COLUMN_COUNT }, (_, i) =>
+  PARTNERS.filter((_, j) => j % LOGO_COLUMN_COUNT === i)
+);
+const LOGO_GAP = 72;
 
 export default async function OpengraphImage() {
   const fontDir = join(process.cwd(), "src/app/fonts");
@@ -71,16 +77,21 @@ export default async function OpengraphImage() {
           >
             in collaboration with
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              color: "#F2EEE3",
-            }}
-          >
-            {PARTNERS.map(({ name, Logo, scale }) => (
-              <Logo key={name} height={LOGO_HEIGHT * scale} />
+          <div style={{ display: "flex", gap: LOGO_GAP, color: "#F2EEE3" }}>
+            {LOGO_COLUMNS.map((column, i) => (
+              <div
+                key={i}
+                style={{ display: "flex", flexDirection: "column", gap: 28 }}
+              >
+                {column.map(({ name, Logo, scale }) => (
+                  <div
+                    key={name}
+                    style={{ display: "flex", alignItems: "center", height: LOGO_HEIGHT }}
+                  >
+                    <Logo height={LOGO_HEIGHT * scale} />
+                  </div>
+                ))}
+              </div>
             ))}
           </div>
         </div>
