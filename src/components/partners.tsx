@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 type LogoProps = { height?: number };
 
 /** Explicit pixel size for renderers without CSS, such as the share image. */
@@ -17,6 +19,9 @@ export const PARTNERS = [
   { name: "Elementor", href: "https://elementor.com", Logo: ElementorLogo, scale: 0.9 },
 ] as const;
 
+/** Logos in the first row on wide screens and in the share image. */
+export const FIRST_ROW_LENGTH = 5;
+
 export function Partners({ compact = false }: { compact?: boolean }) {
   const partners = PARTNERS;
   return (
@@ -33,32 +38,37 @@ export function Partners({ compact = false }: { compact?: boolean }) {
       >
         in collaboration with
       </p>
-      {/* The last logo has empty space to its right, so it overflows its
-          column instead of widening it and the gap in the row above. */}
+      {/* Wide screens use rows rather than aligned columns, so a wide logo in
+          the second row doesn't stretch the gap between first-row logos. */}
       <ul
         className={
           compact
             ? "flex flex-wrap items-center gap-x-6 gap-y-3"
-            : "grid grid-cols-3 items-center gap-x-4 gap-y-5 md:grid-cols-[repeat(5,auto)] md:justify-start md:gap-x-10 md:gap-y-6 md:[&>li:last-child]:w-0"
+            : "grid grid-cols-3 items-center gap-x-4 gap-y-5 md:flex md:flex-wrap md:gap-x-10 md:gap-y-0"
         }
       >
         {partners
           .filter((p) => !("hidden" in p && p.hidden))
-          .map(({ name, href, Logo }) => (
-          <li key={name}>
-            <a
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              className={`inline-flex items-center text-foreground/90 hover:text-foreground transition-colors ${
-                compact ? "h-5 text-[20px]" : "h-5 sm:h-6 md:h-7 text-[20px] sm:text-[24px] md:text-[28px]"
-              }`}
-            >
-              <Logo />
-              {/* The accessible name, and the link text for markdown converters. */}
-              <span className="sr-only">{name}</span>
-            </a>
-          </li>
+          .map(({ name, href, Logo }, i) => (
+          <Fragment key={name}>
+            {!compact && i === FIRST_ROW_LENGTH && (
+              <li aria-hidden="true" className="hidden md:block md:basis-full" />
+            )}
+            <li className={!compact && i >= FIRST_ROW_LENGTH ? "md:mt-6" : undefined}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className={`inline-flex items-center text-foreground/90 hover:text-foreground transition-colors ${
+                  compact ? "h-5 text-[20px]" : "h-5 sm:h-6 md:h-7 text-[20px] sm:text-[24px] md:text-[28px]"
+                }`}
+              >
+                <Logo />
+                {/* The accessible name, and the link text for markdown converters. */}
+                <span className="sr-only">{name}</span>
+              </a>
+            </li>
+          </Fragment>
         ))}
       </ul>
     </div>

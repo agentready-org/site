@@ -1,20 +1,18 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { PARTNERS } from "@/components/partners";
+import { FIRST_ROW_LENGTH, PARTNERS } from "@/components/partners";
 
 export const alt = "AgentReady — The open standard for agent readiness";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const LOGO_HEIGHT = 36;
-const LOGO_COLUMN_COUNT = 5;
-/** Satori has no grid, so the two logo rows are laid out as columns to line them up. */
-const LOGO_COLUMNS = Array.from({ length: LOGO_COLUMN_COUNT }, (_, i) =>
-  PARTNERS.filter((_, j) => j % LOGO_COLUMN_COUNT === i)
-);
+const LOGO_ROWS = [
+  PARTNERS.slice(0, FIRST_ROW_LENGTH),
+  PARTNERS.slice(FIRST_ROW_LENGTH),
+];
 const LOGO_GAP = 72;
-const LAST_PARTNER = PARTNERS[PARTNERS.length - 1].name;
 
 export default async function OpengraphImage() {
   const fontDir = join(process.cwd(), "src/app/fonts");
@@ -78,23 +76,15 @@ export default async function OpengraphImage() {
           >
             in collaboration with
           </div>
-          <div style={{ display: "flex", gap: LOGO_GAP, color: "#F2EEE3" }}>
-            {LOGO_COLUMNS.map((column, i) => (
-              <div
-                key={i}
-                style={{ display: "flex", flexDirection: "column", gap: 28 }}
-              >
-                {column.map(({ name, Logo, scale }) => (
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: 28, color: "#F2EEE3" }}
+          >
+            {LOGO_ROWS.map((row, i) => (
+              <div key={i} style={{ display: "flex", gap: LOGO_GAP }}>
+                {row.map(({ name, Logo, scale }) => (
                   <div
                     key={name}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      height: LOGO_HEIGHT,
-                      // The last logo has empty space to its right, so it
-                      // overflows its column instead of widening it.
-                      ...(name === LAST_PARTNER && { width: 0 }),
-                    }}
+                    style={{ display: "flex", alignItems: "center", height: LOGO_HEIGHT }}
                   >
                     <Logo height={LOGO_HEIGHT * scale} />
                   </div>
