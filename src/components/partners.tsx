@@ -12,7 +12,6 @@ export const PARTNERS = [
   { name: "Stripe", href: "https://stripe.com", Logo: StripeLogo, scale: 1 },
   { name: "Auth0", href: "https://auth0.com", Logo: Auth0Logo, scale: 1.1 },
   { name: "Mintlify", href: "https://www.mintlify.com", Logo: MintlifyLogo, scale: 1 },
-  { name: "MIT", href: "https://www.mit.edu", Logo: MitLogo, scale: 0.75 },
   { name: "Tavily by Nebius", href: "https://www.tavily.com", Logo: TavilyLogo, scale: 1 },
   { name: "Google", href: "https://www.google.com", Logo: GoogleLogo, scale: 1 },
   { name: "Elementor", href: "https://elementor.com", Logo: ElementorLogo, scale: 0.9 },
@@ -239,20 +238,6 @@ function GoogleLogo({ height }: LogoProps) {
       <path d="M225 3v65h-9.5V3h9.5z" />
       <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" />
       <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" />
-    </svg>
-  );
-}
-
-function MitLogo({ height }: LogoProps) {
-  return (
-    <svg
-      {...sized(height, 377.778, 200)}
-      viewBox="160 160 377.778 200"
-      fill="currentColor"
-      className="h-[75%] w-auto"
-      aria-hidden="true"
-    >
-      <path d="M360,360h44.445V226.667H360Zm66.667-155.556H537.778V160H426.667ZM360,160h44.445v44.444H360ZM293.333,360h44.444V160H293.333Zm-66.667-44.444h44.444V160H226.667ZM160,360h44.445V160H160Zm266.667,0h44.445V226.667H426.667Z" />
     </svg>
   );
 }

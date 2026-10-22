@@ -162,7 +162,6 @@ export default function RootLayout({
                     { "@type": "Organization", name: "Mintlify", url: "https://www.mintlify.com" },
                     { "@type": "Organization", name: "Tavily", url: "https://www.tavily.com" },
                     { "@type": "Organization", name: "Google", url: "https://www.google.com" },
-                    { "@type": "Organization", name: "MIT", url: "https://www.mit.edu" },
                     { "@type": "Organization", name: "Elementor", url: "https://elementor.com" },
                   ],
                   encoding: [

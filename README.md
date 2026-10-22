@@ -6,7 +6,7 @@ The site publishes **"Make your site readable by AI agents"** — the spec of
 what a site should implement to be found, read, and used by AI agents, with
 every requirement grounded in real agent runs and a controlled experiment.
 A collaboration between Ora, Vercel, Stripe, Auth0, Mintlify, Tavily, Google,
-MIT, and Elementor.
+and Elementor.
 
 The spec is published as a single page. Key anchors:
 
