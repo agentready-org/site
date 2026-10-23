@@ -48,6 +48,8 @@ const AI_CATALOG_SNIPPET = `<!-- In the homepage head, and as an HTTP Link heade
 const SCAN_IS_AGENTIC_SNIPPET = `npx is-agentic example.com`;
 const SCAN_CLI_SNIPPET = `npx ax audit https://example.com`;
 const SCAN_MINTLIFY_SNIPPET = `npx mint score docs.example.com`;
+const SCAN_AXIS_SNIPPET = `npx @netlify/axis init
+npx @netlify/axis run`;
 
 export default function HomePage() {
   return (
@@ -426,9 +428,11 @@ export default function HomePage() {
         </h2>
         <p className="font-serif text-base text-foreground/85 leading-relaxed mb-5 max-w-2xl">
           Three public rankers score the site itself, each on a different
-          surface, and one report shows how you rank when agents search
-          your market. None of them is the spec. The rankers have a free
-          browser score; the report runs on a free Tavily API key.
+          surface. One report shows how you rank when agents search your
+          market, and one harness runs real agents through tasks on your
+          product. None of them is the spec. The rankers have a free
+          browser score, the report runs on a free Tavily API key, and the
+          harness is an open-source CLI that uses your own agent API key.
         </p>
 
         <div className="max-w-2xl mb-4 divide-y divide-border/50 border-y border-border/50">
@@ -456,12 +460,19 @@ export default function HomePage() {
             kicker="visibility"
             body="Tavily's report on who agents find when they search your market."
           />
+          <ScanCard
+            href="https://axis.run"
+            name="axis.run"
+            kicker="agent tests"
+            body="Netlify's AXIS, the Agent Experience Index Score. Runs 20+ coding agents through your API, MCP server, CLI, or skills, scores each run on four dimensions, and gates CI on a baseline."
+          />
         </div>
 
         <Fold label="CLI">
           <CodeBlock label="is-agentic.com" code={SCAN_IS_AGENTIC_SNIPPET} />
           <CodeBlock label="ora.ai" code={SCAN_CLI_SNIPPET} />
           <CodeBlock label="mintlify.com/score" code={SCAN_MINTLIFY_SNIPPET} />
+          <CodeBlock label="axis.run" code={SCAN_AXIS_SNIPPET} />
         </Fold>
 
         <p className="font-serif text-sm text-foreground/70 leading-relaxed max-w-2xl mt-5">
@@ -483,7 +494,7 @@ export default function HomePage() {
           >
             ora.ai/docs
           </a>
-          , and{" "}
+          ,{" "}
           <a
             href="https://www.mintlify.com/blog/agent-score"
             target="_blank"
@@ -491,6 +502,15 @@ export default function HomePage() {
             className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
           >
             Mintlify Agent Score
+          </a>
+          , and{" "}
+          <a
+            href="https://axis.run/scoring"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border decoration-2 underline-offset-4 hover:text-foreground"
+          >
+            AXIS scoring
           </a>
           . Scanner checks and weights may change independently of this
           spec.

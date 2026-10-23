@@ -56,9 +56,11 @@ to v1.0 may not conform to v2.0, and `AR-ACT-07` WebMCP is raised from
 - Stripe and Tavily (by Nebius) join the collaborators. The list reads
   Ora, Vercel, Stripe, Auth0, Mintlify, and Tavily across the logo strip,
   metadata, JSON-LD, `/llms.txt`, and README.
-- Google and Elementor join the collaborators. The logo strip and the
-  share image lay the eight logos out in column-aligned rows of five and
-  three.
+- Google, Elementor, and Netlify join the collaborators. The logo strip
+  and the share image lay the nine logos out in rows of five and four.
+- "Check your site" lists Netlify's AXIS (axis.run), an open-source
+  harness that runs coding agents through tasks on a product's API, MCP
+  server, CLI, or skills and scores each run.
 - The read section notes that a fact only inside a `<script>` element
   (JSON-LD, a JSON config, or a hydration payload) is in the HTML but not
   in the text most agents read, with an example from work with Elementor

@@ -6,7 +6,7 @@ The site publishes **"Make your site readable by AI agents"** — the spec of
 what a site should implement to be found, read, and used by AI agents, with
 every requirement grounded in real agent runs and a controlled experiment.
 A collaboration between Ora, Vercel, Stripe, Auth0, Mintlify, Tavily, Google,
-and Elementor.
+Elementor, and Netlify.
 
 The spec is published as a single page. Key anchors:
 
@@ -15,7 +15,8 @@ The spec is published as a single page. Key anchors:
 - `/#reachable` — Be reachable and citable (find)
 - `/#read` — Put the answer where agents read
 - `/#act` — Let agents act, not just read
-- `/#beyond` — Check your site (is-agentic.com, ora.ai, Mintlify Agent Score)
+- `/#beyond` — Check your site (is-agentic.com, ora.ai, Mintlify Agent Score,
+  Tavily Agent Visibility Report, AXIS by Netlify)
 - `/#changelog` — spec version history
 
 Machine-readable artifacts:

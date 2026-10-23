@@ -26,7 +26,7 @@ function renderPractice(p: Practice): string {
 export function GET() {
   const body = `# AgentReady: Make your site readable by AI agents
 
-> AgentReady is the open standard for agent readiness: a spec of the protocols, standards, and conventions a product should implement to be found, read, and used by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how scanners should weight or score compliance. Every requirement carries a stable identifier (AR-FIND-01 and so on) and a BCP 14 strength (MUST / SHOULD / MAY) assigned from real agent runs and a controlled experiment. Developed in collaboration with Ora, Vercel, Stripe, Auth0, Mintlify, Tavily, Google, and Elementor.
+> AgentReady is the open standard for agent readiness: a spec of the protocols, standards, and conventions a product should implement to be found, read, and used by AI agents, from discovery to completion. It does not promote any specific protocol or vendor, and it does not prescribe how scanners should weight or score compliance. Every requirement carries a stable identifier (AR-FIND-01 and so on) and a BCP 14 strength (MUST / SHOULD / MAY) assigned from real agent runs and a controlled experiment. Developed in collaboration with Ora, Vercel, Stripe, Auth0, Mintlify, Tavily, Google, Elementor, and Netlify.
 
 Version: v${GUIDE_VERSION}
 Last updated: ${GUIDE_DATE_LABEL}
@@ -51,7 +51,7 @@ ${ESSENTIAL_LAYERS.map(
 
 ## Check your site
 
-Three public rankers score the site itself, each on a different surface, and one report shows how you rank when agents search your market. None of them is the spec. The rankers have a free browser score; the report runs on a free Tavily API key. is-agentic.com is the Vercel × Ora essentials reading for sites whose job is content agents can find and use: scan at https://is-agentic.com or run "npx is-agentic example.com". ora.ai is the full ranker for products agents transact with (API, MCP, payments, leaderboard): scan at https://ora.ai, run "npx ax audit https://example.com", or POST {"url": "example.com"} to https://ora.ai/api/scan. mintlify.com/score is Mintlify's Agent Score for documentation sites (29 checks on the Agent-Friendly Documentation Spec): scan at https://www.mintlify.com/score or run "npx mint score docs.example.com". avr.tavily.com is Tavily's report on who agents find when they search your market: run it at https://avr.tavily.com with a free Tavily API key. Docs: https://is-agentic.com/docs, https://ora.ai/docs, and https://www.mintlify.com/blog/agent-score. Scanner checks and weights may change independently of this spec.
+Three public rankers score the site itself, each on a different surface. One report shows how you rank when agents search your market, and one harness runs real agents through tasks on your product. None of them is the spec. The rankers have a free browser score, the report runs on a free Tavily API key, and the harness is an open-source CLI that uses your own agent API key. is-agentic.com is the Vercel × Ora essentials reading for sites whose job is content agents can find and use: scan at https://is-agentic.com or run "npx is-agentic example.com". ora.ai is the full ranker for products agents transact with (API, MCP, payments, leaderboard): scan at https://ora.ai, run "npx ax audit https://example.com", or POST {"url": "example.com"} to https://ora.ai/api/scan. mintlify.com/score is Mintlify's Agent Score for documentation sites (29 checks on the Agent-Friendly Documentation Spec): scan at https://www.mintlify.com/score or run "npx mint score docs.example.com". avr.tavily.com is Tavily's report on who agents find when they search your market: run it at https://avr.tavily.com with a free Tavily API key. axis.run is Netlify's AXIS (Agent Experience Index Score), an open-source harness that runs 20+ coding agents through your API, MCP server, CLI, or skills, scores each run on four dimensions (goal achievement, environment, service, agent), and gates CI on a baseline: run "npx @netlify/axis init" then "npx @netlify/axis run". Docs: https://is-agentic.com/docs, https://ora.ai/docs, https://www.mintlify.com/blog/agent-score, and https://axis.run/scoring. Scanner checks and weights may change independently of this spec.
 
 ## Be reachable and citable
 
@@ -99,6 +99,7 @@ ${ACT_PRACTICES.map(renderPractice).join("\n")}
 - ora.ai: https://ora.ai
 - ora docs: https://ora.ai/docs
 - Mintlify Agent Score: https://www.mintlify.com/score
+- AXIS by Netlify: https://axis.run
 - WebMCP draft: https://webmachinelearning.github.io/webmcp/
 - GitHub: https://github.com/agentready-org/standard
 - Spec source: https://github.com/agentready-org/standard/blob/main/spec/spec.md

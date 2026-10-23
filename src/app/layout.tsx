@@ -163,6 +163,7 @@ export default function RootLayout({
                     { "@type": "Organization", name: "Tavily", url: "https://www.tavily.com" },
                     { "@type": "Organization", name: "Google", url: "https://www.google.com" },
                     { "@type": "Organization", name: "Elementor", url: "https://elementor.com" },
+                    { "@type": "Organization", name: "Netlify", url: "https://www.netlify.com" },
                   ],
                   encoding: [
                     {
