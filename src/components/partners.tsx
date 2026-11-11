@@ -17,9 +17,9 @@ export const PARTNERS = [
   { name: "Tavily by Nebius", href: "https://www.tavily.com", Logo: TavilyLogo, scale: 1 },
   { name: "Google", href: "https://www.google.com", Logo: GoogleLogo, scale: 1 },
   { name: "Netlify", href: "https://www.netlify.com", Logo: NetlifyLogo, scale: 1.7 },
-  { name: "Elementor", href: "https://elementor.com", Logo: ElementorLogo, scale: 0.9 },
-  { name: "Shopify", href: "https://www.shopify.com", Logo: ShopifyLogo, scale: 1.1 },
   { name: "Wix", href: "https://www.wix.com", Logo: WixLogo, scale: 0.7 },
+  { name: "Shopify", href: "https://www.shopify.com", Logo: ShopifyLogo, scale: 1.1 },
+  { name: "Elementor", href: "https://elementor.com", Logo: ElementorLogo, scale: 0.9 },
 ] as const;
 
 /** Logos per row on wide screens. The share image is wider and fits more. */
