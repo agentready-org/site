@@ -164,7 +164,8 @@ export default function RootLayout({
                     { "@type": "Organization", name: "Google", url: "https://www.google.com" },
                     { "@type": "Organization", name: "Elementor", url: "https://elementor.com" },
                     { "@type": "Organization", name: "Netlify", url: "https://www.netlify.com" },
-                  ],
+                    { "@type": "Organization", name: "Shopify", url: "https://www.shopify.com" },
+                    { "@type": "Organization", name: "Wix", url: "https://www.wix.com" },                  ],
                   encoding: [
                     {
                       "@type": "MediaObject",

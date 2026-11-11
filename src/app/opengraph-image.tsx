@@ -1,18 +1,19 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { FIRST_ROW_LENGTH, PARTNERS } from "@/components/partners";
+import { PARTNERS } from "@/components/partners";
 
 export const alt = "AgentReady — The open standard for agent readiness";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const LOGO_HEIGHT = 36;
+const LOGO_HEIGHT = 32;
+const ROW_LENGTH = 6;
 const LOGO_ROWS = [
-  PARTNERS.slice(0, FIRST_ROW_LENGTH),
-  PARTNERS.slice(FIRST_ROW_LENGTH),
+  PARTNERS.slice(0, ROW_LENGTH),
+  PARTNERS.slice(ROW_LENGTH),
 ];
-const LOGO_GAP = 72;
+const LOGO_GAP = 56;
 
 export default async function OpengraphImage() {
   const fontDir = join(process.cwd(), "src/app/fonts");
