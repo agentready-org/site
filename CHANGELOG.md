@@ -4,6 +4,18 @@ All notable changes to AgentReady are recorded here.
 
 ---
 
+## v2.0.1 — November 2026
+
+Editorial: no requirement changes level.
+
+- `AR-ACT-04` server cards follow SEP-2127: one card per server, at
+  `<streamable-http-url>/server-card` or listed in the AI Catalog.
+- `AR-ACT-09` NLWeb follows v0.55 (`POST /ask` with `query.text`, typed
+  results, SSE streaming).
+- The site pins a release of agentready-org/standard and reads every
+  identifier's level, the version, and the date from its `practices.json`;
+  the build fails if the page disagrees with it.
+
 ## v2.0 — October 2026
 
 A major version: `AR-ACT-10` adds a `MUST`, so a product that conformed

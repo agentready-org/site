@@ -6,9 +6,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "command -v portless >/dev/null || npm install -g portless && portless run --name agentready next dev",
+    "prebuild": "node scripts/check-spec.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:spec": "node scripts/check-spec.mjs",
+    "sync:spec": "node scripts/sync-spec.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

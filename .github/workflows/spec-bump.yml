@@ -1,0 +1,52 @@
+name: spec bump
+
+# Opens a PR when agentready-org/standard publishes a newer release than
+# the one pinned in src/spec/practices.json. If the release adds or
+# retires a requirement, the PR's build fails until the page covers it.
+#
+# Needs Settings → Actions → General → "Allow GitHub Actions to create and
+# approve pull requests" on this repository.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+  repository_dispatch:
+    types: [spec-release]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: sync
+        run: node scripts/sync-spec.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Open PR
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.sync.outputs.tag }}
+        run: |
+          branch="spec/$TAG"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null; then
+            echo "$branch already exists"; exit 0
+          fi
+          check=$(node scripts/check-spec.mjs 2>&1) && status="passes" || status="fails"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -am "Pin the spec to $TAG."
+          git push -u origin "$branch"
+          printf '%s\n\n%s\n\n```\n%s\n```\n' \
+            "agentready-org/standard released [$TAG](https://github.com/agentready-org/standard/releases/tag/$TAG). This updates \`src/spec/practices.json\`; levels on the page follow automatically." \
+            "The site check $status against $TAG:" "$check" > body.md
+          gh pr create --title "Pin the spec to $TAG" --body-file body.md
