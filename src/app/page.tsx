@@ -11,6 +11,7 @@ import {
   REACHABLE_PRACTICES,
   SPEC_SOURCE_URL,
 } from "@/lib/guide-data";
+import { level, SPEC_TAG } from "@/lib/spec";
 import {
   PracticeTable,
   ProseEvidence,
@@ -348,7 +349,7 @@ export default function HomePage() {
         >
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4">
             <span className="font-mono text-[11px] tracking-widest text-muted-foreground/55 mr-2">
-              AR-READ-02 · MUST
+              AR-READ-02 · {level("AR-READ-02")}
             </span>
             Return <Mono>404</Mono> for a missing path or a valid redirect
             to a replacement. Do not return <Mono>200</Mono> for a missing
@@ -372,7 +373,7 @@ export default function HomePage() {
           <CodeBlock label="llms.txt" code={LLMS_TXT_SNIPPET} />
           <p className="font-serif text-base text-foreground/85 leading-relaxed mb-4 max-w-2xl">
             <span className="font-mono text-[11px] tracking-widest text-muted-foreground/55 mr-2">
-              AR-READ-09 · MAY
+              AR-READ-09 · {level("AR-READ-09")}
             </span>
             <SourceTag>STUDIES</SourceTag> Agents requested markdown on
             about 65% of web fetches. When they specified a format, they
@@ -607,6 +608,16 @@ export default function HomePage() {
         <ul className="max-w-2xl space-y-3">
           <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
             v{GUIDE_VERSION} · {GUIDE_DATE_LABEL}
+            <span className="block mt-1 font-serif text-sm text-foreground/70 leading-relaxed tracking-normal">
+              Editorial, no level changes. Server cards (AR-ACT-04) follow
+              SEP-2127: one card per server, at the endpoint&apos;s
+              /server-card or listed in the AI Catalog. NLWeb (AR-ACT-09)
+              follows v0.55. Every identifier and level on this page now
+              comes from the spec release, {SPEC_TAG}.
+            </span>
+          </li>
+          <li className="font-mono text-[15px] text-foreground/80 tracking-wide">
+            v2.0 · October 2026
             <span className="block mt-1 font-serif text-sm text-foreground/70 leading-relaxed tracking-normal">
               An MCP server or a CLI is now MUST when agents should complete
               a task (AR-ACT-10), and WebMCP moves from MAY to SHOULD. New

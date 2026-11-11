@@ -9,6 +9,7 @@ import {
   REACHABLE_PRACTICES,
   type Practice,
 } from "@/lib/guide-data";
+import { level } from "@/lib/spec";
 
 export const dynamic = "force-static";
 
@@ -79,7 +80,7 @@ ${DESCRIBING_FILES.map(renderPractice).join("\n")}
 
 [STUDIES] Agents requested markdown on about 65% of web fetches; when they specified a format, they chose markdown 96% of the time. Format did not determine task success, so ensure the HTML works before adding a .md mirror, then advertise it with <link rel="alternate" type="text/markdown"> or an HTTP Link: header.
 
-AR-READ-02 (MUST) Return accurate HTTP status codes: 404 for a missing path (never 200), and 429 with a Retry-After header when throttling. AR-READ-09 (MAY) covers the markdown mirror above.
+AR-READ-02 (${level("AR-READ-02")}) Return accurate HTTP status codes: 404 for a missing path (never 200), and 429 with a Retry-After header when throttling. AR-READ-09 (${level("AR-READ-09")}) covers the markdown mirror above.
 
 ## Let agents act, not just read
 

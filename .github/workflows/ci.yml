@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Pinned spec matches its release
+        run: node scripts/sync-spec.mjs --check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Site matches the pinned spec
+        run: npm run check:spec
+      - run: npx eslint src scripts
+      - run: npm run build

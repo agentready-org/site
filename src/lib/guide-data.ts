@@ -6,9 +6,10 @@
  * the structured rows below are shared with the `/llms.txt` rendering.
  *
  * Each practice carries the stable identifier (`AR-FIND-01` and so on)
- * and BCP 14 strength (MUST / SHOULD / MAY) from the spec source,
- * `spec/spec.md` in agentready-org/standard. Identifiers are preserved
- * across versions and never reused.
+ * from the spec. Its BCP 14 strength (MUST / SHOULD / MAY) is not typed
+ * here: `definePractices` reads it from the pinned spec release in
+ * `src/spec/practices.json` (see `@/lib/spec`), and an identifier the
+ * spec lacks or has retired fails the build.
  *
  * Evidence entries are tagged by source:
  *  - STUDIES: research from the ora.ai research lab — more than 250,000
@@ -21,24 +22,31 @@
  * findings.
  */
 
-export const GUIDE_VERSION = "2.0";
-export const GUIDE_DATE = "2026-10-20";
-export const GUIDE_DATE_LABEL = "October 2026";
+import {
+  level,
+  SPEC_DATE_LABEL,
+  SPEC_REPO_URL,
+  SPEC_TAG,
+  SPEC_VERSION,
+  type Level,
+} from "@/lib/spec";
+
+export const GUIDE_VERSION = SPEC_VERSION;
+export const GUIDE_DATE_LABEL = SPEC_DATE_LABEL;
+/** When this site's copy last changed (sitemap and JSON-LD dateModified). */
+export const GUIDE_DATE = "2026-11-12";
 export const GUIDE_FIRST_PUBLISHED = "2026-04-24";
 
 /** The version announced in March 2026 and published as v1.0.0 in April. */
 export const ANNOUNCEMENT_URL =
   "https://ora.ai/blog/agentready-open-standard";
-export const CHANGELOG_URL =
-  "https://github.com/agentready-org/standard/blob/main/CHANGELOG.md";
+export const CHANGELOG_URL = `${SPEC_REPO_URL}/blob/${SPEC_TAG}/CHANGELOG.md`;
 
-/** The spec's markdown source of truth. */
-export const SPEC_SOURCE_URL =
-  "https://github.com/agentready-org/standard/blob/main/spec/spec.md";
+/** The spec's markdown source of truth, at the release this site shows. */
+export const SPEC_SOURCE_URL = `${SPEC_REPO_URL}/blob/${SPEC_TAG}/spec/spec.md`;
 
 /** The public dataset behind the trace and experiment [STUDIES] numbers. */
-export const DATASET_URL =
-  "https://github.com/agentready-org/standard/tree/main/data";
+export const DATASET_URL = `${SPEC_REPO_URL}/tree/${SPEC_TAG}/data`;
 
 export type EvidenceSource = "STUDIES" | "ORA SCANNER";
 
@@ -47,13 +55,13 @@ export type Evidence = {
   text: string;
 };
 
-export type Strength = "MUST" | "SHOULD" | "MAY";
+export type Strength = Level;
 
 export type Practice = {
   id: string;
   /** Stable requirement identifier from the spec source, e.g. AR-FIND-01. */
   arId: string;
-  /** BCP 14 normative strength from the spec source. */
+  /** BCP 14 normative strength, read from the pinned spec by `definePractices`. */
   strength: Strength;
   name: string;
   what: string;
@@ -62,6 +70,13 @@ export type Practice = {
   /** Key into EVIDENCE for the click-to-expand provenance block. */
   evidenceId?: string;
 };
+
+/** Attach each practice's strength from the pinned spec. */
+function definePractices(
+  practices: readonly Omit<Practice, "strength">[],
+): readonly Practice[] {
+  return practices.map((p) => ({ ...p, strength: level(p.arId) }));
+}
 
 export type EvidenceTable = {
   caption?: string;
@@ -186,11 +201,10 @@ export const ESSENTIAL_LAYERS: readonly EssentialLayer[] = [
 ];
 
 /** § Be reachable and citable */
-export const REACHABLE_PRACTICES: readonly Practice[] = [
+export const REACHABLE_PRACTICES = definePractices([
   {
     id: "first-party-docs",
     arId: "AR-FIND-02",
-    strength: "SHOULD",
     name: "Publish the answer as first-party docs",
     what: "Makes you citable: the page an agent grounds its answer on and names as its source.",
     evidence: {
@@ -202,7 +216,6 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
   {
     id: "robots-txt",
     arId: "AR-FIND-01",
-    strength: "MUST",
     name: "Allow agents in robots.txt and bot protection",
     what: "Declares which crawlers may fetch which paths, and lets verified agents through the bot manager. This is the gate to the search indexes.",
     evidence: {
@@ -213,7 +226,6 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
   {
     id: "sitemap-xml",
     arId: "AR-FIND-03",
-    strength: "SHOULD",
     name: "List your pages in a sitemap.xml",
     what: "Maps every page you publish for indexing.",
     evidence: {
@@ -225,21 +237,19 @@ export const REACHABLE_PRACTICES: readonly Practice[] = [
   {
     id: "ai-catalog",
     arId: "AR-FIND-04",
-    strength: "MAY",
     name: "Publish an AI Catalog and link it",
     what: "One manifest at /.well-known/ai-catalog.json listing every agent-facing resource you ship, from MCP server card to llms.txt.",
     evidence: {
       text: "Not measured in the studies. Link it from the homepage head, since 86–100% of discovery-file visits arrive through links. ARD registries such as Ora Directory index published catalogs so agents can search across sites.",
     },
   },
-];
+]);
 
 /** § Put the answer where agents read — the pages agents visit */
-export const READ_PRACTICES: readonly Practice[] = [
+export const READ_PRACTICES = definePractices([
   {
     id: "homepage-html",
     arId: "AR-READ-03",
-    strength: "SHOULD",
     name: "Homepage in raw HTML",
     what: "The front door, with real links to docs, product, and pricing.",
     evidence: {
@@ -251,7 +261,6 @@ export const READ_PRACTICES: readonly Practice[] = [
   {
     id: "docs-pages",
     arId: "AR-READ-04",
-    strength: "SHOULD",
     name: "Docs pages that answer",
     what: "The pages agents actually read, where most tasks get resolved. Link setup and quickstart pages from the homepage.",
     evidence: {
@@ -263,7 +272,6 @@ export const READ_PRACTICES: readonly Practice[] = [
   {
     id: "pricing-page",
     arId: "AR-READ-11",
-    strength: "SHOULD",
     name: "Pricing on a first-party page",
     what: "Plans, free tier, and limits as text in the HTML, not an image, a calculator, or a sales form.",
     evidence: {
@@ -275,7 +283,6 @@ export const READ_PRACTICES: readonly Practice[] = [
   {
     id: "no-javascript",
     arId: "AR-READ-01",
-    strength: "MUST",
     name: "Fetchable without JavaScript",
     what: "The answer is in the initial HTML, server-rendered or prerendered, rather than injected by a single-page app after load.",
     evidence: {
@@ -287,7 +294,6 @@ export const READ_PRACTICES: readonly Practice[] = [
   {
     id: "fenced-code",
     arId: "AR-READ-05",
-    strength: "SHOULD",
     name: "Fenced code, language-tagged",
     what: "Turns snippets into examples an agent can lift and use.",
     evidence: {
@@ -296,14 +302,13 @@ export const READ_PRACTICES: readonly Practice[] = [
     },
     evidenceId: "code-lift",
   },
-];
+]);
 
 /** § Put the answer where agents read — the files that describe the site */
-export const DESCRIBING_FILES: readonly Practice[] = [
+export const DESCRIBING_FILES = definePractices([
   {
     id: "llms-txt",
     arId: "AR-READ-07",
-    strength: "SHOULD",
     name: "llms.txt",
     what: "A curated, described index of your key pages.",
     evidence: {
@@ -315,7 +320,6 @@ export const DESCRIBING_FILES: readonly Practice[] = [
   {
     id: "well-known",
     arId: "AR-READ-06",
-    strength: "SHOULD",
     name: ".well-known/*",
     what: "Protocol and metadata discovery.",
     evidence: {
@@ -327,7 +331,6 @@ export const DESCRIBING_FILES: readonly Practice[] = [
   {
     id: "openapi-json",
     arId: "AR-ACT-02",
-    strength: "SHOULD",
     name: "openapi.json",
     what: "Machine-readable API contract.",
     evidence: {
@@ -339,14 +342,13 @@ export const DESCRIBING_FILES: readonly Practice[] = [
   {
     id: "json-ld",
     arId: "AR-READ-08",
-    strength: "SHOULD",
     name: "JSON-LD",
     what: "Machine-readable facts and routes in the page.",
     evidence: {
       text: "Markdown converters may omit script blocks, so repeat critical facts in visible text.",
     },
   },
-];
+]);
 
 /**
  * Per-claim provenance from the public dataset. Keyed by the
@@ -642,11 +644,10 @@ export const EVIDENCE: Record<string, EvidenceBlock> = {
 };
 
 /** § Let agents act, not just read */
-export const ACT_PRACTICES: readonly Practice[] = [
+export const ACT_PRACTICES = definePractices([
   {
     id: "auth",
     arId: "AR-ACT-01",
-    strength: "SHOULD",
     name: "Auth an agent can get through",
     what: "The first gate of acting.",
     bestPractice:
@@ -655,7 +656,6 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "public-api",
     arId: "AR-ACT-02",
-    strength: "SHOULD",
     name: "Public API with a machine-readable contract",
     what: "The acting surface itself.",
     bestPractice:
@@ -664,7 +664,6 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "mcp-or-cli",
     arId: "AR-ACT-10",
-    strength: "MUST",
     name: "An MCP server or a CLI",
     what: "The interface an agent acts through. Without one, an agent cannot finish the task.",
     bestPractice:
@@ -673,16 +672,14 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "mcp-server",
     arId: "AR-ACT-03",
-    strength: "SHOULD",
     name: "MCP server",
     what: "Standard tool protocol for docs search and actions.",
     bestPractice:
-      "Serve over Streamable HTTP at /mcp. Keep the docs MCP public. Gate the product MCP with OAuth (protected-resource metadata at /.well-known/oauth-protected-resource per RFC 9728, with PKCE) and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery (AR-ACT-04, MAY) are an emerging convention (SEP-2127, a working-group draft that major hosts have begun to support): ship one if your target hosts read it, but expect the exact path to keep moving.",
+      `Serve over Streamable HTTP at /mcp. Keep the docs MCP public. Gate the product MCP with OAuth (protected-resource metadata at /.well-known/oauth-protected-resource per RFC 9728, with PKCE) and list it in the MCP Registry with a server.json. Server cards for pre-connection discovery (AR-ACT-04, ${level("AR-ACT-04")}): one card per server, at <streamable-http-url>/server-card as SEP-2127 reserves, or listed in /.well-known/ai-catalog.json. SEP-2127 is Final, but the server-card extension spec is still a draft that major hosts have begun to support.`,
   },
   {
     id: "webmcp",
     arId: "AR-ACT-07",
-    strength: "SHOULD",
     name: "WebMCP",
     what: "The same tool contract, registered on the page itself.",
     bestPractice:
@@ -691,7 +688,6 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "mcp-apps",
     arId: "AR-ACT-05",
-    strength: "MAY",
     name: "MCP Apps",
     what: "Your UI, rendered inside the agent host.",
     bestPractice:
@@ -700,16 +696,14 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "nlweb",
     arId: "AR-ACT-09",
-    strength: "MAY",
     name: "NLWeb ask endpoint",
     what: "A lighter alternative to a full tool surface for content-heavy sites.",
     bestPractice:
-      "Serve /ask, which takes a natural-language question and returns schema.org-shaped results, and expose the same ask tool over MCP. Suits publishers, catalogs, and docs whose value is content rather than operations.",
+      "Serve POST /ask, which takes the question in query.text and returns typed results (schema.org types recommended), streamed over SSE when the client asks, and expose the same ask tool over MCP. Suits publishers, catalogs, and docs whose value is content rather than operations.",
   },
   {
     id: "sdks-cli",
     arId: "AR-ACT-06",
-    strength: "SHOULD",
     name: "SDKs and a CLI",
     what: "The forms agents act in: code and shell.",
     bestPractice:
@@ -718,7 +712,6 @@ export const ACT_PRACTICES: readonly Practice[] = [
   {
     id: "payments",
     arId: "AR-ACT-08",
-    strength: "MAY",
     name: "Let agents pay",
     what: "The last gate of acting. Applies only if the product charges.",
     bestPractice:
@@ -729,4 +722,4 @@ export const ACT_PRACTICES: readonly Practice[] = [
     },
     evidenceId: "link-checkout",
   },
-];
+]);
