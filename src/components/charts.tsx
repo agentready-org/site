@@ -1,11 +1,13 @@
 /** Figures for the spec. Editorial, not dashboard. */
 
-import { approxThousands, getOraStats, monthYear } from "@/lib/ora-stats";
+import { approxThousands, formatPct, getOraStats, monthYear } from "@/lib/ora-stats";
 
 export async function Scoreboard() {
   const stats = await getOraStats();
-  const { pctAboveB, avgScore, sitesScanned, gradeShare, asOf, live } = stats;
-  const cells = Array.from({ length: 100 }, (_, i) => i < pctAboveB);
+  const { pctAboveA, avgScore, sitesScanned, gradeShare, asOf, live } = stats;
+  const filled = pctAboveA > 0 ? Math.max(1, Math.round(pctAboveA)) : 0;
+  const cells = Array.from({ length: 100 }, (_, i) => i < filled);
+  const headline = formatPct(pctAboveA);
   const sites = approxThousands(sitesScanned);
   const when = monthYear(asOf);
   return (
@@ -16,17 +18,17 @@ export async function Scoreboard() {
 
       <div className="flex items-baseline gap-5">
         <p className="font-serif text-6xl sm:text-7xl text-foreground tracking-tight leading-none tabular-nums">
-          {pctAboveB}%
+          {headline}
         </p>
         <p className="font-serif text-base text-foreground/80 leading-snug">
-          of scanned sites grade B or above
+          of scanned sites grade A or above
         </p>
       </div>
 
       <div
         className="mt-5 grid gap-[3px] grid-cols-[repeat(20,minmax(0,1fr))]"
         role="img"
-        aria-label={`${pctAboveB} of 100 cells filled, one per percent of sites at grade B or above`}
+        aria-label={`${filled} of 100 cells filled, one per percent of sites at grade A or above (${headline})`}
       >
         {cells.map((on, i) => (
           <span

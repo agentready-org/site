@@ -9,8 +9,8 @@ export type OraStats = {
   sitesScanned: number;
   /** ora.ai reports an average (mean) score, not a median. */
   avgScore: number;
-  /** Share of scanned sites at grade B or above, rounded like ora.ai. */
-  pctAboveB: number;
+  /** Share of scanned sites at grade A or above, unrounded: it is below 1%. */
+  pctAboveA: number;
   /** Grade split in whole percents that sum to 100. */
   gradeShare: { dOrF: number; c: number; bPlus: number };
   /** ISO date the numbers were read. */
@@ -21,13 +21,13 @@ export type OraStats = {
 
 export const ORA_STATS_URL = "https://ora.ai/api/stats";
 
-/** Last known values, read from ORA_STATS_URL on 2026-09-24. */
+/** Last known values, read from ORA_STATS_URL on 2026-11-11. */
 const SNAPSHOT: OraStats = {
-  sitesScanned: 98664,
-  avgScore: 40,
-  pctAboveB: 4,
-  gradeShare: { dOrF: 66, c: 30, bPlus: 4 },
-  asOf: "2026-09-24",
+  sitesScanned: 151448,
+  avgScore: 44,
+  pctAboveA: 0.57,
+  gradeShare: { dOrF: 57, c: 36, bPlus: 7 },
+  asOf: "2026-11-11",
   live: false,
 };
 
@@ -35,7 +35,6 @@ type ApiGrade = { grade: string; pct: number };
 type ApiStats = {
   sitesScanned?: unknown;
   avgScore?: unknown;
-  pctAboveB?: unknown;
   gradeDistribution?: unknown;
 };
 
@@ -44,11 +43,10 @@ function isFiniteNumber(v: unknown): v is number {
 }
 
 function parse(json: ApiStats): OraStats | null {
-  const { sitesScanned, avgScore, pctAboveB, gradeDistribution } = json;
+  const { sitesScanned, avgScore, gradeDistribution } = json;
   if (
     !isFiniteNumber(sitesScanned) ||
     !isFiniteNumber(avgScore) ||
-    !isFiniteNumber(pctAboveB) ||
     !Array.isArray(gradeDistribution)
   ) {
     return null;
@@ -59,6 +57,7 @@ function parse(json: ApiStats): OraStats | null {
       .filter((g) => typeof g.grade === "string" && isFiniteNumber(g.pct))
       .filter((g) => pick(g.grade))
       .reduce((acc, g) => acc + g.pct, 0);
+  const aRaw = sum((g) => g.startsWith("A"));
   const bPlusRaw = sum((g) => g.startsWith("A") || g.startsWith("B"));
   const cRaw = sum((g) => g.startsWith("C"));
   const dOrFRaw = sum((g) => g.startsWith("D") || g.startsWith("F"));
@@ -68,7 +67,7 @@ function parse(json: ApiStats): OraStats | null {
   return {
     sitesScanned: Math.round(sitesScanned),
     avgScore: Math.round(avgScore),
-    pctAboveB: Math.round(pctAboveB),
+    pctAboveA: aRaw,
     gradeShare: { dOrF: 100 - bPlus - c, c, bPlus },
     asOf: new Date().toISOString().slice(0, 10),
     live: true,
@@ -87,6 +86,11 @@ export async function getOraStats(): Promise<OraStats> {
   } catch {
     return SNAPSHOT;
   }
+}
+
+/** "<1%" below one percent, whole percents above. */
+export function formatPct(pct: number): string {
+  return pct > 0 && pct < 1 ? "<1%" : `${Math.round(pct)}%`;
 }
 
 /** "~99,000" style rounding for the caption. */

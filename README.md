@@ -83,10 +83,12 @@ with its stable identifier (`AR-FIND-01` and so on), BCP 14 strength
 (MUST / SHOULD / MAY), and evidence tag (`[STUDIES]` / `[ORA SCANNER]`);
 prose and code samples live in `src/app/page.tsx`.
 
-The hero scoreboard reads `sitesScanned`, `avgScore`, `pctAboveB`, and the
-grade distribution from `https://ora.ai/api/stats` at build time
-(`src/lib/ora-stats.ts`). If the fetch fails, the build uses the snapshot in
-that file and the caption says when it was last read. Redeploy to refresh.
+The hero scoreboard reads `sitesScanned`, `avgScore`, and the grade
+distribution from `https://ora.ai/api/stats` at build time
+(`src/lib/ora-stats.ts`), and shows the share of sites at grade A or above,
+"<1%" while it is under one percent. If the fetch fails, the build uses the
+snapshot in that file and the caption says when it was last read. Redeploy
+to refresh.
 
 ## Versioning
 

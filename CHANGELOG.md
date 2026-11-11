@@ -31,7 +31,7 @@ to v1.0 may not conform to v2.0, and `AR-ACT-07` WebMCP is raised from
   with a Link Agent Wallet (MAY), backed by Ora's October 2026 checkout
   study (92.3% of Link test checkouts done right);
   `AR-ACT-09` NLWeb `/ask` endpoint with an `ask` tool over MCP (MAY).
-- Hero scoreboard numbers (sites scanned, average score, share at grade B
+- Hero scoreboard numbers (sites scanned, average score, share at grade A
   or above, grade split) are read from `ora.ai/api/stats` at build time
   instead of being hardcoded. The "action gap" and robots.txt figures are
   dated to the April 2026 report.
